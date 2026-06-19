@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Care At Home — Lab Diagnosis</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.26.0/dist/tabler-icons.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="./style.css"/>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="logo">
+  <div class="nav-bar" id="online doctor">
+    <nav>
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#logo"><p><span>care at home</span></p></a>
+
+        <div class="lang-switch">
+          <button id="lang-toggle">ar</button>
+        </div>
+
+        <!-- زرار المينو -->
+        <div class="menu-btn" onclick="showsidebar()">
+          <span class="material-symbols-outlined">menu</span>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div class="menu-overlay" onclick="hidesidebar()"></div>
+
+      <!-- Sidebar -->
+      <ul class="sidebar" id="sidebar">
+        <li onclick="hidesidebar()" class="close-btn">
+          <span class="material-symbols-outlined">close</span>
+        </li>
+        <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+        <li><a href="../How It Work/how it work.html">how care at home works</a></li>
+        <li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+        <li><a href="../Donations/Donations.html">Donations</a></li>
+        <li><a class="a4" href="../our providers/our providers.html">our providers</a></li>
+      </ul>
+
+      <!-- Desktop Menu -->
+      <ul class="desktop-menu">
+        <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+        <li><a href="../How It Work/how it work.html">how care at home works</a></li>
+        <li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+        <li><a href="../Donations/Donations.html">Donations</a></li>
+        <li><a class="a4" href="../our providers/our providers.html">our providers</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><i class="ti ti-flask"></i> 100% Free For Everyone</div>
+  <h1>Upload & Analyze <span>Your Lab Results</span></h1>
+  <p>Upload your blood test and get an instant full CBC medical report — completely free.</p>
+  <button class="hero-cta"><i class="ti ti-shield-check"></i> Completely Free Service</button>
+  <div class="hero-pills">
+    <div class="h-pill"><i class="ti ti-zap"></i> Easy To Use</div>
+    <div class="h-pill"><i class="ti ti-clock-24"></i> 24/7 Available</div>
+    <div class="h-pill"><i class="ti ti-shield-check"></i> Safe & Trusted</div>
+    <div class="h-pill"><i class="ti ti-users"></i> 50,000+ Users</div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-ic si-b"><i class="ti ti-file-text"></i></div><div><div class="stat-lbl">Total Tests</div><div class="stat-val">24</div></div></div>
+    <div class="stat"><div class="stat-ic si-g"><i class="ti ti-circle-check"></i></div><div><div class="stat-lbl">Normal Results</div><div class="stat-val">18</div></div></div>
+    <div class="stat"><div class="stat-ic si-a"><i class="ti ti-alert-circle"></i></div><div><div class="stat-lbl">Needs Review</div><div class="stat-val">4</div></div></div>
+    <div class="stat"><div class="stat-ic si-p"><i class="ti ti-brain"></i></div><div><div class="stat-lbl">AI Analyzed</div><div class="stat-val">22</div></div></div>
+  </div>
+
+  <!-- UPLOAD CARD -->
+  <div class="upload-card">
+    <div class="card-h">Upload Lab Results</div>
+    <div class="card-s">Click to upload or drag and drop your files below</div>
+
+    <div id="dz">
+      <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png,.webp" onchange="handleFiles(this.files)">
+      <svg class="dz-cloud" viewBox="0 0 64 64" fill="none">
+        <path d="M44 40c3.3-1.3 6-4.3 6-8a8 8 0 0 0-8-8c-.4 0-.8 0-1.2.1A12 12 0 0 0 20 28c0 .7.1 1.3.2 2A10 10 0 0 0 22 50h22a8 8 0 0 0 0-10z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28 38l4-5 4 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="32" y1="33" x2="32" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="dz-txt" id="dzTxt">No Files Selected</div>
+      <div class="dz-sub">Drag & drop or <u>browse</u></div>
+      <div class="type-pills">
+        <span class="tpill">PDF</span><span class="tpill">JPG</span><span class="tpill">PNG</span><span class="tpill">WEBP</span>
+      </div>
+    </div>
+
+    <div class="dz-foot">
+      <span><b>Supported:</b> JPG, PNG, PDF, WEBP</span>
+      <span><b>Max:</b> 25MB</span>
+    </div>
+
+    <div id="fileList"></div>
+
+    <div class="dz-acts">
+      <button class="btn-help"><i class="ti ti-help-circle"></i> Help Center</button>
+      <button class="btn-cl" onclick="clearAll()">Cancel</button>
+      <button class="btn-sv" onclick="saveFiles()"><i class="ti ti-device-floppy"></i> Save</button>
+    </div>
+
+    <div class="an-strip">
+      <div>
+        <div class="an-lbl"><i class="ti ti-robot" style="color:var(--p)"></i> AI CBC Blood Analysis</div>
+        <div class="an-sub">Upload a file then click Analyze</div>
+      </div>
+      <button class="btn-an" id="anBtn" disabled onclick="startAnalysis()">
+        <i class="ti ti-sparkles"></i> Analyze My Lab Results
+      </button>
+    </div>
+
+    <div id="spinner">
+      <div class="spin-ring"></div>
+      <div class="spin-t">Analyzing your blood test…</div>
+      <div class="spin-s">Reading CBC values and comparing to reference ranges</div>
+    </div>
+
+    <div id="report"></div>
+  </div>
+
+  <!-- AI CARD -->
+  <div class="ai-card">
+    <div class="ai-ic"><i class="ti ti-robot"></i></div>
+    <div>
+      <div class="ai-t">AI-Powered CBC Blood Analysis</div>
+      <div class="ai-s">Upload your blood test and get an instant CBC report with all 13 parameters analyzed, clinical findings, and personalized recommendations.</div>
+      <button class="ai-btn" onclick="startAnalysis()"><i class="ti ti-sparkles"></i> Analyze Uploaded Files</button>
+    </div>
+  </div>
+
+  <!-- QUICK ACTIONS -->
+  <div class="sec-label"><i class="ti ti-grid-dots" style="color:var(--p)"></i> Quick Actions</div>
+  <div class="qa-grid">
+    <div class="qa" onclick="qaModal('Full Report')"><div class="qa-ic" style="background:#eff6ff"><i class="ti ti-report-medical" style="color:#3b82f6"></i></div><div class="qa-lbl">Full Report</div></div>
+    <div class="qa" onclick="qaModal('Compare Results')"><div class="qa-ic" style="background:#f0fdf4"><i class="ti ti-chart-line" style="color:#22c55e"></i></div><div class="qa-lbl">Compare Results</div></div>
+    <div class="qa" onclick="qaModal('Follow-up Schedule')"><div class="qa-ic" style="background:#fef3c7"><i class="ti ti-calendar-event" style="color:#f59e0b"></i></div><div class="qa-lbl">Follow-up Schedule</div></div>
+    <div class="qa" onclick="qaModal('Share With Doctor')"><div class="qa-ic" style="background:#f5f3ff"><i class="ti ti-share" style="color:var(--p)"></i></div><div class="qa-lbl">Share With Doctor</div></div>
+    <div class="qa" onclick="qaModal('Download PDF')"><div class="qa-ic" style="background:#fef2f2"><i class="ti ti-download" style="color:var(--r)"></i></div><div class="qa-lbl">Download PDF</div></div>
+    <div class="qa" onclick="qaModal('Medical History')"><div class="qa-ic" style="background:#f0fdf4"><i class="ti ti-history" style="color:#22c55e"></i></div><div class="qa-lbl">Medical History</div></div>
+  </div>
+
+  <!-- TESTS SECTION -->
+  <div class="tests-hdr">
+    <div class="tests-t"><i class="ti ti-flask" style="color:var(--p)"></i> All Lab Tests</div>
+    <div class="filters">
+      <button class="fbtn active" onclick="filterTests(this,'all')">All</button>
+      <button class="fbtn" onclick="filterTests(this,'blood')">Blood</button>
+      <button class="fbtn" onclick="filterTests(this,'liver')">Liver</button>
+      <button class="fbtn" onclick="filterTests(this,'kidney')">Kidney</button>
+      <button class="fbtn" onclick="filterTests(this,'sugar')">Sugar</button>
+      <button class="fbtn" onclick="filterTests(this,'hormones')">Hormones</button>
+    </div>
+  </div>
+
+  <div class="tests-grid">
+    <div class="tc" style="--acc:#6a51ff" data-cat="blood">
+      <div class="tc-top"><div class="tc-ic" style="background:#f5f3ff"><i class="ti ti-droplet" style="color:var(--p)"></i></div><span class="tc-b b-n">Normal</span></div>
+      <div class="tc-name">Complete Blood Count (CBC)</div><div class="tc-cat">Blood Analysis</div>
+      <div class="tc-vals"><div class="tc-row"><span class="tc-lbl">Red Blood Cells</span><span class="tc-num">4.8</span></div><div class="tc-row"><span class="tc-ref">Ref: 4.2–5.4</span><span style="color:var(--g);font-size:.65rem;font-weight:700;">✓ Normal</span></div></div>
+      <div class="tc-bar"><div class="tc-fill fn" style="width:75%"></div></div>
+      <div class="tc-foot"><span class="tc-date"><i class="ti ti-calendar"></i> Jun 10, 2026</span><button class="vbtn" onclick="viewDetails(0)">View Details</button></div>
+    </div>
+    <div class="tc" style="--acc:#f59e0b" data-cat="sugar">
+      <div class="tc-top"><div class="tc-ic" style="background:#fef3c7"><i class="ti ti-activity" style="color:var(--a)"></i></div><span class="tc-b b-h">High</span></div>
+      <div class="tc-name">Fasting Blood Sugar</div><div class="tc-cat">Sugar Analysis</div>
+      <div class="tc-vals"><div class="tc-row"><span class="tc-lbl">Glucose (mg/dL)</span><span class="tc-num" style="color:var(--r)">126</span></div><div class="tc-row"><span class="tc-ref">Ref: 70–100</span><span style="color:var(--r);font-size:.65rem;font-weight:700;">↑ High</span></div></div>
+      <div class="tc-bar"><div class="tc-fill fh" style="width:88%"></div></div>
+      <div class="tc-foot"><span class="tc-date"><i class="ti ti-calendar"></i> Jun 10, 2026</span><button class="vbtn" onclick="viewDetails(1)">View Details</button></div>
+    </div>
+    <div class="tc" style="--acc:#3b82f6" data-cat="blood">
+      <div class="tc-top"><div class="tc-ic" style="background:#eff6ff"><i class="ti ti-heart-rate-monitor" style="color:#3b82f6"></i></div><span class="tc-b b-n">Normal</span></div>
+      <div class="tc-name">Total Cholesterol</div><div class="tc-cat">Lipid Panel</div>
+      <div class="tc-vals"><div class="tc-row"><span class="tc-lbl">Cholesterol (mg/dL)</span><span class="tc-num">185</span></div><div class="tc-row"><span class="tc-ref">Ref: &lt;200</span><span style="color:var(--g);font-size:.65rem;font-weight:700;">✓ Ideal</span></div></div>
+      <div class="tc-bar"><div class="tc-fill fn" style="width:60%"></div></div>
+      <div class="tc-foot"><span class="tc-date"><i class="ti ti-calendar"></i> Jun 8, 2026</span><button class="vbtn" onclick="viewDetails(2)">View Details</button></div>
+    </div>
+    <div class="tc" style="--acc:#22c55e" data-cat="liver">
+      <div class="tc-top"><div class="tc-ic" style="background:#f0fdf4"><i class="ti ti-wave-saw-tool" style="color:var(--g)"></i></div><span class="tc-b b-n">Normal</span></div>
+      <div class="tc-name">Liver Function Test (LFT)</div><div class="tc-cat">Liver Analysis</div>
+      <div class="tc-vals"><div class="tc-row"><span class="tc-lbl">ALT (U/L)</span><span class="tc-num">28</span></div><div class="tc-row"><span class="tc-ref">Ref: 7–40</span><span style="color:var(--g);font-size:.65rem;font-weight:700;">✓ Normal</span></div></div>
+      <div class="tc-bar"><div class="tc-fill fn" style="width:52%"></div></div>
+      <div class="tc-foot"><span class="tc-date"><i class="ti ti-calendar"></i> Jun 8, 2026</span><button class="vbtn" onclick="viewDetails(3)">View Details</button></div>
+    </div>
+    <div class="tc" style="--acc:#ef4444" data-cat="kidney">
+      <div class="tc-top"><div class="tc-ic" style="background:#fef2f2"><i class="ti ti-filter" style="color:var(--r)"></i></div><span class="tc-b b-h">High</span></div>
+      <div class="tc-name">Kidney Function Test (KFT)</div><div class="tc-cat">Kidney Analysis</div>
+      <div class="tc-vals"><div class="tc-row"><span class="tc-lbl">Creatinine (mg/dL)</span><span class="tc-num" style="color:var(--r)">1.4</span></div><div class="tc-row"><span class="tc-ref">Ref: 0.6–1.2</span><span style="color:var(--r);font-size:.65rem;font-weight:700;">↑ High</span></div></div>
+      <div class="tc-bar"><div class="tc-fill fh" style="width:82%"></div></div>
+      <div class="tc-foot"><span class="tc-date"><i class="ti ti-calendar"></i> Jun 5, 2026</span><button class="vbtn" onclick="viewDetails(4)">View Details</button></div>
+    </div>
+    <div class="tc" style="--acc:#a855f7" data-cat="hormones">
+      <div class="tc-top"><div class="tc-ic" style="background:#faf5ff"><i class="ti ti-dna" style="color:#a855f7"></i></div><span class="tc-b b-p">Pending</span></div>
+      <div class="tc-name">Thyroid Stimulating Hormone (TSH)</div><div class="tc-cat">Hormone Analysis</div>
+      <div class="tc-vals"><div class="tc-row"><span class="tc-lbl">TSH (mIU/L)</span><span class="tc-num" style="color:var(--p)">—</span></div><div class="tc-row"><span class="tc-ref">Ref: 0.4–4.0</span><span style="color:var(--p);font-size:.65rem;font-weight:700;">⏳ Processing</span></div></div>
+      <div class="tc-bar"><div class="tc-fill" style="width:45%;background:linear-gradient(90deg,#a855f7,#c4baff)"></div></div>
+      <div class="tc-foot"><span class="tc-date"><i class="ti ti-calendar"></i> Jun 12, 2026</span><button class="vbtn" onclick="viewDetails(5)">Awaiting Result</button></div>
+    </div>
+  </div>
+
+  <!-- RESULTS TABLE -->
+  <div class="rt-card">
+    <div class="rt-hdr"><h3><i class="ti ti-table" style="color:var(--p);margin-right:.35rem;vertical-align:-2px"></i> Recent Detailed Results</h3><button class="see-all">View All <i class="ti ti-arrow-right"></i></button></div>
+    <div class="rt-row rt-head"><span>Test Name</span><span>Value</span><span>Reference</span><span>Date</span><span>Status</span></div>
+    <div class="rt-row"><span class="rt-nm"><span class="sdot s-n"></span>Hemoglobin</span><span style="font-weight:600">14.2 g/dL</span><span class="rt-ref">12–16</span><span class="rt-dt">Jun 10</span><span class="tc-b b-n" style="font-size:.65rem">Normal</span></div>
+    <div class="rt-row"><span class="rt-nm"><span class="sdot s-h"></span>Blood Glucose</span><span style="font-weight:600;color:var(--r)">126 mg/dL</span><span class="rt-ref">70–100</span><span class="rt-dt">Jun 10</span><span class="tc-b b-h" style="font-size:.65rem">High</span></div>
+    <div class="rt-row"><span class="rt-nm"><span class="sdot s-n"></span>ALT Liver</span><span style="font-weight:600">28 U/L</span><span class="rt-ref">7–40</span><span class="rt-dt">Jun 8</span><span class="tc-b b-n" style="font-size:.65rem">Normal</span></div>
+    <div class="rt-row"><span class="rt-nm"><span class="sdot s-h"></span>Creatinine</span><span style="font-weight:600;color:var(--r)">1.4 mg/dL</span><span class="rt-ref">0.6–1.2</span><span class="rt-dt">Jun 5</span><span class="tc-b b-h" style="font-size:.65rem">High</span></div>
+    <div class="rt-row"><span class="rt-nm"><span class="sdot s-n"></span>Cholesterol</span><span style="font-weight:600">185 mg/dL</span><span class="rt-ref">&lt;200</span><span class="rt-dt">Jun 8</span><span class="tc-b b-n" style="font-size:.65rem">Normal</span></div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title" id="modalTitle"><i class="ti ti-flask"></i> Details</div>
+      <button class="modal-close" onclick="closeModal()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="meds-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Care At Home</h3>
+      <p class="footer-support">Customer Support</p>
+      <p class="footer-support-text">Support Is Open 24/7 In The Care At Home</p>
+      <p class="footer-address-title">Address</p>
+      <p class="footer-address">Egypt, Tanta</p>
+      <div class="footer-social">
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="../Care-Bot/bot.html">bot cara at home</a></li>
+        <li><a href="../healthdashboard/health-dashboard.html">healthdashboard</a></li>
+        <li><a href="../patient services/patient.html">patien services</a></li>
+        <li><a href="../index.html#Telehealth Services">Telehealth Services</a></li>
+        <li><a href="../Medication/Medication.html">medication</a></li>
+        <li><a href="../Medical diagnosis/Medical diagnosis.html">Diagnosis</a></li>
+        <li><a href="../Emergency/emergency.html">emergency</a></li>
+        <li><a href="../nursing/nursing.html">nursing</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="../How It Work/how it work.html">How It Works</a></li>
+        <li><a href="../Subscriptions/">Pricing</a></li>
+        <li><a href="#">Promo Codes</a></li>
+        <li><a href="#">Employers</a></li>
+        <li><a href="#">Brokers</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="../about us/about.html">About Us</a></li>
+        <li><a href="../help us/help.html">Help Center</a></li>
+        <li><a href="../our providers/our providers.html">Our Providers</a></li>
+        <li><a href="../pharmacy/contactus/contact.html">Contact Us</a></li>
+        <li><a href="#">Newsroom</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Terms Of Use</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund/Cancellation Policy</a></li>
+        <li><a href="#">Notice Of Privacy Practices</a></li>
+        <li><a href="#">Consent To Virtual Visits</a></li>
+        <li><a href="#">Content Creation Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-partners">
+    <span class="partner-logo">aetna</span>
+    <span class="partner-logo">Anthem</span>
+    <span class="partner-logo">Humana</span>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Care At Home, Inc. All Rights Reserved.</p>
+  </div>
+</footer>
+<script src="./script.js"></script>
+</body>
+</html>
