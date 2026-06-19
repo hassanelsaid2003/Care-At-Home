@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patients | Care At Home</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="patient.css" />
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <noscript>
+      <style>
+        .fade-up { opacity: 1 !important; animation: none !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body>
+   <!-- ===== HEADER ===== -->
+    <header id="logo">
+  <div class="nav-bar" id="online doctor">
+    <nav>
+
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#logo"><p><span>care at home</span></p></a>
+
+        <div class="lang-switch">
+          <button id="lang-toggle">en</button>
+        </div>
+
+        <!-- Menu Button -->
+        <div class="menu-btn" onclick="showsidebar()">
+          <span class="material-symbols-outlined">menu</span>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div class="menu-overlay" onclick="hidesidebar()"></div>
+
+      <!-- Sidebar -->
+      <ul class="sidebar" id="sidebar">
+        <li onclick="hidesidebar()">
+          <span class="material-symbols-outlined">close</span>
+        </li>
+
+        <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+          <li><a href="../How It Work/how it work.html">how care at home works</a></li>
+          <li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+          <li><a href="../Donations/Donations.html">Donations</a></li>
+          <li><a class="a4" href="../our providers/our providers.html">our providers</a></li>
+
+
+      </ul>
+
+      <!-- Desktop Menu -->
+      <ul>
+        <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+          <li><a href="../How It Work/how it work.html">how care at home works</a></li>
+          <li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+          <li><a href="../Donations/Donations.html">Donations</a></li>
+          <li><a class="a4" href="../our providers/our providers.html">our providers</a></li>
+
+      </ul>
+
+    </nav>
+  </div>
+</header>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Patient Services Now
+        </div>
+        <h1 class="hero-title">
+          Your Medical Care<br />
+          <span class="highlight">In Trusted Hands</span>
+        </h1>
+        <p class="hero-sub">
+          We connect you with top specialist doctors in under 5 minutes —<br />
+          Track your treatment, book appointments, and get round-the-clock medical support
+        </p>
+        <div class="hero-ctas">
+          <button class="btn-hero-primary">📞 Call Now</button>
+          <button class="btn-hero-ghost">💬 Send a Message</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-cell fade-up">
+        <span class="stat-number">50K+</span>
+        <div class="stat-label">Satisfied Patients</div>
+      </div>
+      <div class="stat-cell fade-up">
+        <span class="stat-number">200+</span>
+        <div class="stat-label">Specialist Doctors</div>
+      </div>
+      <div class="stat-cell fade-up">
+        <span class="stat-number">98%</span>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+      <div class="stat-cell fade-up">
+        <span class="stat-number">5 Min</span>
+        <div class="stat-label">Average Wait Time</div>
+      </div>
+    </div>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works">
+      <div class="section-heading fade-up">
+        <h2>How <span>Care At Home</span> Works</h2>
+        <p>From symptom to specialist in four simple steps</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-item fade-up">
+          <div class="step-number">1</div>
+          <div class="step-icon">📝</div>
+          <div class="step-title">Tell Us What You Need</div>
+          <div class="step-desc">
+            Pick a specialty and briefly describe your symptoms or condition
+          </div>
+        </div>
+        <div class="step-item fade-up">
+          <div class="step-number">2</div>
+          <div class="step-icon">🔍</div>
+          <div class="step-title">Get Matched Instantly</div>
+          <div class="step-desc">
+            We connect you with the right specialist in under 5 minutes
+          </div>
+        </div>
+        <div class="step-item fade-up">
+          <div class="step-number">3</div>
+          <div class="step-icon">🩺</div>
+          <div class="step-title">Consult Securely</div>
+          <div class="step-desc">
+            Talk to your doctor by phone, video, or chat — whatever works for you
+          </div>
+        </div>
+        <div class="step-item fade-up">
+          <div class="step-number">4</div>
+          <div class="step-icon">📋</div>
+          <div class="step-title">Get Your Care Plan</div>
+          <div class="step-desc">
+            Receive your prescription, follow-up schedule, and medical record instantly
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAIN GRID ===== -->
+    <div class="main-grid">
+      <!-- Services Card -->
+      <div class="card fade-up">
+        <div class="card-header">
+          <div class="card-icon">🏥</div>
+          <div>
+            <div class="card-title">Patient Services</div>
+            <div class="card-subtitle">Everything you need in one place</div>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-emoji">🩺</div>
+          <div class="service-info">
+            <div class="service-name">Instant Medical Consultation</div>
+            <div class="service-desc">
+              Connect with our specialist doctors around the clock
+            </div>
+          </div>
+          <div class="service-badge">24/7</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-emoji">💊</div>
+          <div class="service-info">
+            <div class="service-name">Treatment Follow-up</div>
+            <div class="service-desc">
+              Track your treatment plan and medication doses with high precision
+            </div>
+          </div>
+          <div class="service-badge">New</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-emoji">📋</div>
+          <div class="service-info">
+            <div class="service-name">Medical Records</div>
+            <div class="service-desc">
+              Instant access to your medical history and reports
+            </div>
+          </div>
+          <div class="service-badge">Secure</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-emoji">🏥</div>
+          <div class="service-info">
+            <div class="service-name">Appointment Booking</div>
+            <div class="service-desc">
+              Book your appointment with top doctors in a few simple steps
+            </div>
+          </div>
+          <div class="service-badge">Fast</div>
+        </div>
+      </div>
+
+      <!-- Contact Form Card -->
+      <div class="card form-card fade-up">
+        <div class="card-header">
+          <div class="card-icon">✉️</div>
+          <div>
+            <div class="card-title">Contact Us</div>
+            <div class="card-subtitle">Choose your preferred contact method</div>
+          </div>
+        </div>
+
+        <div class="contact-toggle">
+          <button
+            class="toggle-btn active"
+            id="btnCall"
+            onclick="switchContact('call')"
+          >
+            📞 Request a Call
+          </button>
+          <button
+            class="toggle-btn"
+            id="btnMsg"
+            onclick="switchContact('message')"
+          >
+            💬 Send a Message
+          </button>
+        </div>
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="field-group">
+              <label class="field-label">Full Name *</label>
+              <input
+                class="field-input"
+                type="text"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div class="field-group">
+              <label class="field-label">Phone Number *</label>
+              <input
+                class="field-input"
+                type="tel"
+                placeholder="01xxxxxxxxx"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Email Address</label>
+            <input
+              class="field-input"
+              type="email"
+              placeholder="example@email.com"
+            />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Medical Specialty</label>
+            <select class="field-select">
+              <option value="">Select Specialty</option>
+              <option>General Medicine</option>
+              <option>Cardiology</option>
+              <option>Internal Medicine</option>
+              <option>Pediatrics</option>
+              <option>Orthopedics</option>
+              <option>Dermatology</option>
+              <option>Obstetrics &amp; Gynecology</option>
+            </select>
+          </div>
+
+          <div class="field-group message-field" id="messageField">
+            <label class="field-label">Your Message</label>
+            <textarea
+              class="field-textarea"
+              placeholder="Describe your inquiry or medical condition..."
+            ></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit" id="submitBtn">
+            📞 Request a Call Now
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===== SPECIALISTS ===== -->
+    <section class="specialists-section">
+      <div class="section-heading fade-up">
+        <h2>Meet Our <span>Specialists</span></h2>
+        <p>Board-certified doctors, vetted and ready to help</p>
+      </div>
+      <div class="specialists-grid">
+        <div class="doctor-card fade-up">
+          <div class="doctor-avatar">👩‍⚕️</div>
+          <div class="doctor-name">Dr. Mona Khalil</div>
+          <div class="doctor-specialty">Cardiology</div>
+          <div class="doctor-rating">★★★★★ <span>4.9 (320 reviews)</span></div>
+          <div class="doctor-exp">14+ Years Experience</div>
+          <button class="doctor-book-btn" onclick="bookSpecialist('Cardiology')">Book Now</button>
+        </div>
+        <div class="doctor-card fade-up">
+          <div class="doctor-avatar">👨‍⚕️</div>
+          <div class="doctor-name">Dr. Ahmed Samir</div>
+          <div class="doctor-specialty">Pediatrics</div>
+          <div class="doctor-rating">★★★★★ <span>4.8 (275 reviews)</span></div>
+          <div class="doctor-exp">10+ Years Experience</div>
+          <button class="doctor-book-btn" onclick="bookSpecialist('Pediatrics')">Book Now</button>
+        </div>
+        <div class="doctor-card fade-up">
+          <div class="doctor-avatar">👩‍⚕️</div>
+          <div class="doctor-name">Dr. Laila Hassan</div>
+          <div class="doctor-specialty">Dermatology</div>
+          <div class="doctor-rating">★★★★★ <span>4.9 (198 reviews)</span></div>
+          <div class="doctor-exp">9+ Years Experience</div>
+          <button class="doctor-book-btn" onclick="bookSpecialist('Dermatology')">Book Now</button>
+        </div>
+        <div class="doctor-card fade-up">
+          <div class="doctor-avatar">👨‍⚕️</div>
+          <div class="doctor-name">Dr. Omar Farouk</div>
+          <div class="doctor-specialty">Orthopedics</div>
+          <div class="doctor-rating">★★★★★ <span>4.7 (162 reviews)</span></div>
+          <div class="doctor-exp">16+ Years Experience</div>
+          <button class="doctor-book-btn" onclick="bookSpecialist('Orthopedics')">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARE PLANS ===== -->
+    <section class="plans-section">
+      <div class="section-heading fade-up">
+        <h2>Choose Your <span>Care Plan</span></h2>
+        <p>Flexible plans for individuals and families</p>
+      </div>
+      <div class="plans-grid">
+        <div class="plan-card fade-up">
+          <div class="plan-name">Basic</div>
+          <div class="plan-price"><span class="plan-price-amount">199</span> EGP / month</div>
+          <ul class="plan-features">
+            <li>3 consultations per month</li>
+            <li>Chat support</li>
+            <li>Access to medical records</li>
+            <li>Standard response time</li>
+          </ul>
+          <button class="plan-cta" onclick="selectPlan('Basic')">Choose Basic</button>
+        </div>
+        <div class="plan-card featured fade-up">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Premium</div>
+          <div class="plan-price"><span class="plan-price-amount">349</span> EGP / month</div>
+          <ul class="plan-features">
+            <li>Unlimited consultations</li>
+            <li>Priority matching — under 2 minutes</li>
+            <li>Dedicated specialist</li>
+            <li>Free medication delivery</li>
+          </ul>
+          <button class="plan-cta" onclick="selectPlan('Premium')">Choose Premium</button>
+        </div>
+        <div class="plan-card fade-up">
+          <div class="plan-name">Family</div>
+          <div class="plan-price"><span class="plan-price-amount">599</span> EGP / month</div>
+          <ul class="plan-features">
+            <li>Covers up to 5 family members</li>
+            <li>All Premium features included</li>
+            <li>Priority 24/7 emergency line</li>
+            <li>Quarterly health checkups</li>
+          </ul>
+          <button class="plan-cta" onclick="selectPlan('Family')">Choose Family</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-section">
+      <div class="section-heading fade-up">
+        <h2>What <span>Our Patients</span> Say</h2>
+        <p>Over 50,000 patients trust our services</p>
+      </div>
+      <div class="testimonials-grid" id="testimonialsGrid">
+        <div class="tcard fade-up active">
+          <div class="stars">★★★★★</div>
+          <p class="tcard-text">
+            The service is exceptional — I connected with a doctor within minutes and got the care I needed
+          </p>
+          <div class="tcard-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Ahmed Mohamed</div>
+              <div class="author-role">Cardiac Patient</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="tcard-text">
+            The best medical platform I've used — easy, fast, and the doctors are extremely professional
+          </p>
+          <div class="tcard-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sara Ahmed</div>
+              <div class="author-role">Chronic Care Patient</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="tcard-text">
+            Treatment follow-up has become so much easier — I highly recommend it to every patient
+          </p>
+          <div class="tcard-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Mahmoud Ali</div>
+              <div class="author-role">Diabetes Patient</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EMERGENCY BAR ===== -->
+    <div class="emergency-bar">
+      <div class="emergency-text">
+        <div class="emergency-label">
+          <span class="label-dot"></span>
+          Available Now 24/7
+        </div>
+        <div class="emergency-title">Need Urgent Medical Help?</div>
+        <div class="emergency-sub">
+          Our medical team is ready to respond anytime — don't hesitate to reach out
+        </div>
+      </div>
+      <div class="emergency-actions">
+        <button class="btn-call">📞 Call Now for Free</button>
+        <button class="btn-whatsapp">💬 WhatsApp</button>
+      </div>
+    </div>
+    <div class="diseases">
+      <h2>If you'd like to read about diseases — including their symptoms, diagnosis, side effects, and more...</h2>
+      <a href="../Diseases/Diseases.html">Diseases</a>
+    </div>
+    <!-- ===== FOOTER ===== -->
+<footer class="meds-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Care At Home</h3>
+      <p class="footer-support">Customer Support</p>
+      <p class="footer-support-text">Support Is Open 24/7 In The Care At Home</p>
+      <p class="footer-address-title">Address</p>
+      <p class="footer-address">Egypt, Tanta</p>
+      <div class="footer-social">
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="../Care-Bot/bot.html">bot cara at home</a></li>
+        <li><a href="../healthdashboard/health-dashboard.html">healthdashboard</a></li>
+        <li><a href="../patient services/patient.html">patien services</a></li>
+        <li><a href="../index.html#Telehealth Services">Telehealth Services</a></li>
+        <li><a href="../Medication/Medication.html">medication</a></li>
+        <li><a href="../Medical diagnosis/Medical diagnosis.html">Diagnosis</a></li>
+        <li><a href="../Emergency/emergency.html">emergency</a></li>
+        <li><a href="../nursing/nursing.html">nursing</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="../How It Work/how it work.html">How It Works</a></li>
+        <li><a href="../Subscriptions/">Pricing</a></li>
+        <li><a href="#">Promo Codes</a></li>
+        <li><a href="#">Employers</a></li>
+        <li><a href="#">Brokers</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="../about us/about.html">About Us</a></li>
+        <li><a href="../help us/help.html">Help Center</a></li>
+        <li><a href="../our providers/our providers.html">Our Providers</a></li>
+        <li><a href="../pharmacy/contactus/contact.html">Contact Us</a></li>
+        <li><a href="#">Newsroom</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Terms Of Use</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund/Cancellation Policy</a></li>
+        <li><a href="#">Notice Of Privacy Practices</a></li>
+        <li><a href="#">Consent To Virtual Visits</a></li>
+        <li><a href="#">Content Creation Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-partners">
+    <span class="partner-logo">aetna</span>
+    <span class="partner-logo">Anthem</span>
+    <span class="partner-logo">Humana</span>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Care At Home, Inc. All Rights Reserved.</p>
+  </div>
+</footer>
+ <!-- end footer -->
+    <script src="patient.js"></script>
+  </body>
+</html>

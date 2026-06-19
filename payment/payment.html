@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pro plan – Care at Home</title>
+  <link rel="stylesheet" href="payment.css"/>
+      <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+
+</head>
+<body data-plan="pro">
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- CONFIRMATION PAGE -->
+<div class="confirm-page" id="confirm-page">
+  <div class="confirm-box">
+    <div class="confirm-icon">✓</div>
+    <div class="confirm-title">Payment Successful!</div>
+    <div class="confirm-sub">Your subscription is now active. A receipt has been sent to your email.</div>
+    <div class="confirm-details">
+      <div class="confirm-row"><span class="confirm-key">Plan</span><span class="confirm-val" id="confirm-plan">-</span></div>
+      <div class="confirm-row"><span class="confirm-key">Billing</span><span class="confirm-val" id="confirm-billing">-</span></div>
+      <div class="confirm-row"><span class="confirm-key">Card</span><span class="confirm-val" id="confirm-card">-</span></div>
+      <div class="confirm-row"><span class="confirm-key">Next renewal</span><span class="confirm-val">3/7/2027</span></div>
+      <div class="confirm-row"><span class="confirm-key">Total charged</span><span class="confirm-val" id="confirm-amount">-</span></div>
+    </div>
+    <button class="confirm-btn" onclick="closeConfirmation()">Back to Dashboard</button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app">
+<div class="layout">
+
+  <!-- ═══ LEFT PANEL ═══ -->
+  <aside class="left-panel">
+    <div class="brand">
+      <div class="brand-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div><div class="brand-name">Care at Home</div><div class="brand-sub">Healthcare Platform</div></div>
+    </div>
+
+    <div class="left-section">
+      <div class="ls-title">Choose plan</div>
+      <button class="plan-btn active" id="btn-pro" onclick="switchPlan('pro')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="plan-info"><span class="plan-info-name">Pro plan</span><span class="plan-info-price">$20/mo or $200/yr</span></div>
+      </button>
+      <button class="plan-btn " id="btn-max" onclick="switchPlan('max')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <div class="plan-info"><span class="plan-info-name">Max plan</span><span class="plan-info-price">$200/mo or $1,200/yr</span></div>
+      </button>
+    </div>
+
+    <div class="left-section">
+      <div class="ls-title">Why Care at Home</div>
+      <div class="feat-list">
+        <div class="feat-item">
+          <div class="feat-ico teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="feat-text"><b>Real-time monitoring</b><span>Live health metrics tracked 24/7</span></div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-ico blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="feat-text"><b>Dedicated care team</b><span>Certified nurses & doctors on call</span></div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-ico gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feat-text"><b>Smart scheduling</b><span>AI-powered appointment reminders</span></div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-ico green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="feat-text"><b>Health analytics</b><span>Detailed reports & trend analysis</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-section">
+      <div class="ls-title">Trusted by families</div>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-num teal">50K+</span><span class="stat-label">Active users</span></div>
+        <div class="stat-card"><span class="stat-num gold">4.9★</span><span class="stat-label">App rating</span></div>
+        <div class="stat-card"><span class="stat-num" style="color:var(--green)">98%</span><span class="stat-label">Satisfaction</span></div>
+        <div class="stat-card"><span class="stat-num" style="color:#a78bfa">24/7</span><span class="stat-label">Support</span></div>
+      </div>
+    </div>
+
+    <div class="left-section">
+      <div class="ls-title">What members say</div>
+      <div class="testimonial">
+        <div class="test-quote">"Care at Home changed everything for our family. My father's health improved significantly within the first month."</div>
+        <div class="test-author">
+          <div class="test-avatar">SM</div>
+          <div><div class="test-name">Sara M.</div><div class="test-role">Family caregiver · Cairo</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-section" style="margin-bottom:0">
+      <div class="ls-title">Security</div>
+      <div class="sec-items">
+        <div class="sec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>256-bit SSL encryption</div>
+        <div class="sec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>PCI DSS Level 1 certified</div>
+        <div class="sec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>HIPAA compliant</div>
+        <div class="sec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>GDPR compliant</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ CENTER ═══ -->
+  <div class="center">
+    <div class="fcol">
+
+      <div class="hdr">
+        <a class="back-btn" href="#">←</a>
+        <h1 class="page-title" id="plan-title">Pro plan</h1>
+        <span class="plan-badge badge-pro" id="plan-badge">PRO</span>
+      </div>
+
+      <div class="sec-bar">
+        <div class="sb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>256-bit SSL</div>
+        <div class="sb-div"></div>
+        <div class="sb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>PCI DSS</div>
+        <div class="sb-div"></div>
+        <div class="sb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Cancel anytime</div>
+        <div class="sb-div"></div>
+        <div class="sb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>HIPAA compliant</div>
+      </div>
+
+      <!-- Billing toggle -->
+      <!-- MOBILE CARD PREVIEW (≤880px) -->
+      <div class="mobile-card-preview">
+        <div class="mobile-card-mini pro" id="mobile-card-mini">
+          <div class="mobile-card-mini-num" id="mobile-num">•••• •••• •••• ••••</div>
+          <div class="mobile-card-mini-brand" id="mobile-brand">VISA</div>
+        </div>
+        <div class="mobile-card-info">
+          <div class="mobile-card-name" id="mobile-name">Hassan Elsaid</div>
+          <div class="mobile-card-detail" id="mobile-detail">Expires MM/YY</div>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="p-card" id="card-monthly" onclick="setBilling('monthly')">
+          <span class="radio-dot"></span><span class="p-card-label">Monthly</span>
+          <div class="p-card-price" id="monthly-price">$20.00/month + tax</div>
+        </div>
+        <div class="p-card active" id="card-yearly" onclick="setBilling('yearly')">
+          <span class="radio-dot"></span><span class="p-card-label">Yearly</span>
+          <div class="p-card-price" id="yearly-price">$200.00/year + tax</div>
+          <div class="save-badge " id="save-badge">Save 17%</div>
+        </div>
+      </div>
+
+      <!-- Order details -->
+      <div class="section">
+        <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Order details</div>
+        <div class="order-row">
+          <div><div class="order-label" id="order-plan-name">Pro plan</div><div class="order-sub" id="order-period">Annually</div></div>
+          <div class="order-value" id="order-amount">$200<small>Incl. tax</small></div>
+        </div>
+        <div class="order-row"><div class="order-label">Subtotal</div><div class="order-value" id="subtotal">$200</div></div>
+        <div class="order-row total-row"><div class="order-label" style="font-weight:500">Total due today</div><div class="order-value" style="font-size:14px" id="total">$200</div></div>
+      </div>
+
+      <!-- Info box -->
+      <div class="info-box">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div class="info-text">Auto-renews on <strong style="color:#f0f0f0">3/7/2027</strong>. You will be charged <span class="warning-text" id="renew-amount">$200.00/year + tax</span>. Cancel any time from Account Settings.</div>
+      </div>
+
+      <!-- Payment method -->
+      <div class="section">
+        <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payment method</div>
+        <div class="form-group">
+          <label class="form-label">Full name</label>
+          <input type="text" class="form-input" id="cardholder-name" value="Hassan Elsaid" oninput="updateCard()"/>
+          <div class="field-error" id="err-cardholder-name"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Country or region</label>
+            <select class="form-select"><option>Egypt</option><option>United States</option><option>United Kingdom</option><option>Saudi Arabia</option><option>UAE</option><option>Germany</option><option>France</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address line 1</label>
+            <input type="text" class="form-input" placeholder="Street, City"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Card number</label>
+          <div class="card-wrap">
+            <input type="text" class="form-input" id="card-number" placeholder="1234 1234 1234 1234" maxlength="19" oninput="formatCardNumber(this)"/>
+            <div class="card-logos">
+              <img class="card-logo" id="logo-mc"   alt="MC"   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 32'%3E%3Crect fill='%23EB001B' width='48' height='32' rx='4'/%3E%3Ccircle cx='15' cy='16' r='6' fill='%23FF5F00'/%3E%3Ccircle cx='33' cy='16' r='6' fill='%23F79E1B'/%3E%3C/svg%3E"/>
+              <img class="card-logo" id="logo-visa" alt="Visa" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 32'%3E%3Crect fill='%231434CB' width='48' height='32' rx='4'/%3E%3Ctext x='24' y='21' font-size='14' font-weight='bold' fill='white' text-anchor='middle'%3Evisa%3C/text%3E%3C/svg%3E"/>
+              <img class="card-logo" id="logo-amex" alt="Amex" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 32'%3E%3Crect fill='%23006FCF' width='48' height='32' rx='4'/%3E%3Ctext x='24' y='21' font-size='10' font-weight='bold' fill='white' text-anchor='middle'%3EAMEX%3C/text%3E%3C/svg%3E"/>
+            </div>
+          </div>
+          <div class="field-error" id="err-card-number"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Expiration date</label>
+            <input type="text" class="form-input" id="card-expiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)"/>
+            <div class="field-error" id="err-card-expiry"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Security code</label>
+            <div class="cvc-wrap">
+              <input type="password" class="cvc-input" id="card-cvc" placeholder="•••" maxlength="4"
+                oninput="onCvcInput(this)" onfocus="flipCard(true)" onblur="flipCard(false)"/>
+              <span class="cvc-lock">🔒</span>
+            </div>
+            <div class="field-error" id="err-card-cvc"></div>
+          </div>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="diff-name" class="form-checkbox"/>
+          <label for="diff-name" class="checkbox-label">Use a different name on invoices</label>
+        </div>
+      </div>
+
+      <!-- Tax ID -->
+      <div class="section">
+        <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>Business tax ID <span style="font-weight:400;color:var(--t3);font-size:11px">(Optional)</span></div>
+        <p class="form-description">If you provide a tax ID, the "Full name" above should be your business name.</p>
+        <div class="form-group"><label class="form-label">Egyptian TIN</label><input type="text" class="form-input" placeholder="123456789"/></div>
+      </div>
+
+      <!-- Trust grid -->
+      <div class="trust-grid">
+        <div class="trust-item"><div class="trust-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="trust-text"><b>Secure checkout</b>256-bit SSL encryption</div></div>
+        <div class="trust-item"><div class="trust-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="trust-text"><b>Cancel anytime</b>No hidden fees</div></div>
+        <div class="trust-item"><div class="trust-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div class="trust-text"><b>PCI DSS Level 1</b>Highest card standard</div></div>
+        <div class="trust-item"><div class="trust-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="trust-text"><b>HIPAA compliant</b>Health data protected</div></div>
+      </div>
+
+      <!-- Terms -->
+      <div class="section" style="margin-bottom:11px">
+        <div class="checkbox-row">
+          <input type="checkbox" id="terms" class="form-checkbox" checked/>
+          <label for="terms" class="checkbox-label">By subscribing, you agree your card will be charged on a recurring basis until cancelled. Cancel anytime in account settings. See our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</label>
+        </div>
+      </div>
+
+      <button class="sub-btn pro" id="sub-btn">🔒 Subscribe now</button>
+      <div class="stripe-note">Secured by Stripe · PCI DSS Level 1 · HIPAA Compliant</div>
+
+    </div>
+  </div>
+
+  <!-- ═══ RIGHT PANEL ═══ -->
+  <div class="right-panel">
+
+    <div class="right-section">
+      <div class="rs-title">Your card</div>
+      <div class="card-scene">
+        <div class="card-flipper cf-pro" id="flipper">
+          <div class="card-face card-front">
+            <div class="visa-top"><div class="visa-chip"></div><div class="visa-brand" id="visa-brand">VISA</div></div>
+            <div class="visa-number" id="visa-number">•••• •••• •••• ••••</div>
+            <div class="visa-bottom">
+              <div><span class="visa-field-label">Card Holder</span><div class="visa-field-value" id="visa-name">Hassan Elsaid</div></div>
+              <div style="text-align:right"><span class="visa-field-label">Expires</span><div class="visa-field-value" id="visa-expiry">MM/YY</div></div>
+            </div>
+          </div>
+          <div class="card-face card-back">
+            <div class="back-stripe"></div>
+            <div class="back-sig"><div class="back-sig-label">Authorized signature</div><div style="font-family:cursive;font-size:12px;color:#555;letter-spacing:.05em" id="visa-sig">Hassan Elsaid</div></div>
+            <div class="back-cvc-row"><div class="back-cvc-box"><div class="back-cvc-label">CVV / CVC</div><div class="back-cvc-value" id="visa-cvc">•••</div></div></div>
+            <div class="back-note">Property of issuing bank.<br>If found, return to nearest branch.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="rs-title">Summary</div>
+      <div class="summary-box">
+        <div class="summary-row"><span class="summary-key">Plan</span><span class="summary-val" id="v-plan">Pro</span></div>
+        <div class="summary-row"><span class="summary-key">Billing</span><span class="summary-val" id="v-billing">Yearly</span></div>
+        <div class="summary-row"><span class="summary-key">Next renewal</span><span class="summary-val">3/7/2027</span></div>
+        <div class="summary-row"><span class="summary-key">Total today</span><span class="summary-val" id="v-total">$200</span></div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="rs-title">Accepted cards</div>
+      <div class="accepted-cards">
+        <div class="accepted-logos">
+          <img class="accepted-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 32'%3E%3Crect fill='%23EB001B' width='48' height='32' rx='4'/%3E%3Ccircle cx='15' cy='16' r='6' fill='%23FF5F00'/%3E%3Ccircle cx='33' cy='16' r='6' fill='%23F79E1B'/%3E%3C/svg%3E"/>
+          <img class="accepted-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 32'%3E%3Crect fill='%231434CB' width='48' height='32' rx='4'/%3E%3Ctext x='24' y='21' font-size='14' font-weight='bold' fill='white' text-anchor='middle'%3Evisa%3C/text%3E%3C/svg%3E"/>
+          <img class="accepted-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 32'%3E%3Crect fill='%23006FCF' width='48' height='32' rx='4'/%3E%3Ctext x='24' y='21' font-size='10' font-weight='bold' fill='white' text-anchor='middle'%3EAMEX%3C/text%3E%3C/svg%3E"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="rs-title" id="inc-title">What's included in Pro</div>
+      <div class="included-list" id="inc-list"></div>
+    </div>
+
+    <div class="right-section" style="margin-bottom:0">
+      <div class="rs-title">Need help?</div>
+      <div class="help-box">
+        <div class="help-text">Have questions before subscribing? Our team is here to help.</div>
+        <div class="help-item" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Live chat — online now</div>
+        <div class="help-item" style="color:var(--t2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>support@careathome.com</div>
+        <div class="help-item" style="color:var(--t2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/></svg>+20 100 000 0000</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script src="payment.js"></script>
+</body>
+</html>

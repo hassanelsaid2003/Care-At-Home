@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Password — Care At Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #6a51ff;
+  --primary-dark: #3c1778;
+  --secondary: #ffaf12;
+  --secondary-light: #ffc020;
+  --accent: #83fc0bb7;
+  --first: #000;
+  --second: #66686c;
+  --border: #e5e7eb;
+
+  --gradient-primary: linear-gradient(135deg, #0000ff 0%, #6a51ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #ffaf12 0%, #ffc020 100%);
+
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem);
+
+  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+
+  --container-padding: clamp(1rem, 5vw, 3rem);
+
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 0.18s var(--ease-out);
+  --transition-base: 0.3s var(--ease-out);
+  --transition-slow: 0.5s var(--ease-out);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* ---- Dark surface tokens (built on the same brand) ---- */
+  --dark-bg: #0a0814;
+  --dark-card: #15131f;
+  --dark-card-2: #1e1b2e;
+  --dark-border: rgba(255, 255, 255, 0.07);
+  --dark-border-soft: rgba(255, 255, 255, 0.04);
+  --dark-text: #f5f3fb;
+  --dark-text-secondary: #8d89a8;
+
+  /* The "third" brand color used as the signature glow */
+  --glow: var(--accent);
+  --glow-soft: rgba(131, 252, 11, 0.18);
+  --glow-ring: rgba(131, 252, 11, 0.35);
+
+  --shadow-glow: 0 0 0 4px var(--glow-soft), 0 8px 24px rgba(131, 252, 11, 0.12);
+  --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Cairo', sans-serif;
+  color: var(--dark-text);
+  background: var(--dark-bg);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient brand glow backdrop */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+body::before {
+  width: 480px;
+  height: 480px;
+  background: var(--primary);
+  top: -160px;
+  left: -120px;
+}
+
+body::after {
+  width: 420px;
+  height: 420px;
+  background: var(--accent);
+  bottom: -160px;
+  right: -120px;
+  opacity: 0.18;
+}
+
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg) var(--container-padding);
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-xl) var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  animation: cardIn var(--transition-slow);
+  transition: box-shadow 0.6s var(--ease-out), border-color 0.6s var(--ease-out);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* success ambient wash inside the card */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 38%, var(--glow-soft) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out);
+  pointer-events: none;
+}
+
+.card.success-glow::before { opacity: 1; }
+.card.success-glow {
+  border-color: var(--glow-ring);
+  box-shadow: var(--shadow-card), 0 0 60px rgba(131, 252, 11, 0.1);
+}
+
+/* drag handle, purely decorative — echoes the app-sheet feel */
+.handle {
+  width: 40px;
+  height: 4px;
+  background: var(--dark-border);
+  border-radius: var(--radius-full);
+  margin: 0 auto var(--space-lg);
+}
+
+/* ---------- header (icon + copy) ---------- */
+.head {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.head-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+  box-shadow: 0 10px 30px rgba(106, 81, 255, 0.35);
+  transition: var(--transition-slow);
+}
+
+.head-icon svg { width: 26px; height: 26px; stroke: #fff; }
+
+.head h1 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
+  font-size: var(--text-2xl);
+  color: var(--dark-text);
+  margin-bottom: 8px;
+  transition: var(--transition-base);
+}
+
+.head p {
+  font-size: var(--text-sm);
+  color: var(--dark-text-secondary);
+  line-height: 1.65;
+  max-width: 320px;
+  margin: 0 auto;
+  transition: var(--transition-base);
+}
+
+.head p strong { color: var(--dark-text); font-weight: 600; }
+
+/* ---------- step dots ---------- */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: var(--space-lg);
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.step-dot {
+  width: 26px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--dark-card-2);
+  transition: var(--transition-base);
+}
+
+.step-dot.active { background: var(--primary); width: 38px; }
+.step-dot.done { background: var(--glow); }
+
+/* ---------- form fields ---------- */
+.field { margin-bottom: var(--space-md); }
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: #bcb8d6;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.field label svg { width: 14px; height: 14px; stroke: var(--secondary); flex-shrink: 0; }
+
+.input-wrap { position: relative; }
+
+.field input {
+  width: 100%;
+  padding: 13px 16px;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  color: var(--dark-text);
+  background: var(--dark-card-2);
+  border: 1.5px solid var(--dark-border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.field input::placeholder { color: #5d5a78; }
+
+.field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(106, 81, 255, 0.14);
+}
+
+.field input.error { border-color: #ff5d6c; }
+.field input.success { border-color: var(--glow); }
+
+.field input.has-toggle { padding-right: 46px; }
+
+.toggle-pw {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dark-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  transition: var(--transition-fast);
+  z-index: 2;
+}
+.toggle-pw:hover { color: var(--dark-text); }
+.toggle-pw svg { width: 18px; height: 18px; }
+
+.hint { font-size: var(--text-xs); color: var(--dark-text-secondary); margin-top: 6px; line-height: 1.5; }
+
+.error-msg {
+  font-size: var(--text-xs);
+  color: #ff5d6c;
+  margin-top: 6px;
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+.error-msg.show { display: flex; }
+
+/* ---------- strength meter ---------- */
+.strength-meter { display: flex; gap: 4px; margin-top: 10px; }
+.strength-bar { height: 4px; flex: 1; border-radius: var(--radius-full); background: var(--dark-card-2); transition: var(--transition-base); }
+
+/* ---------- primary button ---------- */
+.btn-primary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  font-family: inherit;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: #fff;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: 0 10px 30px rgba(106, 81, 255, 0.3);
+  margin-top: var(--space-xs);
+  text-decoration: none;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(106, 81, 255, 0.4); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary svg { width: 18px; height: 18px; }
+.btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.spinner {
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+.spinner.show { display: block; }
+.btn-primary .btn-label.hidden { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- back link ---------- */
+.back-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--dark-text-secondary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+.back-link:hover { color: var(--dark-text); }
+.back-link svg { width: 16px; height: 16px; transition: var(--transition-fast); }
+.back-link:hover svg { transform: translateX(-4px); }
+
+/* =========================================================
+   OTP STAGE — input grid / loading pill / success icon
+   ========================================================= */
+.otp-stage {
+  position: relative;
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+/* shared layer behavior */
+.otp-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.35s var(--ease-out), transform 0.45s var(--ease-spring);
+}
+
+/* --- input grid --- */
+.otp-grid {
+  display: flex;
+  gap: 10px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.otp-grid input {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: var(--dark-text);
+  background: var(--dark-card-2);
+  border: 1.5px solid var(--dark-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition-fast), box-shadow 0.25s var(--ease-out);
+}
+
+.otp-grid input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(106, 81, 255, 0.14);
+}
+
+.otp-grid input.filled {
+  border-color: var(--glow);
+  box-shadow: var(--shadow-glow);
+  background: rgba(131, 252, 11, 0.05);
+}
+
+.otp-grid input.shake { animation: shake 0.4s var(--ease-out); border-color: #ff5d6c; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* --- loading pill --- */
+.otp-pill {
+  opacity: 0;
+  transform: scale(0.4);
+  pointer-events: none;
+}
+
+.otp-pill .pill-shape {
+  width: 86px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--dark-card-2);
+  border: 1.5px solid var(--glow-ring);
+  box-shadow: var(--shadow-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pill-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--glow);
+}
+
+.pill-dot:nth-child(1) { animation: pillBounce 1s ease-in-out infinite; }
+.pill-dot:nth-child(2) { animation: pillBounce 1s ease-in-out 0.15s infinite; }
+.pill-dot:nth-child(3) { animation: pillBounce 1s ease-in-out 0.3s infinite; }
+
+@keyframes pillBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* --- success icon --- */
+.otp-success {
+  opacity: 0;
+  transform: scale(0.4);
+  pointer-events: none;
+}
+
+.otp-success .success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--glow-soft);
+  border: 1.5px solid var(--glow-ring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow);
+}
+
+.otp-success .success-icon svg {
+  width: 30px; height: 30px;
+  stroke: var(--glow);
+  stroke-width: 3;
+}
+
+/* --- active-state switches (controlled via JS) --- */
+.otp-stage[data-state="grid"] .otp-grid { opacity: 1; transform: scale(1); }
+.otp-stage[data-state="grid"] .otp-pill,
+.otp-stage[data-state="grid"] .otp-success { opacity: 0; transform: scale(0.4); }
+
+.otp-stage[data-state="loading"] .otp-grid { opacity: 0; transform: scale(0.7); }
+.otp-stage[data-state="loading"] .otp-pill { opacity: 1; transform: scale(1); }
+.otp-stage[data-state="loading"] .otp-success { opacity: 0; transform: scale(0.4); }
+
+.otp-stage[data-state="success"] .otp-grid { opacity: 0; transform: scale(0.7); }
+.otp-stage[data-state="success"] .otp-pill { opacity: 0; transform: scale(0.5); }
+.otp-stage[data-state="success"] .otp-success {
+  opacity: 1; transform: scale(1);
+  animation: popIn 0.55s var(--ease-spring);
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { transform: scale(1.12); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ring pulse on success icon */
+.otp-success .success-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--radius-md) + 8px);
+  border: 1.5px solid var(--glow-ring);
+  opacity: 0;
+}
+
+.otp-stage[data-state="success"] .otp-success .success-icon {
+  position: relative;
+  animation: ringPulse 1.4s var(--ease-out) 0.3s;
+}
+
+@keyframes ringPulse {
+  0% { box-shadow: var(--shadow-glow); }
+  50% { box-shadow: 0 0 0 12px rgba(131, 252, 11, 0.08), 0 8px 24px rgba(131, 252, 11, 0.12); }
+  100% { box-shadow: var(--shadow-glow); }
+}
+
+.resend-row {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--dark-text-secondary);
+  margin-bottom: var(--space-md);
+  transition: opacity 0.3s var(--ease-out);
+}
+.resend-row button {
+  background: none; border: none;
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+.resend-row button:disabled { color: var(--dark-text-secondary); cursor: not-allowed; font-weight: 600; }
+
+/* ---------- generic success step ---------- */
+.success-wrap { text-align: center; padding: var(--space-md) 0; }
+
+.success-icon-lg {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--glow-soft);
+  border: 1.5px solid var(--glow-ring);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-md);
+  animation: popIn var(--transition-slow) var(--ease-spring);
+  box-shadow: var(--shadow-glow);
+}
+.success-icon-lg svg { width: 38px; height: 38px; stroke: var(--glow); stroke-width: 3; }
+
+/* ---------- step transitions ---------- */
+.step-panel { display: none; }
+.step-panel.active { display: block; animation: fadeStep var(--transition-base); }
+
+@keyframes fadeStep {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 420px) {
+  .otp-grid input { width: 42px; height: 52px; font-size: var(--text-lg); }
+  .otp-grid { gap: 7px; }
+  .card { padding: var(--space-lg) var(--space-md); }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div class="card" id="card">
+
+    <div class="handle"></div>
+
+    <div class="head">
+      <div class="head-icon" id="headIcon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h1 id="headerTitle">Forgot your password?</h1>
+      <p id="headerSubtitle">No worries — enter the email linked to your account and we'll send you a verification code.</p>
+    </div>
+
+    <div class="steps" id="stepsIndicator">
+      <span class="step-dot active" data-step="1"></span>
+      <span class="step-dot" data-step="2"></span>
+      <span class="step-dot" data-step="3"></span>
+    </div>
+
+    <!-- ===== STEP 1: EMAIL ===== -->
+    <div class="step-panel active" id="step1">
+      <form id="emailForm" novalidate>
+        <div class="field">
+          <label for="email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email address
+          </label>
+          <input type="email" id="email" placeholder="account@email.com" required autocomplete="email">
+          <p class="error-msg" id="emailError">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Please enter a valid email address.
+          </p>
+          <p class="hint">We'll send a 6-digit verification code to this address.</p>
+        </div>
+
+        <button type="submit" class="btn-primary" id="sendBtn">
+          <span class="spinner" id="sendSpinner"></span>
+          <span class="btn-label" id="sendLabel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            Send verification code
+          </span>
+        </button>
+      </form>
+
+      <a href="../Get-Started/get-started.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to sign in
+      </a>
+    </div>
+
+    <!-- ===== STEP 2: OTP — verifies + morphs automatically ===== -->
+    <div class="step-panel" id="step2">
+      <p style="text-align:center; font-size:var(--text-sm); color:var(--dark-text-secondary); margin-bottom: var(--space-lg); line-height:1.7;">
+        We sent a 6-digit code to <strong id="sentToEmail" style="color:var(--dark-text);">account@email.com</strong>.<br>It will be verified automatically.
+      </p>
+
+      <div class="otp-stage" id="otpStage" data-state="grid">
+
+        <!-- input grid -->
+        <div class="otp-layer otp-grid" id="otpRow">
+          <input type="text" inputmode="numeric" maxlength="1" data-otp="0" autofocus>
+          <input type="text" inputmode="numeric" maxlength="1" data-otp="1">
+          <input type="text" inputmode="numeric" maxlength="1" data-otp="2">
+          <input type="text" inputmode="numeric" maxlength="1" data-otp="3">
+          <input type="text" inputmode="numeric" maxlength="1" data-otp="4">
+          <input type="text" inputmode="numeric" maxlength="1" data-otp="5">
+        </div>
+
+        <!-- loading pill -->
+        <div class="otp-layer otp-pill">
+          <div class="pill-shape">
+            <span class="pill-dot"></span>
+            <span class="pill-dot"></span>
+            <span class="pill-dot"></span>
+          </div>
+        </div>
+
+        <!-- success icon -->
+        <div class="otp-layer otp-success">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="resend-row" id="resendRow">
+        Didn't get a code? <button type="button" id="resendBtn">Resend</button>
+        <span id="resendTimer" style="display:none;">Resend in <span id="timerCount">60</span>s</span>
+      </div>
+
+      <a href="#" class="back-link" id="backToStep1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Edit email address
+      </a>
+    </div>
+
+    <!-- ===== STEP 3: NEW PASSWORD ===== -->
+    <div class="step-panel" id="step3">
+      <form id="resetForm" novalidate>
+        <div class="field">
+          <label for="newPassword">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            New password
+          </label>
+          <div class="input-wrap">
+            <input type="password" id="newPassword" class="has-toggle" placeholder="••••••••" required autocomplete="new-password">
+            <button type="button" class="toggle-pw" data-target="newPassword">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="strength-meter" id="strengthMeter">
+            <span class="strength-bar"></span>
+            <span class="strength-bar"></span>
+            <span class="strength-bar"></span>
+            <span class="strength-bar"></span>
+          </div>
+          <p class="hint" id="strengthHint">Must be at least 8 characters.</p>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Confirm password
+          </label>
+          <div class="input-wrap">
+            <input type="password" id="confirmPassword" class="has-toggle" placeholder="••••••••" required autocomplete="new-password">
+            <button type="button" class="toggle-pw" data-target="confirmPassword">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <p class="error-msg" id="matchError">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Passwords don't match.
+          </p>
+        </div>
+
+        <button type="submit" class="btn-primary" id="resetBtn">
+          <span class="spinner" id="resetSpinner"></span>
+          <span class="btn-label" id="resetLabel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+            Save new password
+          </span>
+        </button>
+      </form>
+    </div>
+
+    <!-- ===== STEP 4: DONE ===== -->
+    <div class="step-panel" id="step4">
+      <div class="success-wrap">
+        <div class="success-icon-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h2 style="font-family:'Cairo',sans-serif; font-weight:800; font-size:var(--text-xl); margin-bottom:8px;">Password changed</h2>
+        <p style="font-size:var(--text-sm); color:var(--dark-text-secondary); line-height:1.7; margin-bottom:var(--space-lg);">
+          You're all set. Sign in to your Care At Home account with your new password.
+        </p>
+        <a href="#" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Sign in
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  const API = "http://localhost:3000/api";
+  let userEmail = "";
+  let resetToken = "";
+
+  const card = document.getElementById('card');
+  const steps = document.querySelectorAll('.step-panel');
+  const dots = document.querySelectorAll('.step-dot');
+  const stepsIndicator = document.getElementById('stepsIndicator');
+  const headerTitle = document.getElementById('headerTitle');
+  const headerSubtitle = document.getElementById('headerSubtitle');
+
+  const headerContent = {
+    1: { title: 'Forgot your password?', sub: "No worries — enter the email linked to your account and we'll send you a verification code." },
+    2: { title: 'Check your email', sub: 'Enter the 6-digit code we just sent you.' },
+    3: { title: 'Set a new password', sub: 'Choose a strong, secure password for your Care At Home account.' },
+    4: { title: 'All done!', sub: 'Your account is secure and ready to go.' }
+  };
+
+  function goToStep(n) {
+    steps.forEach((s, i) => s.classList.toggle('active', i === n - 1));
+    dots.forEach((d, i) => {
+      d.classList.remove('active', 'done');
+      if (i < n - 1) d.classList.add('done');
+      if (i === n - 1 && n <= 3) d.classList.add('active');
+    });
+    if (n === 4) stepsIndicator.style.opacity = '0';
+    headerTitle.textContent = headerContent[n].title;
+    headerSubtitle.innerHTML = headerContent[n].sub;
+  }
+
+  function setLoading(btnId, spinnerId, labelId, loading) {
+    document.getElementById(btnId).disabled = loading;
+    document.getElementById(spinnerId).classList.toggle('show', loading);
+    document.getElementById(labelId).classList.toggle('hidden', loading);
+  }
+
+  /* ---------- STEP 1: Email ---------- */
+  const emailForm = document.getElementById('emailForm');
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+
+  emailForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const val = emailInput.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+
+    if (!valid) {
+      emailInput.classList.add('error');
+      emailError.classList.add('show');
+      return;
+    }
+    emailInput.classList.remove('error');
+    emailError.classList.remove('show');
+
+    setLoading('sendBtn', 'sendSpinner', 'sendLabel', true);
+
+    try {
+      const res = await fetch(`${API}/auth/forgot-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: val })
+      });
+      const data = await res.json();
+      setLoading('sendBtn', 'sendSpinner', 'sendLabel', false);
+
+      if (!res.ok) {
+        emailInput.classList.add('error');
+        emailError.querySelector('svg') && (emailError.lastChild.textContent = data.message || 'حصل خطأ، حاول تاني');
+        emailError.classList.add('show');
+        return;
+      }
+
+      userEmail = val;
+      document.getElementById('sentToEmail').textContent = val;
+      goToStep(2);
+      startResendTimer();
+      setTimeout(() => document.querySelector('#otpRow input').focus(), 350);
+    } catch (err) {
+      setLoading('sendBtn', 'sendSpinner', 'sendLabel', false);
+      emailInput.classList.add('error');
+      emailError.classList.add('show');
+    }
+  });
+
+  emailInput.addEventListener('input', () => {
+    emailInput.classList.remove('error');
+    emailError.classList.remove('show');
+  });
+
+  /* ---------- STEP 2: OTP (6 digits, auto-verify, morph animation) ---------- */
+  const otpStage = document.getElementById('otpStage');
+  const otpInputs = document.querySelectorAll('#otpRow input');
+  const resendBtn = document.getElementById('resendBtn');
+  const resendRow = document.getElementById('resendRow');
+  const resendTimer = document.getElementById('resendTimer');
+  const timerCount = document.getElementById('timerCount');
+  const backToStep1 = document.getElementById('backToStep1');
+  let resendInterval;
+  let verifying = false;
+
+  function resetOtpGrid() {
+    otpInputs.forEach(i => { i.value = ''; i.classList.remove('filled', 'shake'); });
+    otpStage.dataset.state = 'grid';
+    verifying = false;
+    otpInputs[0].focus();
+  }
+
+  otpInputs.forEach((input, idx) => {
+    input.addEventListener('input', () => {
+      input.value = input.value.replace(/[^0-9]/g, '');
+      input.classList.toggle('filled', input.value !== '');
+
+      if (input.value && idx < otpInputs.length - 1) {
+        otpInputs[idx + 1].focus();
+      }
+
+      const code = Array.from(otpInputs).map(i => i.value).join('');
+      if (code.length === otpInputs.length && !verifying) {
+        runVerification(code);
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && !input.value && idx > 0) {
+        otpInputs[idx - 1].focus();
+      }
+    });
+
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const digits = (e.clipboardData.getData('text').match(/\d/g) || []).slice(0, otpInputs.length);
+      digits.forEach((d, i) => {
+        if (otpInputs[i]) {
+          otpInputs[i].value = d;
+          otpInputs[i].classList.add('filled');
+        }
+      });
+      if (digits.length === otpInputs.length) {
+        runVerification(digits.join(''));
+      } else if (digits.length) {
+        otpInputs[Math.min(digits.length, otpInputs.length) - 1].focus();
+      }
+    });
+  });
+
+  /**
+   * Drives the signature animation sequence:
+   * grid (filled, glowing) -> loading pill -> success icon -> advance to step 3
+   * Any 6-digit code is accepted here (demo); a real backend call would
+   * replace the inner setTimeout with the verification request.
+   */
+  function runVerification(code) {
+    verifying = true;
+    clearInterval(resendInterval);
+    resendRow.style.opacity = '0';
+    backToStep1.style.opacity = '0';
+    backToStep1.style.pointerEvents = 'none';
+
+    // brief hold so the user sees all six boxes glow before morphing
+    setTimeout(async () => {
+      otpStage.dataset.state = 'loading';
+
+      try {
+        const res = await fetch(`${API}/auth/verify-otp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: userEmail, otp: code })
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          otpStage.dataset.state = 'grid';
+          otpInputs.forEach(i => { i.classList.add('shake'); i.value = ''; i.classList.remove('filled'); });
+          otpInputs[0].focus();
+          resendRow.style.opacity = '1';
+          backToStep1.style.opacity = '1';
+          backToStep1.style.pointerEvents = 'auto';
+          verifying = false;
+          return;
+        }
+
+        resetToken = data.resetToken;
+
+        otpStage.dataset.state = 'success';
+        headerContent[2] = { title: 'Verified successfully', sub: 'Redirecting you to set a new password<span style="display:inline-block;width:1ch;">&hellip;</span>' };
+        headerTitle.textContent = headerContent[2].title;
+        headerSubtitle.innerHTML = headerContent[2].sub;
+        document.querySelector('.step-dot[data-step="2"]').classList.add('done');
+        document.querySelector('.step-dot[data-step="2"]').classList.remove('active');
+        card.classList.add('success-glow');
+
+        setTimeout(() => {
+          card.classList.remove('success-glow');
+          goToStep(3);
+          document.getElementById('newPassword').focus();
+        }, 1300);
+
+      } catch (err) {
+        otpStage.dataset.state = 'grid';
+        otpInputs.forEach(i => i.classList.add('shake'));
+        verifying = false;
+        resendRow.style.opacity = '1';
+        backToStep1.style.opacity = '1';
+        backToStep1.style.pointerEvents = 'auto';
+      }
+    }, 350);
+  }
+
+  function startResendTimer() {
+    let t = 60;
+    resendBtn.style.display = 'none';
+    resendTimer.style.display = 'inline';
+    timerCount.textContent = t;
+    clearInterval(resendInterval);
+    resendInterval = setInterval(() => {
+      t--;
+      timerCount.textContent = t;
+      if (t <= 0) {
+        clearInterval(resendInterval);
+        resendBtn.style.display = 'inline';
+        resendTimer.style.display = 'none';
+      }
+    }, 1000);
+  }
+
+  resendBtn.addEventListener('click', async () => {
+    resetOtpGrid();
+    try {
+      await fetch(`${API}/auth/resend-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail })
+      });
+    } catch (err) {
+      // silent — user can press resend again once the timer ends
+    }
+    startResendTimer();
+  });
+
+  backToStep1.addEventListener('click', (e) => {
+    e.preventDefault();
+    clearInterval(resendInterval);
+    resetOtpGrid();
+    resendRow.style.opacity = '1';
+    backToStep1.style.opacity = '1';
+    backToStep1.style.pointerEvents = 'auto';
+    goToStep(1);
+  });
+
+  /* ---------- STEP 3: New Password ---------- */
+  const newPw = document.getElementById('newPassword');
+  const confirmPw = document.getElementById('confirmPassword');
+  const matchError = document.getElementById('matchError');
+  const resetForm = document.getElementById('resetForm');
+  const strengthBars = document.querySelectorAll('#strengthMeter .strength-bar');
+  const strengthHint = document.getElementById('strengthHint');
+
+  const strengthColors = ['#ff5d6c', '#ffaf12', '#ffc020', 'var(--accent)'];
+  const strengthLabels = [
+    'Very weak — try adding numbers and symbols.',
+    'Weak — mix in uppercase and lowercase letters.',
+    'Good — almost there.',
+    'Strong — excellent password.'
+  ];
+
+  function getStrength(val) {
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+    if (/\d/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    return score;
+  }
+
+  newPw.addEventListener('input', () => {
+    const val = newPw.value;
+    const score = val ? Math.max(getStrength(val), 1) : 0;
+
+    strengthBars.forEach((bar, i) => {
+      bar.style.background = i < score ? strengthColors[Math.min(score, 4) - 1] : '';
+    });
+
+    strengthHint.textContent = val ? strengthLabels[Math.min(score, 4) - 1] : 'Must be at least 8 characters.';
+    checkMatch();
+  });
+
+  function checkMatch() {
+    if (confirmPw.value && newPw.value !== confirmPw.value) {
+      confirmPw.classList.add('error');
+      matchError.classList.add('show');
+      return false;
+    }
+    confirmPw.classList.remove('error');
+    matchError.classList.remove('show');
+    confirmPw.classList.toggle('success', !!(confirmPw.value && newPw.value === confirmPw.value));
+    return true;
+  }
+
+  confirmPw.addEventListener('input', checkMatch);
+
+  resetForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (newPw.value.length < 8) {
+      newPw.classList.add('error');
+      return;
+    }
+    newPw.classList.remove('error');
+    if (!checkMatch()) return;
+
+    setLoading('resetBtn', 'resetSpinner', 'resetLabel', true);
+
+    try {
+      const res = await fetch(`${API}/auth/reset-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: userEmail,
+          resetToken: resetToken,
+          newPassword: newPw.value
+        })
+      });
+      const data = await res.json();
+      setLoading('resetBtn', 'resetSpinner', 'resetLabel', false);
+
+      if (!res.ok) {
+        newPw.classList.add('error');
+        return;
+      }
+      goToStep(4);
+    } catch (err) {
+      setLoading('resetBtn', 'resetSpinner', 'resetLabel', false);
+      newPw.classList.add('error');
+    }
+  });
+
+  /* ---------- Password visibility toggles ---------- */
+  document.querySelectorAll('.toggle-pw').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      const isPw = target.type === 'password';
+      target.type = isPw ? 'text' : 'password';
+      btn.innerHTML = isPw
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 11s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

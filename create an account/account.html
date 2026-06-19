@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account — Care At Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="account.css" />
+  </head>
+  <body>
+
+      <!-- ═══ HERO CONTENT ═══════════════════════════════════════ -->
+      <div class="hero-section">
+        <div class="hero-split">
+          <!-- LEFT -->
+          <div class="hero-left">
+            <div class="hero-badge">
+              <i class="fa-solid fa-house-medical"></i> Care At Home
+            </div>
+            <h1>Your Health,<br />At Home.</h1>
+            <p>
+              Join thousands of patients and healthcare professionals using Care
+              At Home for seamless, trusted medical services delivered to your
+              door.
+            </p>
+            <div class="hero-features">
+              <div class="feat-item">
+                <div class="feat-dot fd-blue">
+                  <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <span>Access 200+ certified doctors &amp; nurses</span>
+              </div>
+              <div class="feat-item">
+                <div class="feat-dot fd-amber">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <span>24/7 support — response in under 5 minutes</span>
+              </div>
+              <div class="feat-item">
+                <div class="feat-dot fd-green">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <span>Fully secure &amp; HIPAA-compliant platform</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT — FORM -->
+          <div class="form-card" id="registerCard">
+            <div class="form-card-header">
+              <h2>Create Your Account</h2>
+              <p>Fill in the details below to get started</p>
+            </div>
+
+            <!-- avatar -->
+            <div class="avatar-upload-row">
+              <label
+                class="avatar-circle"
+                for="avatarInput"
+                title="Upload photo"
+              >
+                <i class="fa-solid fa-user" id="avatarPlaceholder"></i>
+                <div class="cam-overlay">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+                <img
+                  id="avatarPreview"
+                  src=""
+                  alt=""
+                  style="
+                    display: none;
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 50%;
+                  "
+                />
+              </label>
+              <input type="file" id="avatarInput" accept="image/*" />
+              <small
+                >Upload profile photo
+                <span style="color: #ccc">(optional)</span></small
+              >
+            </div>
+
+            <div class="form-body">
+              <!-- name row -->
+              <div class="form-row">
+                <div class="field">
+                  <label><i class="fa-solid fa-user"></i> First Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    placeholder="hassan"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label><i class="fa-solid fa-user"></i> Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    placeholder="elsaid"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- email -->
+              <div class="field">
+                <label
+                  ><i class="fa-solid fa-envelope"></i> Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="account@email.com"
+                  required
+                />
+              </div>
+
+              <!-- age + role -->
+              <div class="form-row">
+                <div class="field">
+                  <label><i class="fa-solid fa-cake-candles"></i> Age</label>
+                  <input
+                    type="number"
+                    id="age"
+                    placeholder="25"
+                    min="1"
+                    max="120"
+                  />
+                </div>
+                <div class="field">
+                  <label
+                    ><i class="fa-solid fa-user-tag"></i> Account Type</label
+                  >
+                  <select id="role" required>
+                    <option value="">Choose...</option>
+                    <option value="sick">Patient</option>
+                    <option value="doctors">Doctor</option>
+                    <option value="nursing">Nurse</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- address + city -->
+              <div class="form-row">
+                <div class="field">
+                  <label
+                    ><i class="fa-solid fa-location-dot"></i> Address</label
+                  >
+                  <input type="text" id="address" placeholder="123 Main St" />
+                </div>
+                <div class="field">
+                  <label><i class="fa-solid fa-map-pin"></i> City</label>
+                  <input type="text" id="city" placeholder="Cairo, Egypt" />
+                </div>
+              </div>
+
+              <!-- password -->
+              <div class="field has-eye">
+                <label><i class="fa-solid fa-lock"></i> Password</label>
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="••••••••"
+                    required
+                  />
+                  <button class="eye-btn" type="button" data-target="password">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+                <div class="strength-wrap">
+                  <div class="s-bar" id="b1"></div>
+                  <div class="s-bar" id="b2"></div>
+                  <div class="s-bar" id="b3"></div>
+                  <div class="s-bar" id="b4"></div>
+                </div>
+                <div class="s-label" id="sLabel"></div>
+              </div>
+
+              <!-- confirm password -->
+              <div class="field has-eye">
+                <label
+                  ><i class="fa-solid fa-shield-halved"></i> Confirm
+                  Password</label
+                >
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="••••••••"
+                    required
+                  />
+                  <button
+                    class="eye-btn"
+                    type="button"
+                    data-target="confirmPassword"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- terms -->
+              <div class="terms-row">
+                <input type="checkbox" id="terms" />
+                <label for="terms">
+                  I agree to the <a href="#">Terms of Use</a> and
+                  <a href="#">Privacy Policy</a> of Care At Home.
+                </label>
+              </div>
+
+              <!-- submit -->
+              <a href="../real/index.html"><button class="submit-btn" id="submitBtn">
+                <i class="fa-solid fa-user-plus"></i> Create Account
+              </button></a>
+
+              <!-- divider -->
+              <div class="divider">or sign up with</div>
+
+              <!-- social -->
+              <div class="social-btns">
+                <button class="social-btn">
+                  <img
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    alt="Google"
+                  />
+                  Google
+                </button>
+                <button class="social-btn">
+                  <img
+                    src="https://www.svgrepo.com/show/448224/facebook.svg"
+                    alt="Facebook"
+                  />
+                  Facebook
+                </button>
+              </div>
+
+              <div class="login-link">
+                Already have an account?
+                <a href="../Get-Started/get-started.html">log in</a>
+              </div>
+            </div>
+          </div>
+          <!-- /form-card -->
+        </div>
+      </div>
+    </header>
+
+    <!-- TOAST -->
+    <div id="toast">
+      <i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span>
+    </div>
+
+   
+    <script src="account.js"></script>
+  </body>
+</html>

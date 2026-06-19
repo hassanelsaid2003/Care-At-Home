@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="health-dashboard.css">
+</head>
+<body>
+
+<section class="health-dashboard-section" id="health-dashboard">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-icon">
+      <i class="fa-solid fa-heart-pulse"></i>
+    </div>
+    <h2>Health <b>Dashboard</b></h2>
+    <p>A comprehensive overview of your health with real-time vital signs, trends, and medical history</p>
+  </div>
+
+  <!-- User Profile Summary -->
+  <div class="user-summary-card">
+    <div class="user-avatar">
+      <i class="fa-solid fa-user-doctor"></i>
+    </div>
+    <div class="user-info">
+      <h3>Ahmed Mohamed</h3>
+      <p><i class="fa-solid fa-cake-candles"></i> 35 Years Old</p>
+      <p><i class="fa-solid fa-venus-mars"></i> Male</p>
+      <p><i class="fa-solid fa-droplet"></i> Blood Type: O+</p>
+    </div>
+    <div class="user-status">
+      <span class="status-badge healthy"><i class="fa-solid fa-check-circle"></i> Healthy</span>
+      <p class="last-check">Last Check: Today, 9:30 AM</p>
+    </div>
+  </div>
+
+  <!-- Vital Signs Grid -->
+  <div class="vitals-grid">
+
+    <!-- Body Temperature -->
+    <div class="vital-card" onclick="showVitalDetails('temperature')">
+      <div class="vital-icon temp">
+        <i class="fa-solid fa-temperature-half"></i>
+      </div>
+      <div class="vital-value">36.8</div>
+      <div class="vital-unit">°C</div>
+      <div class="vital-label">Body Temperature</div>
+      <div class="vital-status normal">Normal</div>
+      <div class="vital-progress">
+        <div class="progress-bar temp-bar" style="width: 75%"></div>
+      </div>
+    </div>
+
+    <!-- Blood Sugar -->
+    <div class="vital-card" onclick="showVitalDetails('sugar')">
+      <div class="vital-icon sugar">
+        <i class="fa-solid fa-cube"></i>
+      </div>
+      <div class="vital-value">105</div>
+      <div class="vital-unit">mg/dL</div>
+      <div class="vital-label">Blood Sugar</div>
+      <div class="vital-status warning">Slightly High</div>
+      <div class="vital-progress">
+        <div class="progress-bar sugar-bar" style="width: 60%"></div>
+      </div>
+    </div>
+
+    <!-- Blood Pressure -->
+    <div class="vital-card" onclick="showVitalDetails('pressure')">
+      <div class="vital-icon pressure">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+      <div class="vital-value">120/80</div>
+      <div class="vital-unit">mmHg</div>
+      <div class="vital-label">Blood Pressure</div>
+      <div class="vital-status normal">Ideal</div>
+      <div class="vital-progress">
+        <div class="progress-bar pressure-bar" style="width: 70%"></div>
+      </div>
+    </div>
+
+    <!-- Heart Rate -->
+    <div class="vital-card" onclick="showVitalDetails('heartrate')">
+      <div class="vital-icon heart">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <div class="vital-value">78</div>
+      <div class="vital-unit">bpm</div>
+      <div class="vital-label">Heart Rate</div>
+      <div class="vital-status normal">Healthy</div>
+      <div class="vital-progress">
+        <div class="progress-bar heart-bar" style="width: 65%"></div>
+      </div>
+    </div>
+
+    <!-- Oxygen Saturation -->
+    <div class="vital-card" onclick="showVitalDetails('oxygen')">
+      <div class="vital-icon oxygen">
+        <i class="fa-solid fa-lungs"></i>
+      </div>
+      <div class="vital-value">98</div>
+      <div class="vital-unit">%</div>
+      <div class="vital-label">Oxygen Saturation</div>
+      <div class="vital-status normal">Excellent</div>
+      <div class="vital-progress">
+        <div class="progress-bar oxygen-bar" style="width: 98%"></div>
+      </div>
+    </div>
+
+    <!-- Respiratory Rate -->
+    <div class="vital-card" onclick="showVitalDetails('respiratory')">
+      <div class="vital-icon respiratory">
+        <i class="fa-solid fa-wind"></i>
+      </div>
+      <div class="vital-value">16</div>
+      <div class="vital-unit">breaths/min</div>
+      <div class="vital-label">Respiratory Rate</div>
+      <div class="vital-status normal">Normal</div>
+      <div class="vital-progress">
+        <div class="progress-bar respiratory-bar" style="width: 53%"></div>
+      </div>
+    </div>
+
+    <!-- BMI -->
+    <div class="vital-card" onclick="showVitalDetails('bmi')">
+      <div class="vital-icon bmi">
+        <i class="fa-solid fa-weight-scale"></i>
+      </div>
+      <div class="vital-value">22.5</div>
+      <div class="vital-unit">kg/m²</div>
+      <div class="vital-label">Body Mass Index</div>
+      <div class="vital-status normal">Healthy Weight</div>
+      <div class="vital-progress">
+        <div class="progress-bar bmi-bar" style="width: 56%"></div>
+      </div>
+    </div>
+
+    <!-- Sleep Quality -->
+    <div class="vital-card" onclick="showVitalDetails('sleep')">
+      <div class="vital-icon sleep">
+        <i class="fa-solid fa-moon"></i>
+      </div>
+      <div class="vital-value">7.5</div>
+      <div class="vital-unit">hours</div>
+      <div class="vital-label">Sleep Duration</div>
+      <div class="vital-status good">Good</div>
+      <div class="vital-progress">
+        <div class="progress-bar sleep-bar" style="width: 94%"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Charts Section -->
+  <div class="charts-section">
+
+    <!-- Blood Pressure Breakdown -->
+    <div class="chart-card pressure-breakdown">
+      <h4><i class="fa-solid fa-droplet"></i> Blood Pressure Details</h4>
+      <div class="bp-metrics">
+        <div class="bp-metric">
+          <span class="bp-label">Systolic</span>
+          <div class="bp-bar-container">
+            <div class="bp-bar systolic" style="width: 80%"></div>
+          </div>
+          <span class="bp-value">120</span>
+        </div>
+        <div class="bp-metric">
+          <span class="bp-label">Diastolic</span>
+          <div class="bp-bar-container">
+            <div class="bp-bar diastolic" style="width: 53%"></div>
+          </div>
+          <span class="bp-value">80</span>
+        </div>
+        <div class="bp-metric">
+          <span class="bp-label">Pulse</span>
+          <div class="bp-bar-container">
+            <div class="bp-bar pulse" style="width: 40%"></div>
+          </div>
+          <span class="bp-value">40</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heart Rate Chart -->
+    <div class="chart-card heart-chart">
+      <h4><i class="fa-solid fa-chart-simple"></i> Heart Rate — Last 7 Days</h4>
+      <div class="chart-bars">
+        <div class="day-bar">
+          <div class="bar" style="height: 60%"></div>
+          <span>Sat</span>
+        </div>
+        <div class="day-bar">
+          <div class="bar" style="height: 75%"></div>
+          <span>Sun</span>
+        </div>
+        <div class="day-bar">
+          <div class="bar" style="height: 85%"></div>
+          <span>Mon</span>
+        </div>
+        <div class="day-bar">
+          <div class="bar" style="height: 55%"></div>
+          <span>Tue</span>
+        </div>
+        <div class="day-bar">
+          <div class="bar" style="height: 80%"></div>
+          <span>Wed</span>
+        </div>
+        <div class="day-bar">
+          <div class="bar" style="height: 70%"></div>
+          <span>Thu</span>
+        </div>
+        <div class="day-bar">
+          <div class="bar" style="height: 65%"></div>
+          <span>Fri</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="bottom-section">
+
+    <!-- Medical History -->
+    <div class="history-card">
+      <h4><i class="fa-solid fa-clock-rotate-left"></i> Recent Medical History</h4>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 15, 2025</div>
+          <div class="timeline-content">
+            <h5>Comprehensive Annual Checkup</h5>
+            <p>General exam — all indicators normal. Vitamin D supplement prescribed.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 28, 2024</div>
+          <div class="timeline-content">
+            <h5>Full Blood Panel — Normal Results</h5>
+            <p>Cholesterol levels excellent. HDL: 65 mg/dL, LDL: 110 mg/dL</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov 10, 2024</div>
+          <div class="timeline-content">
+            <h5>Routine Dental Checkup</h5>
+            <p>Routine cleaning. No cavities detected. Next appointment in 6 months.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Oct 3, 2024</div>
+          <div class="timeline-content">
+            <h5>Eye Exam</h5>
+            <p>Vision 20/20. No change in prescription required.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Personal Health Profile -->
+    <div class="profile-card">
+      <h4><i class="fa-solid fa-id-card"></i> Personal Information</h4>
+      <div class="profile-details">
+
+        <div class="profile-row">
+          <span class="profile-label">Full Name</span>
+          <span class="profile-value">Ahmed Mohamed</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Age</span>
+          <span class="profile-value">35 Years</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Blood Type</span>
+          <span class="profile-value highlight">O+</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Weight</span>
+          <span class="profile-value">78 kg</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Height</span>
+          <span class="profile-value">175 cm</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">BMI</span>
+          <span class="profile-value healthy">25.5 — Normal</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Allergies</span>
+          <span class="profile-value warning">Penicillin</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Chronic Conditions</span>
+          <span class="profile-value">None</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Current Medications</span>
+          <span class="profile-value">Vitamin D3, Omega-3</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-label">Emergency Contact</span>
+          <span class="profile-value">+20 123 456 7890</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Additional Metrics -->
+  <div class="additional-metrics">
+
+    <div class="metric-box">
+      <div class="metric-icon water">
+        <i class="fa-solid fa-glass-water"></i>
+      </div>
+      <div class="metric-info">
+        <h5>Hydration</h5>
+        <div class="metric-value">2.1 <span>/ 2.5 L</span></div>
+        <div class="metric-progress">
+          <div class="progress-fill" style="width: 84%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-box">
+      <div class="metric-icon steps">
+        <i class="fa-solid fa-person-walking"></i>
+      </div>
+      <div class="metric-info">
+        <h5>Steps Today</h5>
+        <div class="metric-value">8,432 <span>/ 10,000</span></div>
+        <div class="metric-progress">
+          <div class="progress-fill" style="width: 84%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-box">
+      <div class="metric-icon calories">
+        <i class="fa-solid fa-fire"></i>
+      </div>
+      <div class="metric-info">
+        <h5>Calories Burned</h5>
+        <div class="metric-value">1,850 <span>/ 2,200</span></div>
+        <div class="metric-progress">
+          <div class="progress-fill" style="width: 84%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-box">
+      <div class="metric-icon stress">
+        <i class="fa-solid fa-brain"></i>
+      </div>
+      <div class="metric-info">
+        <h5>Stress Level</h5>
+        <div class="metric-value">Low <span>2/10</span></div>
+        <div class="metric-progress">
+          <div class="progress-fill low" style="width: 20%"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Vital Details Modal -->
+<div class="vital-modal-overlay" id="vital-modal-overlay" onclick="closeVitalModal(event)">
+  <div class="vital-modal" onclick="event.stopPropagation()">
+    <button class="vital-modal-close" onclick="closeVitalModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="vital-modal-header" id="vital-modal-header"></div>
+    <div class="vital-modal-body" id="vital-modal-body"></div>
+  </div>
+</div>
+
+<script src="health-dashboard.js"></script>
+
+</body>
+</html>
