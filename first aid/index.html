@@ -1,0 +1,5042 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Aid Guide | Care At Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+      <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+
+    <style>
+      /* ═══════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════ */
+      :root {
+        /* Core palette */
+        --ink: #0d1117;
+        --ink-mid: #3b4150;
+        --ink-soft: #6e7585;
+        --ink-faint: #a8afc0;
+
+        --surface: #ffffff;
+        --surface-2: #f6f7fb;
+        --surface-3: #edf0f8;
+        --border: #e2e6f0;
+        --border-mid: #c8cfe0;
+
+        /* Brand */
+        --primary: #2563eb;
+        --primary-mid: #1d4ed8;
+        --primary-deep: #1e3a8a;
+        --primary-glow: rgba(37, 99, 235, 0.14);
+
+        /* Accent */
+        --amber: #f59e0b;
+        --amber-light: #fcd34d;
+        --amber-bg: #fffbeb;
+
+        /* Semantic */
+        --red: #dc2626;
+        --red-bg: #fef2f2;
+        --red-border: #fca5a5;
+        --green: #16a34a;
+        --green-bg: #f0fdf4;
+        --green-border: #86efac;
+        --primary: #6c47ff;
+  --primary-dark: #3d1fa8;
+  --primary-light: #ede9ff;
+  --accent: #ffaf12;
+  --accent-light: #fff3d0;
+  --green: #10b981;
+  --green-light: #d1fae5;
+  --orange: #f59e0b;
+  --orange-light: #fef3c7;
+  --red: #ef4444;
+  --red-light: #fee2e2;
+  --blue: #3b82f6;
+  --blue-light: #dbeafe;
+  --text-dark: #0f0a2e;
+  --text-mid: #4b4570;
+  --text-soft: #9490b5;
+  --bg-page: #f4f2ff;
+  --bg-card: #ffffff;
+  --border-soft: rgba(108, 71, 255, 0.1);
+  --shadow-sm: 0 2px 8px rgba(108, 71, 255, 0.08);
+  --shadow-md: 0 8px 28px rgba(108, 71, 255, 0.13);
+  --shadow-lg: 0 20px 60px rgba(108, 71, 255, 0.18);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --grad-main: linear-gradient(135deg, #6c47ff 0%, #3d1fa8 100%);
+  --grad-warm: linear-gradient(135deg, #ffaf12 0%, #ff7c12 100%);
+  --footer-bg: #0a0a0a;
+  --footer-text: #9ca3af;
+  --link: #3c1778;
+  --bg: #ffaf12;
+  --button: #83fc0bb7;
+
+        /* Gradients */
+        --grad-hero: linear-gradient(
+          135deg,
+          #0000ff 0%,
+          #6a51ff 55%,
+          #3c1778 100%
+        );
+        --grad-primary: linear-gradient(135deg, #2563eb, #1d4ed8);
+        --grad-red: linear-gradient(135deg, #dc2626, #b91c1c);
+        --grad-card: linear-gradient(145deg, #fff, #f6f7fb);
+
+        /* Shadows */
+        --shadow-xs: 0 1px 4px rgba(0, 0, 0, 0.06);
+        --shadow-sm: 0 2px 12px rgba(37, 99, 235, 0.08);
+        --shadow-md: 0 8px 28px rgba(37, 99, 235, 0.14);
+        --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.1);
+        --shadow-card: 0 4px 20px rgba(13, 17, 23, 0.07);
+
+        /* Radius */
+        --r-sm: 8px;
+        --r-md: 14px;
+        --r-lg: 20px;
+        --r-xl: 28px;
+        --r-2xl: 36px;
+        --r-full: 9999px;
+
+        /* Timing */
+        --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+        --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --t-fast: 0.16s var(--ease);
+        --t-base: 0.28s var(--ease);
+        --t-slow: 0.48s var(--ease);
+
+        --header-h: 80px;
+        --container: 1360px;
+        --pad: clamp(1.25rem, 5vw, 3rem);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--surface);
+        color: var(--ink);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── HEADER SLOT ── */
+      #header-slot {
+        height: var(--header-h);
+      }
+
+      /* ── CONTAINER ── */
+      .wrap {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+      }
+
+      /* ─── DISPLAY TYPE ─── */
+      .display {
+        font-family: "Sora", "Inter", sans-serif;
+      }
+
+      /* ══════════════ HEADER ══════════════ */
+      header {
+        background: radial-gradient(
+          at right,
+          rgba(255, 175, 18, 0.15) 0%,
+          transparent 75%
+        );
+      }
+      header .nav-bar nav {
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        padding: 20px 0;
+        box-shadow: 0 0 10px rgba(128, 120, 255, 0.25);
+        z-index: 1000;
+      }
+      header .nav-bar .logo {
+        padding: 0 0 0 250px;
+      }
+      header .nav-bar .logo span {
+        color: var(--link);
+        font-size: 35px;
+        font-weight: 800;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        text-transform: capitalize;
+      }
+      header .nav-bar .logo a {
+        text-decoration: none;
+      }
+      .lang-switch {
+        display: flex;
+        gap: 15px;
+        position: absolute;
+        top: 30px;
+        left: 50px;
+      }
+      .lang-switch button {
+        background: var(--bg);
+        color: var(--link);
+        font-size: 16px;
+        font-weight: 700;
+        padding: 5px 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 10px rgba(128, 120, 255, 0.25);
+        transition: 0.4s ease;
+      }
+      .lang-switch button:hover {
+        background: var(--button);
+        transform: translateY(-2px);
+      }
+      header .nav-bar nav ul {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      header .nav-bar nav ul li a {
+        text-decoration: none;
+        color: var(--link);
+        font-size: 18px;
+        font-weight: 700;
+        transition: 0.4s ease;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        margin: 0 20px;
+        text-transform: capitalize;
+      }
+      header .nav-bar nav ul li a:hover {
+        color: #6161fa96;
+      }
+      .botn a {
+        background: var(--bg);
+        padding: 10px 30px;
+        text-decoration: none;
+        border-radius: 70px;
+        color: #000;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 0 100px 0 50px;
+        text-transform: capitalize;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        transition: 0.5s ease;
+      }
+      .botn a:hover {
+        background: var(--button);
+      }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(10px);
+        box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+      .sidebar.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .sidebar li {
+        width: 100%;
+        padding: 30px 0;
+      }
+      .sidebar a {
+        width: 100%;
+      }
+      .span {
+        display: none;
+      }
+      .hero {
+        background: var(--grad-hero);
+        position: relative;
+        overflow: hidden;
+        padding: clamp(4rem, 10vw, 7.5rem) var(--pad) clamp(4.5rem, 11vw, 8rem);
+      }
+
+      /* grid pattern overlay */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+      }
+
+      /* glow orbs */
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: drift 9s ease-in-out infinite;
+      }
+      .hero-orb:nth-child(1) {
+        width: 560px;
+        height: 560px;
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.25) 0%,
+          transparent 70%
+        );
+        top: -180px;
+        right: -120px;
+      }
+      .hero-orb:nth-child(2) {
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(
+          circle,
+          rgba(245, 158, 11, 0.15) 0%,
+          transparent 70%
+        );
+        bottom: -100px;
+        left: -60px;
+        animation-delay: -4.5s;
+      }
+      .hero-orb:nth-child(3) {
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.06) 0%,
+          transparent 70%
+        );
+        top: 30%;
+        left: 12%;
+        animation-delay: -2s;
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(12px, -16px) scale(1.03);
+        }
+        66% {
+          transform: translate(-8px, 10px) scale(0.97);
+        }
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        border-radius: var(--r-full);
+        padding: 6px 18px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1.4rem;
+      }
+      .hero-tag i {
+        color: var(--amber);
+      }
+
+      .hero h1 {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.12;
+        margin-bottom: 1.1rem;
+        letter-spacing: -0.02em;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--amber-light);
+        position: relative;
+      }
+      .hero h1 em::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--amber);
+        border-radius: 2px;
+      }
+
+      .hero p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+        max-width: 580px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.8;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: clamp(2rem, 5vw, 4rem);
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+      .hero-stat strong {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 800;
+        color: var(--amber-light);
+        line-height: 1;
+      }
+      .hero-stat span {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-top: 0.3rem;
+        display: block;
+      }
+
+      /* hero topics strip */
+      .hero-topics {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-topic-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        border-radius: var(--r-full);
+        padding: 0.45rem 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--t-fast);
+      }
+      .hero-topic-pill:hover {
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      .hero-topic-pill i {
+        font-size: 0.75rem;
+        color: var(--amber-light);
+      }
+      .hero-topic-pill .urgent-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3);
+        animation: pulse 2s ease infinite;
+        flex-shrink: 0;
+      }
+      .urgent-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--red);
+        margin-left: auto;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+        animation: pulse 2s ease infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(220, 38, 38, 0.08);
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════
+   ALERT BAR
+═══════════════════════════════════════════════════ */
+      .alert-bar {
+        background: var(--amber-bg);
+        border-top: 3px solid var(--amber);
+        border-bottom: 3px solid var(--amber);
+        padding: 0.9rem var(--pad);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.9rem;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+      .alert-bar i {
+        color: var(--amber);
+        font-size: 1.25rem;
+        flex-shrink: 0;
+      }
+      .alert-bar p {
+        font-size: 0.875rem;
+        color: #78350f;
+        font-weight: 600;
+      }
+      .alert-bar strong {
+        color: #b45309;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   SECTION LABELS
+═══════════════════════════════════════════════════ */
+      section {
+        padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+      }
+
+      .s-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 0.65rem;
+      }
+      .s-label::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      .s-title {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        font-weight: 800;
+        color: var(--ink);
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+      .s-title span {
+        color: var(--primary);
+      }
+
+      .s-sub {
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+        max-width: 560px;
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   QUICK CARDS
+═══════════════════════════════════════════════════ */
+      .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: 1.6rem 1.2rem 1.4rem;
+        cursor: pointer;
+        transition: var(--t-base);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.65rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-xs);
+      }
+      .q-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--grad-primary);
+        opacity: 0;
+        transition: opacity var(--t-base);
+        border-radius: inherit;
+      }
+      .q-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary);
+      }
+      .q-card:hover::before {
+        opacity: 1;
+      }
+      .q-card:hover .q-card-icon,
+      .q-card:hover h3,
+      .q-card:hover p {
+        position: relative;
+        z-index: 1;
+      }
+      .q-card:hover h3 {
+        color: #fff;
+      }
+      .q-card:hover p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .q-card-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: var(--r-md);
+        background: var(--surface-2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: var(--primary);
+        transition: var(--t-base);
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .q-card:hover .q-card-icon {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+      }
+
+      .q-card h3 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--ink);
+        transition: var(--t-base);
+        position: relative;
+        z-index: 1;
+      }
+      .q-card p {
+        font-size: 0.74rem;
+        color: var(--ink-soft);
+        line-height: 1.5;
+        transition: var(--t-base);
+        position: relative;
+        z-index: 1;
+      }
+
+      .q-card.urgent {
+        border-color: var(--red-border);
+        background: var(--red-bg);
+      }
+      .q-card.urgent .q-card-icon {
+        background: rgba(220, 38, 38, 0.08);
+        color: var(--red);
+      }
+      .q-card.urgent::before {
+        background: var(--grad-red);
+      }
+      .q-card.urgent:hover {
+        border-color: var(--red);
+        box-shadow: 0 8px 28px rgba(220, 38, 38, 0.18);
+      }
+
+      /* urgent badge on card */
+      .q-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--red);
+        background: rgba(220, 38, 38, 0.1);
+        border-radius: var(--r-full);
+        padding: 2px 8px;
+        position: relative;
+        z-index: 1;
+        transition: var(--t-base);
+      }
+      .q-card:hover .q-badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* ═══════════════════════════════════════════════════
+   VIDEO HUB
+═══════════════════════════════════════════════════ */
+      .video-hub-section {
+        background: var(--surface);
+      }
+
+      .vh-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.1rem;
+        margin-top: 1.75rem;
+      }
+
+      .vh-card {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+        cursor: pointer;
+        transition: var(--t-base);
+        box-shadow: var(--shadow-xs);
+      }
+      .vh-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary);
+      }
+
+      .vh-thumb {
+        position: relative;
+        padding-bottom: 56.25%;
+        background: #000;
+        overflow: hidden;
+      }
+      .vh-thumb img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--t-base);
+      }
+      .vh-card:hover .vh-thumb img {
+        transform: scale(1.05);
+        opacity: 0.75;
+      }
+
+      .vh-thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.45),
+          transparent 50%
+        );
+      }
+
+      .vh-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-mid);
+        font-size: 1.1rem;
+        z-index: 1;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transition: var(--t-base);
+      }
+      .vh-card:hover .vh-play {
+        background: var(--primary);
+        color: #fff;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .vh-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1;
+        font-size: 0.64rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border-radius: var(--r-full);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--ink);
+      }
+      .vh-tag.urgent {
+        background: var(--red);
+        color: #fff;
+      }
+
+      .vh-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.85rem 1rem;
+      }
+      .vh-meta i {
+        color: var(--primary);
+        font-size: 0.95rem;
+        width: 18px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .vh-meta span {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      /* Modal */
+      .vh-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 12, 20, 0.82);
+        backdrop-filter: blur(6px);
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+        padding: var(--pad);
+      }
+      .vh-modal.open {
+        display: flex;
+      }
+      .vh-modal-inner {
+        background: var(--surface);
+        border-radius: var(--r-xl);
+        overflow: hidden;
+        width: 100%;
+        max-width: 880px;
+        box-shadow: var(--shadow-lg);
+      }
+      .vh-modal-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.3rem;
+        border-bottom: 1.5px solid var(--border);
+      }
+      .vh-modal-head span {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .vh-modal-close {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: var(--surface-2);
+        color: var(--ink-soft);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: var(--t-fast);
+      }
+      .vh-modal-close:hover {
+        background: var(--red-bg);
+        color: var(--red);
+      }
+      .vh-modal-frame {
+        position: relative;
+        padding-bottom: 56.25%;
+        background: #000;
+      }
+      .vh-modal-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   TOPICS — LAYOUT
+═══════════════════════════════════════════════════ */
+      .topics-section {
+        background: var(--surface-2);
+      }
+
+      .topics-wrap {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 1.75rem;
+        align-items: start;
+      }
+
+      /* Sticky side nav */
+      .topic-nav {
+        position: sticky;
+        top: calc(var(--header-h) + 1.5rem);
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        box-shadow: var(--shadow-card);
+      }
+
+      .tn-group-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        padding: 0.6rem 0.75rem 0.3rem;
+      }
+
+      .tn-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: none;
+        border: 1.5px solid transparent;
+        border-radius: var(--r-md);
+        padding: 0.65rem 0.9rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+        cursor: pointer;
+        transition: var(--t-fast);
+        text-align: left;
+        width: 100%;
+      }
+      .tn-btn i {
+        font-size: 0.9rem;
+        width: 18px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .tn-btn:hover {
+        background: var(--surface-2);
+        color: var(--primary);
+        border-color: var(--border);
+      }
+      .tn-btn.active {
+        background: var(--primary-glow);
+        color: var(--primary);
+        border-color: rgba(37, 99, 235, 0.25);
+        font-weight: 700;
+      }
+      .tn-btn.active i {
+        color: var(--primary);
+      }
+      .tn-btn.urgent-nav.active {
+        background: rgba(220, 38, 38, 0.08);
+        color: var(--red);
+        border-color: rgba(220, 38, 38, 0.25);
+      }
+      .tn-btn.urgent-nav.active i {
+        color: var(--red);
+      }
+      .tn-btn.urgent-nav:hover {
+        color: var(--red);
+      }
+
+      .tn-sep {
+        height: 1px;
+        background: var(--border);
+        margin: 0.4rem 0;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   TOPIC PANELS
+═══════════════════════════════════════════════════ */
+      .t-panel {
+        display: none;
+      }
+      .t-panel.active {
+        display: block;
+      }
+
+      /* Panel header */
+      .t-head {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 1.75rem 1.8rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        box-shadow: var(--shadow-card);
+      }
+      .t-head-icon {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        border-radius: var(--r-lg);
+        background: var(--grad-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.55rem;
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+      }
+      .t-head.urgent .t-head-icon {
+        background: var(--grad-red);
+        box-shadow: 0 8px 20px rgba(220, 38, 38, 0.28);
+      }
+      .t-head-text h2 {
+        font-family: "Sora", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+      .t-head-text p {
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+        margin-top: 0.25rem;
+      }
+      .t-urgent-badge {
+        margin-top: 0.6rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--red-bg);
+        color: var(--red);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 3px 10px;
+        border-radius: var(--r-full);
+        border: 1px solid var(--red-border);
+      }
+
+      /* Video embed */
+      .video-wrap {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-xl);
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+        box-shadow: var(--shadow-card);
+      }
+      .video-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.3rem;
+        border-bottom: 1.5px solid var(--border);
+      }
+      .video-label-left {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .video-label-left i {
+        color: var(--red);
+        font-size: 1.1rem;
+      }
+      .video-label-left span {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .video-lang-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--primary-glow);
+        color: var(--primary);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 4px 12px;
+        border-radius: var(--r-full);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+      }
+      .video-frame {
+        position: relative;
+        padding-bottom: 56.25%;
+        background: #000;
+      }
+      .video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Steps */
+      .steps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-md);
+        padding: 1.1rem 1.2rem;
+        transition: var(--t-base);
+        box-shadow: var(--shadow-xs);
+      }
+      .step:hover {
+        border-color: var(--primary-mid);
+        box-shadow: var(--shadow-sm);
+        background: #fafbff;
+      }
+      .step.warn {
+        border-color: var(--red-border);
+        background: var(--red-bg);
+      }
+      .step.warn:hover {
+        border-color: var(--red);
+      }
+
+      .step-num {
+        min-width: 36px;
+        height: 36px;
+        border-radius: var(--r-full);
+        background: var(--grad-primary);
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        flex-shrink: 0;
+      }
+      .step.warn .step-num {
+        background: var(--grad-red);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+      }
+
+      .step-body h4 {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.2rem;
+      }
+      .step-body p {
+        font-size: 0.81rem;
+        color: var(--ink-mid);
+        line-height: 1.75;
+      }
+
+      /* Tip box */
+      .tip-box {
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.06),
+          rgba(37, 99, 235, 0.02)
+        );
+        border: 1.5px solid rgba(37, 99, 235, 0.16);
+        border-radius: var(--r-lg);
+        padding: 1.1rem 1.3rem;
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+      }
+      .tip-box i {
+        color: var(--primary);
+        font-size: 1rem;
+        flex-shrink: 0;
+        margin-top: 0.18rem;
+      }
+      .tip-box p {
+        font-size: 0.81rem;
+        color: var(--ink-mid);
+        line-height: 1.8;
+      }
+      .tip-box strong {
+        color: var(--primary);
+      }
+
+      .tip-box.danger {
+        background: linear-gradient(
+          135deg,
+          rgba(220, 38, 38, 0.06),
+          rgba(220, 38, 38, 0.02)
+        );
+        border-color: rgba(220, 38, 38, 0.16);
+      }
+      .tip-box.danger i {
+        color: var(--red);
+      }
+      .tip-box.danger strong {
+        color: var(--red);
+      }
+
+      /* ═══════════════════════════════════════════════════
+   DO & DON'T
+═══════════════════════════════════════════════════ */
+      .dd-section {
+        background: var(--surface);
+      }
+      .dd-wrap {
+        background: var(--surface-2);
+        border-radius: var(--r-2xl);
+        padding: clamp(2rem, 4vw, 3.5rem);
+        border: 1.5px solid var(--border);
+      }
+      .dd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        margin-top: 1.75rem;
+      }
+      .dd-col {
+        border-radius: var(--r-lg);
+        padding: 1.5rem;
+      }
+      .dd-col.do {
+        background: var(--green-bg);
+        border: 1.5px solid var(--green-border);
+      }
+      .dd-col.dont {
+        background: var(--red-bg);
+        border: 1.5px solid var(--red-border);
+      }
+      .dd-col-head {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.95rem;
+        font-weight: 800;
+        margin-bottom: 1.1rem;
+      }
+      .dd-col.do .dd-col-head {
+        color: #166534;
+      }
+      .dd-col.dont .dd-col-head {
+        color: #991b1b;
+      }
+      .dd-col.do .dd-col-head i {
+        color: var(--green);
+      }
+      .dd-col.dont .dd-col-head i {
+        color: var(--red);
+      }
+
+      .dd-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+      .dd-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        font-size: 0.83rem;
+        color: var(--ink-mid);
+      }
+      .dd-list li i {
+        margin-top: 0.25rem;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+      .dd-col.do .dd-list li i {
+        color: var(--green);
+      }
+      .dd-col.dont .dd-list li i {
+        color: var(--red);
+      }
+
+      /* ═══════════════════════════════════════════════════
+   KIT CHECKLIST
+═══════════════════════════════════════════════════ */
+      .kit-section {
+        background: var(--surface-2);
+      }
+      .kit-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 0.85rem;
+        margin-top: 1.75rem;
+      }
+      .kit-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.9rem 1rem;
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-md);
+        font-size: 0.83rem;
+        font-weight: 600;
+        color: var(--ink);
+        cursor: pointer;
+        transition: var(--t-base);
+        background: var(--surface);
+        user-select: none;
+        box-shadow: var(--shadow-xs);
+      }
+      .kit-item:hover {
+        border-color: var(--primary);
+        background: #fafbff;
+      }
+      .kit-item.checked {
+        border-color: var(--green-border);
+        background: var(--green-bg);
+        color: #166534;
+      }
+      .kit-cb {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        border-radius: 5px;
+        border: 2px solid var(--border-mid);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--t-fast);
+        font-size: 0.7rem;
+      }
+      .kit-item.checked .kit-cb {
+        background: var(--green);
+        border-color: var(--green);
+        color: #fff;
+      }
+      .kit-item i.kit-icon {
+        font-size: 1rem;
+        color: var(--primary);
+        width: 16px;
+        text-align: center;
+      }
+      .kit-item.checked i.kit-icon {
+        color: #166534;
+      }
+      .kit-progress {
+        margin-top: 1.5rem;
+        background: var(--border);
+        border-radius: var(--r-full);
+        height: 8px;
+        overflow: hidden;
+      }
+      .kit-bar {
+        height: 100%;
+        background: var(--grad-primary);
+        border-radius: var(--r-full);
+        transition: width 0.4s var(--ease);
+        width: 0%;
+      }
+      .kit-progress-label {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        font-weight: 600;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   ANATOMY OF AN EMERGENCY — TIMELINE
+═══════════════════════════════════════════════════ */
+      .timeline-section {
+        background: var(--surface);
+      }
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 2rem;
+        position: relative;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 22px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--primary),
+          var(--amber),
+          var(--red)
+        );
+        border-radius: 2px;
+      }
+      .tl-item {
+        display: flex;
+        gap: 1.2rem;
+        padding-bottom: 1.75rem;
+        position: relative;
+      }
+      .tl-item:last-child {
+        padding-bottom: 0;
+      }
+      .tl-dot {
+        min-width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      }
+      .tl-body {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: 1.1rem 1.3rem;
+        box-shadow: var(--shadow-xs);
+        flex: 1;
+      }
+      .tl-body h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.25rem;
+      }
+      .tl-body p {
+        font-size: 0.81rem;
+        color: var(--ink-mid);
+        line-height: 1.7;
+      }
+      .tl-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   EMERGENCY NUMBERS
+═══════════════════════════════════════════════════ */
+      .numbers-section {
+        background: var(--grad-hero);
+        position: relative;
+        overflow: hidden;
+      }
+      .numbers-section::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.03);
+        top: -200px;
+        left: -150px;
+        pointer-events: none;
+      }
+      .numbers-section .s-label {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .numbers-section .s-label::before {
+        background: var(--amber);
+      }
+      .numbers-section .s-title {
+        color: #fff;
+      }
+      .numbers-section .s-title span {
+        color: var(--amber-light);
+      }
+      .numbers-section .s-sub {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .numbers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.1rem;
+        margin-top: 1.75rem;
+      }
+      .num-card {
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: var(--r-xl);
+        padding: 1.75rem 1.3rem 1.5rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: var(--t-base);
+      }
+      .num-card:hover {
+        background: rgba(255, 255, 255, 0.17);
+        transform: translateY(-4px);
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+      }
+      .num-card i {
+        font-size: 1.8rem;
+        color: var(--amber-light);
+        margin-bottom: 0.7rem;
+        display: block;
+      }
+      .num-card .n-label {
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.55);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
+      }
+      .num-card .n-num {
+        font-family: "Sora", sans-serif;
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: var(--amber-light);
+        letter-spacing: 0.01em;
+        line-height: 1;
+      }
+      .num-card .n-name {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+        margin-top: 0.4rem;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   CPR RATE VISUALIZER
+═══════════════════════════════════════════════════ */
+      .cpr-viz {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 1.4rem 1.6rem;
+        margin-bottom: 1.25rem;
+        box-shadow: var(--shadow-card);
+      }
+      .cpr-viz-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+      .cpr-viz-header span {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .cpr-viz-header span i {
+        color: var(--red);
+      }
+      .cpr-badge {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--red);
+        background: var(--red-bg);
+        border: 1px solid var(--red-border);
+        border-radius: var(--r-full);
+        padding: 3px 10px;
+      }
+      .cpr-beats {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .cpr-beat {
+        width: 14px;
+        height: 28px;
+        border-radius: 3px;
+        background: var(--border);
+        transition: background 0.1s;
+      }
+      .cpr-beat.active {
+        background: var(--red);
+      }
+      .cpr-beat.breath {
+        background: var(--primary);
+      }
+      .cpr-tempo-label {
+        font-size: 0.76rem;
+        color: var(--ink-soft);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .cpr-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--grad-red);
+        color: #fff;
+        border: none;
+        border-radius: var(--r-md);
+        padding: 0.55rem 1.2rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--t-fast);
+        box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
+      }
+      .cpr-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.34);
+      }
+
+      /* ═══════════════════════════════════════════════════
+   FOOTER SLOT
+═══════════════════════════════════════════════════ */
+      #footer-slot {
+        background: #0a0a0a;
+        min-height: 40px;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════ */
+      @media (max-width: 1000px) {
+        .hero-inner {
+          max-width: 100%;
+        }
+      }
+      @media (max-width: 900px) {
+        .topics-wrap {
+          grid-template-columns: 1fr;
+        }
+        .topic-nav {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+          border-radius: var(--r-lg);
+          padding: 0.7rem;
+          gap: 0.25rem;
+          overflow-x: auto;
+        }
+        .tn-group-label {
+          display: none;
+        }
+        .tn-btn {
+          width: auto;
+          flex: 0 1 auto;
+          justify-content: center;
+          font-size: 0.75rem;
+        }
+        .tn-sep {
+          display: none;
+        }
+      }
+      @media (max-width: 680px) {
+        .dd-grid {
+          grid-template-columns: 1fr;
+        }
+        .t-head {
+          flex-direction: column;
+          text-align: center;
+        }
+        .timeline::before {
+          left: 19px;
+        }
+      }
+      @media (max-width: 480px) {
+        .quick-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .numbers-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .kit-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════
+   DID YOU KNOW / RECOVERY POSITION / WHEN TO CALL
+   (aliases mapped onto the same design tokens used
+    throughout the page so these sections render with
+    identical styling — no visual change, only fixing
+    classes that had no matching CSS)
+═══════════════════════════════════════════════════ */
+      .W {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+      }
+      .ey {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 0.65rem;
+      }
+      .ey::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+      .st {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        font-weight: 800;
+        color: var(--ink);
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+      .st .hl {
+        color: var(--primary);
+      }
+      .ss {
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+        max-width: 560px;
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+      }
+
+      .dg {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.2rem;
+        margin-top: 2.5rem;
+      }
+      .dc {
+        background: var(--b0, #ffffff);
+        border: 1.5px solid var(--bd, #e5e7eb);
+        border-radius: 18px;
+        padding: 1.6rem;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: var(--tr, 0.28s cubic-bezier(0.22, 0.61, 0.36, 1));
+      }
+      .dc:hover {
+        border-color: var(--P, #6a51ff);
+        box-shadow: var(--s1, 0 2px 12px rgba(106, 81, 255, 0.1));
+        transform: translateY(-3px);
+      }
+      .di {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 14px;
+        background: var(
+          --gP,
+          linear-gradient(135deg, #0000ff 0%, #6a51ff 55%, #3c1778 100%)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: #fff;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(106, 81, 255, 0.25);
+      }
+      .dtag {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--P, #6a51ff);
+        margin-bottom: 0.35rem;
+      }
+      .dc h4 {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--t1, #1a1a2e);
+        margin-bottom: 0.3rem;
+      }
+      .dc p {
+        font-size: 0.8rem;
+        color: var(--t2, #66686c);
+        line-height: 1.7;
+      }
+
+      /* RECOVERY */
+      .rg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        align-items: start;
+      }
+      .rs-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .rs {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.9rem;
+        padding: 1rem 1.1rem;
+        background: var(--b0, #ffffff);
+        border: 1.5px solid var(--bd, #e5e7eb);
+        border-radius: 14px;
+        transition: var(--tr, 0.28s cubic-bezier(0.22, 0.61, 0.36, 1));
+      }
+      .rs:hover {
+        border-color: var(--P, #6a51ff);
+        box-shadow: var(--s1, 0 2px 12px rgba(106, 81, 255, 0.1));
+      }
+      .rn {
+        min-width: 32px;
+        height: 32px;
+        border-radius: 9999px;
+        background: var(--gS, linear-gradient(135deg, #ffaf12, #ffc020));
+        color: var(--t1, #1a1a2e);
+        font-weight: 800;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .rs h4 {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--t1, #1a1a2e);
+        margin-bottom: 0.18rem;
+      }
+      .rs p {
+        font-size: 0.8rem;
+        color: var(--t2, #66686c);
+        line-height: 1.65;
+      }
+      .ri {
+        background: var(--b0, #ffffff);
+        border: 1.5px solid var(--bd, #e5e7eb);
+        border-radius: 24px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .rih {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 0.4rem;
+      }
+      .rii {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: var(
+          --gP,
+          linear-gradient(135deg, #0000ff 0%, #6a51ff 55%, #3c1778 100%)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: #fff;
+        flex-shrink: 0;
+        box-shadow: 0 6px 16px rgba(106, 81, 255, 0.3);
+      }
+      .rih h3 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--t1, #1a1a2e);
+      }
+      .ri p {
+        font-size: 0.83rem;
+        color: var(--t2, #66686c);
+        line-height: 1.75;
+      }
+      .rw {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.4rem;
+      }
+      .rwi {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.82rem;
+        color: var(--t2, #66686c);
+        padding: 0.6rem 0.8rem;
+        background: var(--b1, #f8f9ff);
+        border: 1px solid var(--bd, #e5e7eb);
+        border-radius: 14px;
+      }
+
+      /* WHEN TO CALL */
+      .cg {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.2rem;
+        margin-top: 2.5rem;
+      }
+      .cc {
+        border-radius: 18px;
+        padding: 1.6rem;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        border: 1.5px solid;
+        transition: var(--tr, 0.28s cubic-bezier(0.22, 0.61, 0.36, 1));
+      }
+      .cc:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--s2, 0 8px 30px rgba(106, 81, 255, 0.15));
+      }
+      .cc.red {
+        background: #fff8f8;
+        border-color: #fca5a5;
+      }
+      .cc.yellow {
+        background: #fffbeb;
+        border-color: #fcd34d;
+      }
+      .cc.green {
+        background: #f0fdf4;
+        border-color: #86efac;
+      }
+      .cci {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+      .cc.red .cci {
+        background: linear-gradient(135deg, #ef4444, #b91c1c);
+        color: #fff;
+      }
+      .cc.yellow .cci {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: #fff;
+      }
+      .cc.green .cci {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: #fff;
+      }
+      .cc h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      .cc.red h4 {
+        color: #991b1b;
+      }
+      .cc.yellow h4 {
+        color: #78350f;
+      }
+      .cc.green h4 {
+        color: #166534;
+      }
+      .cc ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .cc ul li {
+        font-size: 0.8rem;
+        color: var(--t2, #66686c);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+      .cc ul li::before {
+        content: "·";
+        font-weight: 800;
+        margin-top: -0.05rem;
+        flex-shrink: 0;
+      }
+      /* ══════════════ FOOTER ══════════════ */
+      .meds-footer {
+        background: var(--footer-bg);
+        color: var(--footer-text);
+        padding: 60px 50px 30px;
+        border-top: 3px solid var(--primary);
+      }
+      .footer-container {
+        max-width: 1500px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 50px;
+      }
+      .footer-brand h3 {
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+      .footer-support {
+        color: var(--footer-text);
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+      .footer-support-text {
+        color: var(--primary);
+        font-size: 1rem;
+        margin-bottom: 25px;
+        font-weight: 600;
+      }
+      .footer-address-title {
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      .footer-address {
+        color: var(--footer-text);
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+      .footer-social {
+        display: flex;
+        gap: 15px;
+      }
+      .social-link {
+        width: 45px;
+        height: 45px;
+        background: #1f1f1f;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      .social-link:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+      }
+      .footer-column h4 {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+      .footer-column ul {
+        list-style: none;
+      }
+      .footer-column ul li {
+        margin-bottom: 15px;
+      }
+      .footer-column ul li a {
+        color: var(--footer-text);
+        text-decoration: none;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-transform: capitalize;
+      }
+      .footer-column ul li a:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+      .footer-partners {
+        max-width: 1400px;
+        margin: 0 auto 40px;
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        padding: 30px 0;
+        border-top: 1px solid #1f1f1f;
+        border-bottom: 1px solid #1f1f1f;
+      }
+      .partner-logo {
+        color: #374151;
+        font-size: 1.5rem;
+        font-weight: 700;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .partner-logo:hover {
+        opacity: 1;
+        color: var(--primary);
+      }
+      .footer-bottom {
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 20px;
+      }
+      .footer-bottom p {
+        color: #4b5563;
+        font-size: 0.95rem;
+      }
+
+      /* ══════════════ RESPONSIVE ══════════════ */
+      @media (max-width: 1300px) {
+        section .profile {
+          grid-template-columns: 80px 1fr;
+        }
+        .right {
+          display: none;
+        }
+        .metrics-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pd-full .rx-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
+        section .profile {
+          grid-template-columns: 1fr;
+          border-radius: var(--radius-lg);
+        }
+        .side {
+          display: none;
+        }
+        .main {
+          padding: 20px 16px 28px;
+        }
+        .don-summary {
+          grid-template-columns: 1fr 1fr;
+        }
+        .metrics-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .mp-two-col {
+          grid-template-columns: 1fr;
+        }
+        .rx-grid {
+          grid-template-columns: 1fr;
+        }
+        .pd-row {
+          grid-template-columns: 1fr;
+        }
+        .pd-full .rx-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        header .nav-bar .logo {
+          padding-left: 12px;
+        }
+        .span {
+          display: flex;
+        }
+        .hide {
+          display: none;
+        }
+        .sidebar {
+          display: flex;
+        }
+        .botn a {
+          margin: 0 20px;
+        }
+        .don-summary {
+          grid-template-columns: 1fr;
+        }
+        .metrics-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .quick-actions {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-container {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .footer-partners {
+          gap: 20px;
+        }
+        .photo img {
+          margin-left: 0;
+        }
+        .laster0 {
+          flex-direction: column;
+        }
+        .laster {
+          padding: 50px 16px;
+        }
+        aside {
+          padding: 40px 0;
+        }
+        aside .side {
+          border-radius: 30px;
+        }
+        aside .side h3 {
+          padding: 30px;
+          font-size: 22px;
+        }
+        .profile-details-section {
+          padding: 0 12px 40px;
+        }
+        .pd-full .rx-grid {
+          grid-template-columns: 1fr;
+        }
+        .notif-panel {
+          width: 280px;
+          right: -100px;
+        }
+      }
+      /* ───── Responsive (Tablet & Mobile) ───── */
+@media (max-width: 1024px) {
+  header .nav-bar nav {
+    padding: 16px 20px;
+  }
+
+  header .nav-bar .logo {
+    padding-left: 60px;
+  }
+
+  header .nav-bar .logo span {
+    font-size: 26px;
+  }
+
+  .lang-switch {
+    left: 1px;
+  }
+
+  .lang-switch button {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  /* اخفي الروابط الأفقية فعليًا، وسيب زرار البرغر بس */
+  header .nav-bar nav > ul:not(.sidebar) > li:not(.span) {
+    display: none;
+  }
+
+  .span {
+    display: flex;
+  }
+
+  .span a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+  }
+
+  .span .material-symbols-outlined {
+    font-size: 30px;
+    color: var(--link);
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header id="logo">
+      <div class="nav-bar">
+        <nav>
+          <div class="logo">
+            <a href="#logo"
+              ><p><span>care at home</span></p></a
+            >
+            <div class="lang-switch">
+          <button id="lang-toggle">ar</button>
+        </div>
+
+          </div>
+          <ul class="sidebar">
+            <li onclick="hidesidebar()">
+              <a href="#"
+                ><span class="material-symbols-outlined">close</span></a
+              >
+            </li>
+            <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+            <li>
+              <a href="../How It Work/how it work.html"
+                >how care at home works</a
+              >
+            </li>
+            <li>
+              <a href="../Medical diagnosis/Medical diagnosis.html"
+                >diagnosis</a
+              >
+            </li>
+            <li>
+              <a href="../prescriptions/prescriptions.html"
+                >Telehealth Services</a
+              >
+            </li>
+            <li>
+              <a class="a4" href="../our providers/our providers.html"
+                >our providers</a
+              >
+            </li>
+          </ul>
+          <ul>
+            <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+            <li>
+              <a href="../How It Work/how it work.html"
+                >how care at home works</a
+              >
+            </li>
+            <li>
+              <a href="../Medical diagnosis/Medical diagnosis.html"
+                >diagnosis</a
+              >
+            </li>
+            <li>
+              <a href="../prescriptions/prescriptions.html"
+                >Telehealth Services</a
+              >
+            </li>
+            <li>
+              <a class="a4" href="../our providers/our providers.html"
+                >our providers</a
+              >
+            </li>
+            <li class="span" onclick="showsidebar()">
+              <a href="#"
+                ><span class="material-symbols-outlined">menu</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section
+      class="hero"
+      style="
+        padding-top: clamp(4rem, 10vw, 7.5rem);
+        padding-bottom: clamp(4.5rem, 11vw, 8rem);
+        padding-left: var(--pad);
+        padding-right: var(--pad);
+      "
+    >
+      <div class="hero-orb"></div>
+      <div class="hero-orb"></div>
+      <div class="hero-orb"></div>
+
+      <div class="hero-inner">
+        <div class="hero-tag">
+          <i class="fa-solid fa-kit-medical"></i>
+          Comprehensive First Aid Guide
+        </div>
+
+        <h1 class="display">
+          Know exactly what to do<br />in <em>every emergency</em>
+        </h1>
+
+        <p>
+          Step-by-step instructions approved by specialist physicians — with
+          video demonstrations for every situation
+        </p>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>11+</strong>
+            <span>Emergency Topics</span>
+          </div>
+          <div class="hero-stat">
+            <strong>100%</strong>
+            <span>Expert Verified</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Video</strong>
+            <span>Demo per topic</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Free</strong>
+            <span>Always free</span>
+          </div>
+        </div>
+
+        <div class="hero-topics">
+          <div class="hero-topic-pill" onclick="switchTopic('cpr')">
+            <i class="fa-solid fa-heart-pulse"></i> CPR / Cardiac Arrest
+            <span class="urgent-dot"></span>
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('choking')">
+            <i class="fa-solid fa-lungs"></i> Choking
+            <span class="urgent-dot"></span>
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('bleeding')">
+            <i class="fa-solid fa-droplet"></i> Severe Bleeding
+            <span class="urgent-dot"></span>
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('stroke')">
+            <i class="fa-solid fa-brain"></i> Stroke — FAST
+            <span class="urgent-dot"></span>
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('anaphylaxis')">
+            <i class="fa-solid fa-syringe"></i> Anaphylaxis
+            <span class="urgent-dot"></span>
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('burns')">
+            <i class="fa-solid fa-fire-flame-curved"></i> Burns &amp; Scalds
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('fracture')">
+            <i class="fa-solid fa-bone"></i> Fractures
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('poisoning')">
+            <i class="fa-solid fa-skull-crossbones"></i> Poisoning
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('shock')">
+            <i class="fa-solid fa-bolt"></i> Medical Shock
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('diabetic')">
+            <i class="fa-solid fa-candy-cane"></i> Diabetic Crisis
+          </div>
+          <div class="hero-topic-pill" onclick="switchTopic('seizure')">
+            <i class="fa-solid fa-person-falling-burst"></i> Seizures
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+     ALERT BAR
+══════════════════════════════════════════════ -->
+    <div class="alert-bar">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <p>
+        In life-threatening situations —
+        <strong>call emergency services (911 / 123) immediately</strong> before
+        any action. This guide does not replace professional medical care.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+     FIRST MINUTES TIMELINE
+══════════════════════════════════════════════ -->
+    <section class="timeline-section">
+      <div class="wrap">
+        <span class="s-label">The Golden Rule</span>
+        <h2 class="s-title">The First <span>5 Minutes</span> Matter Most</h2>
+        <p class="s-sub">
+          Understanding what to prioritise in any emergency can be the
+          difference between life and lasting harm
+        </p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot" style="background: var(--grad-primary)">1</div>
+            <div class="tl-body">
+              <div class="tl-time" style="color: var(--primary)">
+                <i class="fa-solid fa-clock"></i> 0–30 sec
+              </div>
+              <h4>Ensure Scene Safety</h4>
+              <p>
+                Never rush in blindly. Check for fire, traffic, live wires, or
+                toxic fumes. A rescuer who becomes a victim helps no one. Assess
+                before you act.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background: var(--amber)">2</div>
+            <div class="tl-body">
+              <div class="tl-time" style="color: var(--amber)">
+                <i class="fa-solid fa-clock"></i> 30–60 sec
+              </div>
+              <h4>Call for Help — 911 / 123</h4>
+              <p>
+                Get professional help on the way immediately. Even while you
+                help, emergency dispatch can guide you in real time. Note the
+                time the incident started.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background: var(--red)">3</div>
+            <div class="tl-body">
+              <div class="tl-time" style="color: var(--red)">
+                <i class="fa-solid fa-clock"></i> 1–3 min
+              </div>
+              <h4>Address Life Threats First</h4>
+              <p>
+                Prioritise: unresponsiveness → airway → breathing → severe
+                bleeding. These three conditions kill fastest. Use the guides
+                below for each situation.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background: #7c3aed">4</div>
+            <div class="tl-body">
+              <div class="tl-time" style="color: #7c3aed">
+                <i class="fa-solid fa-clock"></i> 3–5 min
+              </div>
+              <h4>Monitor &amp; Reassure</h4>
+              <p>
+                Once immediate threats are managed, keep the person calm and
+                still. Continuously monitor breathing and consciousness until
+                paramedics arrive.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background: var(--green)">5</div>
+            <div class="tl-body">
+              <div class="tl-time" style="color: var(--green)">
+                <i class="fa-solid fa-clock"></i> Handover
+              </div>
+              <h4>Brief the Paramedics</h4>
+              <p>
+                Tell them: what happened, when it happened, what you've done,
+                any medications the person takes, and any changes in their
+                condition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+     VIDEO HUB
+══════════════════════════════════════════════ -->
+    <section class="video-hub-section" id="video-hub">
+      <div class="wrap">
+        <span class="s-label">Watch &amp; Learn</span>
+        <h2 class="s-title">Video <span>Demonstrations</span></h2>
+        <p class="s-sub">
+          Watch every technique demonstrated step by step — tap a card to play
+        </p>
+
+        <div class="vh-grid">
+          <div
+            class="vh-card"
+            data-video="r2FjOmHtPpQ"
+            data-title="CPR — Cardiopulmonary Resuscitation"
+            data-urgent="1"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/r2FjOmHtPpQ/hqdefault.jpg"
+                alt="CPR video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+              <span class="vh-tag urgent">Critical</span>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <span>CPR / Cardiac Arrest</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="qYg2PfHHtRA"
+            data-title="Choking — Heimlich Maneuver"
+            data-urgent="1"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/qYg2PfHHtRA/hqdefault.jpg"
+                alt="Choking video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+              <span class="vh-tag urgent">Critical</span>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-lungs"></i>
+              <span>Choking</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="YLbmj7JTiCw"
+            data-title="Severe Bleeding — Wound Control"
+            data-urgent="1"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/YLbmj7JTiCw/hqdefault.jpg"
+                alt="Bleeding video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+              <span class="vh-tag urgent">Critical</span>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-droplet"></i>
+              <span>Severe Bleeding</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="WUQPHW4kmiM"
+            data-title="Stroke — The FAST Rule"
+            data-urgent="1"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/WUQPHW4kmiM/hqdefault.jpg"
+                alt="Stroke video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+              <span class="vh-tag urgent">Critical</span>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-brain"></i>
+              <span>Stroke — FAST</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="jY5gUFN4c0Q"
+            data-title="Burns — Thermal, Chemical &amp; Electrical"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/jY5gUFN4c0Q/hqdefault.jpg"
+                alt="Burns video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              <span>Burns</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="q0VIItHEVY0"
+            data-title="Fractures — Bone Immobilisation"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/q0VIItHEVY0/hqdefault.jpg"
+                alt="Fractures video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-bone"></i>
+              <span>Fractures</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="_DRLUlISqsA"
+            data-title="Poisoning — Ingestion, Inhalation &amp; Contact"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/_DRLUlISqsA/hqdefault.jpg"
+                alt="Poisoning video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-skull-crossbones"></i>
+              <span>Poisoning</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="YLbmj7JTiCw"
+            data-start="180"
+            data-title="Medical Shock — Recognise &amp; Act"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/YLbmj7JTiCw/hqdefault.jpg"
+                alt="Shock video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Medical Shock</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="QL_CD0-uEL0"
+            data-title="Anaphylaxis — Using an EpiPen"
+            data-urgent="1"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/QL_CD0-uEL0/hqdefault.jpg"
+                alt="Anaphylaxis video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+              <span class="vh-tag urgent">Critical</span>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-syringe"></i>
+              <span>Anaphylaxis</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="sWYxsU53ZCo"
+            data-title="Diabetic Emergency — Low Blood Sugar"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/sWYxsU53ZCo/hqdefault.jpg"
+                alt="Diabetic emergency video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-candy-cane"></i>
+              <span>Diabetic Crisis</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="1SMFUwyEafw"
+            data-title="Seizures — What to Do"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/1SMFUwyEafw/hqdefault.jpg"
+                alt="Seizure video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-person-falling-burst"></i>
+              <span>Seizures</span>
+            </div>
+          </div>
+
+          <div
+            class="vh-card"
+            data-video="GmqXqwSV3bo"
+            data-title="The Recovery Position"
+          >
+            <div class="vh-thumb">
+              <img
+                src="https://img.youtube.com/vi/GmqXqwSV3bo/hqdefault.jpg"
+                alt="Recovery position video thumbnail"
+                loading="lazy"
+              />
+              <div class="vh-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="vh-meta">
+              <i class="fa-solid fa-person-falling"></i>
+              <span>Recovery Position</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal player -->
+        <div class="vh-modal" id="vhModal">
+          <div class="vh-modal-inner">
+            <div class="vh-modal-head">
+              <span id="vhModalTitle">Video</span>
+              <button class="vh-modal-close" onclick="closeVideo()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="vh-modal-frame">
+              <iframe
+                id="vhModalIframe"
+                src=""
+                title="First aid video"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DID YOU KNOW -->
+    <section>
+      <div class="W">
+        <span class="ey">Fast Facts</span>
+        <h2 class="st">Did You <span class="hl">Know?</span></h2>
+        <p class="ss">
+          Science-backed facts every person should know before an emergency
+          happens.
+        </p>
+        <div class="dg">
+          <div class="dc">
+            <div class="di"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <div class="dtag">CPR</div>
+              <h4>Bystander CPR Doubles Survival</h4>
+              <p>
+                Immediate bystander CPR can double or even triple a cardiac
+                arrest victim's chance of survival before paramedics arrive.
+              </p>
+            </div>
+          </div>
+          <div class="dc">
+            <div class="di"><i class="fa-solid fa-brain"></i></div>
+            <div>
+              <div class="dtag">Stroke</div>
+              <h4>1.9 Million Neurons Lost Per Minute</h4>
+              <p>
+                During a stroke, approximately 1.9 million brain cells die every
+                minute. Getting to hospital fast is the single most important
+                action.
+              </p>
+            </div>
+          </div>
+          <div class="dc">
+            <div class="di"><i class="fa-solid fa-faucet"></i></div>
+            <div>
+              <div class="dtag">Burns</div>
+              <h4>Cool Water Works Up to 3 Hours Later</h4>
+              <p>
+                Running cool water over a burn for 20 minutes reduces injury
+                depth even when started up to 3 hours after the burn occurred.
+              </p>
+            </div>
+          </div>
+          <div class="dc">
+            <div class="di"><i class="fa-solid fa-droplet"></i></div>
+            <div>
+              <div class="dtag">Bleeding</div>
+              <h4>Direct Pressure is the Gold Standard</h4>
+              <p>
+                Continuous direct pressure on a wound is the most effective
+                method to stop bleeding — more effective than elevation alone.
+              </p>
+            </div>
+          </div>
+          <div class="dc">
+            <div class="di"><i class="fa-solid fa-lungs"></i></div>
+            <div>
+              <div class="dtag">Choking</div>
+              <h4>Back Blows First, Always</h4>
+              <p>
+                Current guidelines recommend starting with back blows before
+                abdominal thrusts — they're often sufficient to clear the
+                obstruction.
+              </p>
+            </div>
+          </div>
+          <div class="dc">
+            <div class="di"><i class="fa-solid fa-kit-medical"></i></div>
+            <div>
+              <div class="dtag">Preparedness</div>
+              <h4>Only 18% of Homes Have a Full Kit</h4>
+              <p>
+                Studies show less than 1 in 5 households maintain a stocked,
+                up-to-date first aid kit — yet emergencies can happen anywhere.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOVERY POSITION -->
+    <section
+      style="background: var(--surface-2); border-top: 1px solid var(--border)"
+    >
+      <div class="W">
+        <span class="ey">Essential Skill</span>
+        <h2 class="st">The <span class="hl">Recovery Position</span></h2>
+        <p class="ss">
+          If someone is unconscious but breathing normally, the recovery
+          position keeps their airway open and prevents choking.
+        </p>
+        <div class="rg">
+          <div class="rs-col">
+            <div class="rs">
+              <div class="rn">1</div>
+              <div>
+                <h4>Kneel Beside the Person</h4>
+                <p>
+                  Position yourself on one side of the person lying on their
+                  back. Straighten their legs.
+                </p>
+              </div>
+            </div>
+            <div class="rs">
+              <div class="rn">2</div>
+              <div>
+                <h4>Position the Near Arm</h4>
+                <p>
+                  Place the arm closest to you at a right angle to the body,
+                  elbow bent, palm facing up.
+                </p>
+              </div>
+            </div>
+            <div class="rs">
+              <div class="rn">3</div>
+              <div>
+                <h4>Bring the Far Arm Across</h4>
+                <p>
+                  Bring their far arm across the chest and hold the back of
+                  their hand against their near cheek.
+                </p>
+              </div>
+            </div>
+            <div class="rs">
+              <div class="rn">4</div>
+              <div>
+                <h4>Pull the Far Knee Up</h4>
+                <p>
+                  With your other hand, pull the far knee up until the foot is
+                  flat on the ground.
+                </p>
+              </div>
+            </div>
+            <div class="rs">
+              <div class="rn">5</div>
+              <div>
+                <h4>Roll Gently Toward You</h4>
+                <p>
+                  Keeping their hand against their cheek, pull on the bent knee
+                  and roll them onto their side.
+                </p>
+              </div>
+            </div>
+            <div class="rs">
+              <div class="rn">6</div>
+              <div>
+                <h4>Open and Monitor</h4>
+                <p>
+                  Tilt their head back gently to open the airway. Monitor
+                  breathing until help arrives.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="ri">
+            <div class="rih">
+              <div class="rii"><i class="fa-solid fa-person-sleeping"></i></div>
+              <div><h3>When to Use It</h3></div>
+            </div>
+            <p>
+              The recovery position is for people who are unconscious but still
+              breathing. It prevents the tongue from blocking the airway and
+              allows fluids to drain.
+            </p>
+            <div class="rw">
+              <div class="rwi">
+                <i class="fa-solid fa-check" style="color: var(--green)"></i>
+                Unconscious but breathing normally
+              </div>
+              <div class="rwi">
+                <i class="fa-solid fa-check" style="color: var(--green)"></i> No
+                suspected spinal or neck injury
+              </div>
+              <div class="rwi">
+                <i class="fa-solid fa-check" style="color: var(--green)"></i>
+                Not awake enough to protect their own airway
+              </div>
+              <div class="rwi">
+                <i class="fa-solid fa-xmark" style="color: var(--red)"></i> Do
+                NOT use if spinal injury is possible
+              </div>
+              <div class="rwi">
+                <i class="fa-solid fa-xmark" style="color: var(--red)"></i> Do
+                NOT use if not breathing — start CPR instead
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHEN TO CALL -->
+    <section>
+      <div class="W">
+        <span class="ey">Decision Guide</span>
+        <h2 class="st">When to <span class="hl">Call for Help</span></h2>
+        <p class="ss">
+          Not every situation needs an ambulance, but some absolutely do. Know
+          the difference.
+        </p>
+        <div class="cg">
+          <div class="cc red">
+            <div class="cci">
+              <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <div>
+              <h4>Call 911 Immediately</h4>
+              <ul>
+                <li>Unconscious or unresponsive</li>
+                <li>Not breathing or gasping</li>
+                <li>Chest pain or tightness</li>
+                <li>Signs of stroke (FAST)</li>
+                <li>Severe uncontrolled bleeding</li>
+                <li>Suspected overdose or poisoning</li>
+                <li>Severe allergic reaction</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cc yellow">
+            <div class="cci"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <h4>Go to A&amp;E Soon</h4>
+              <ul>
+                <li>Burns larger than your palm</li>
+                <li>Suspected broken bone</li>
+                <li>Wounds needing stitches</li>
+                <li>Head injury with confusion</li>
+                <li>Sudden severe headache</li>
+                <li>Swallowed something unknown</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cc green">
+            <div class="cci"><i class="fa-solid fa-house-medical"></i></div>
+            <div>
+              <h4>Home Care is Fine</h4>
+              <ul>
+                <li>Minor cuts and scrapes</li>
+                <li>Small burns (fingertip-size)</li>
+                <li>Bruising without deformity</li>
+                <li>Mild allergic reaction (rash only)</li>
+                <li>Sprains with full movement</li>
+                <li>Nosebleeds stopping within 20 min</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+     TOPICS — DETAILED
+══════════════════════════════════════════════ -->
+    <section class="topics-section" id="topics-section">
+      <div class="wrap">
+        <span class="s-label">Detailed Instructions</span>
+        <h2 class="s-title">Step-by-Step <span>Guides</span></h2>
+        <p class="s-sub">
+          Video demonstrations with precise, ordered steps for every emergency
+        </p>
+
+        <div class="topics-wrap">
+          <!-- ── SIDE NAV ── -->
+          <nav class="topic-nav" id="topicNav">
+            <span class="tn-group-label">Critical</span>
+            <button
+              class="tn-btn urgent-nav active"
+              id="nav-cpr"
+              onclick="switchTopic('cpr')"
+            >
+              <i class="fa-solid fa-heart-pulse"></i> CPR / Cardiac Arrest
+            </button>
+            <button
+              class="tn-btn urgent-nav"
+              id="nav-choking"
+              onclick="switchTopic('choking')"
+            >
+              <i class="fa-solid fa-lungs"></i> Choking
+            </button>
+            <button
+              class="tn-btn urgent-nav"
+              id="nav-bleeding"
+              onclick="switchTopic('bleeding')"
+            >
+              <i class="fa-solid fa-droplet"></i> Severe Bleeding
+            </button>
+            <button
+              class="tn-btn urgent-nav"
+              id="nav-stroke"
+              onclick="switchTopic('stroke')"
+            >
+              <i class="fa-solid fa-brain"></i> Stroke
+            </button>
+            <button
+              class="tn-btn urgent-nav"
+              id="nav-anaphylaxis"
+              onclick="switchTopic('anaphylaxis')"
+            >
+              <i class="fa-solid fa-syringe"></i> Anaphylaxis
+            </button>
+            <div class="tn-sep"></div>
+            <span class="tn-group-label">Urgent</span>
+            <button
+              class="tn-btn"
+              id="nav-burns"
+              onclick="switchTopic('burns')"
+            >
+              <i class="fa-solid fa-fire-flame-curved"></i> Burns
+            </button>
+            <button
+              class="tn-btn"
+              id="nav-fracture"
+              onclick="switchTopic('fracture')"
+            >
+              <i class="fa-solid fa-bone"></i> Fractures
+            </button>
+            <button
+              class="tn-btn"
+              id="nav-poisoning"
+              onclick="switchTopic('poisoning')"
+            >
+              <i class="fa-solid fa-skull-crossbones"></i> Poisoning
+            </button>
+            <button
+              class="tn-btn"
+              id="nav-shock"
+              onclick="switchTopic('shock')"
+            >
+              <i class="fa-solid fa-bolt"></i> Medical Shock
+            </button>
+            <div class="tn-sep"></div>
+            <span class="tn-group-label">Other Emergencies</span>
+            <button
+              class="tn-btn"
+              id="nav-diabetic"
+              onclick="switchTopic('diabetic')"
+            >
+              <i class="fa-solid fa-candy-cane"></i> Diabetic Crisis
+            </button>
+            <button
+              class="tn-btn"
+              id="nav-seizure"
+              onclick="switchTopic('seizure')"
+            >
+              <i class="fa-solid fa-person-falling-burst"></i> Seizures
+            </button>
+          </nav>
+
+          <!-- ── PANELS ── -->
+          <div id="panels">
+            <!-- ─── CPR ─── -->
+            <div class="t-panel active" id="panel-cpr">
+              <div class="t-head urgent">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>CPR — Cardiopulmonary Resuscitation</h2>
+                  <p>For unconscious adults who are not breathing normally</p>
+                  <span class="t-urgent-badge"
+                    ><i class="fa-solid fa-circle-exclamation"></i>
+                    Life-threatening emergency</span
+                  >
+                </div>
+              </div>
+
+              <!-- CPR Rate Visualizer -->
+              <div class="cpr-viz">
+                <div class="cpr-viz-header">
+                  <span
+                    ><i class="fa-solid fa-heart-pulse"></i> CPR Compression
+                    Rate Trainer</span
+                  >
+                  <span class="cpr-badge">100–120 per min</span>
+                </div>
+                <div class="cpr-beats" id="cprBeats"></div>
+                <div class="cpr-tempo-label">
+                  <span id="cprLabel"
+                    >Press Start to practise the correct rhythm</span
+                  >
+                  <button class="cpr-btn" id="cprToggle" onclick="toggleCPR()">
+                    <i class="fa-solid fa-play"></i> Start
+                  </button>
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/r2FjOmHtPpQ?rel=0&modestbranding=1"
+                    title="CPR First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Ensure Scene Safety</h4>
+                    <p>
+                      Quickly assess the environment before approaching. Do not
+                      put yourself at risk from traffic, electricity, or other
+                      hazards.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-hand"></i></div>
+                  <div class="step-body">
+                    <h4>Check for Response</h4>
+                    <p>
+                      Tap both shoulders firmly and shout "Are you OK?" Wait for
+                      any reaction. Look, listen, and feel for normal breathing
+                      — no more than 10 seconds.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 / 123 Immediately</h4>
+                    <p>
+                      If unresponsive, shout for help and ask someone to call
+                      while you start CPR. If alone, call quickly then begin
+                      compressions.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-wind"></i></div>
+                  <div class="step-body">
+                    <h4>Open the Airway</h4>
+                    <p>
+                      Gently tilt the head back and lift the chin. Briefly look
+                      and listen for breathing — no more than 10 seconds.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-compress"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Begin Chest Compressions</h4>
+                    <p>
+                      Place the heel of your hand on the centre of the chest.
+                      Push hard and fast: 5–6 cm deep, 100–120 compressions per
+                      minute. Let the chest fully recoil between each
+                      compression — don't lean on them.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-mouth"></i></div>
+                  <div class="step-body">
+                    <h4>Rescue Breaths (If Trained)</h4>
+                    <p>
+                      After 30 compressions, give 2 rescue breaths — each
+                      lasting 1 second, making the chest visibly rise. If
+                      untrained, hands-only CPR is still highly effective.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-repeat"></i></div>
+                  <div class="step-body">
+                    <h4>Continue Until Help Arrives</h4>
+                    <p>
+                      Maintain the 30:2 ratio without pause. Switch with another
+                      rescuer every 2 minutes if possible. Stop only when
+                      paramedics take over or the person clearly begins to
+                      breathe.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box">
+                <i class="fa-solid fa-music"></i>
+                <p>
+                  <strong>Rhythm tip:</strong> If untrained, hands-only CPR
+                  (compressions only, no breaths) is still very effective. Push
+                  to the beat of "Stayin' Alive" by the Bee Gees — it's exactly
+                  100 BPM. Your compressions should be as deep as pressing 2
+                  inches into a sofa cushion.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── CHOKING ─── -->
+            <div class="t-panel" id="panel-choking">
+              <div class="t-head urgent">
+                <div class="t-head-icon"><i class="fa-solid fa-lungs"></i></div>
+                <div class="t-head-text">
+                  <h2>Choking — Heimlich Maneuver</h2>
+                  <p>
+                    For adults and children over 1 year with a blocked airway
+                  </p>
+                  <span class="t-urgent-badge"
+                    ><i class="fa-solid fa-circle-exclamation"></i>
+                    Life-threatening emergency</span
+                  >
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i
+                    ><span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/qYg2PfHHtRA?rel=0&modestbranding=1"
+                    title="Choking First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Identify Severe Choking</h4>
+                    <p>
+                      The person cannot speak, cough, or breathe. They may
+                      clutch their throat — the universal choking sign. A
+                      high-pitched sound or silence during attempted breathing
+                      means severe blockage.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Get Help Immediately</h4>
+                    <p>
+                      Shout for someone to call 911/123. Don't leave the person
+                      alone. If alone and the maneuver fails, call before
+                      attempting further steps.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-hand-back-fist"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>5 Back Blows</h4>
+                    <p>
+                      Lean them forward and give 5 firm blows between the
+                      shoulder blades with the heel of your hand. Each blow
+                      should be a separate, forceful strike.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-arrows-to-circle"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>5 Abdominal Thrusts (Heimlich)</h4>
+                    <p>
+                      Stand behind them. Make a fist just above the navel, cover
+                      with your other hand, and thrust sharply inward and upward
+                      5 times. Use enough force to feel it.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-rotate"></i></div>
+                  <div class="step-body">
+                    <h4>Alternate Until Cleared</h4>
+                    <p>
+                      Keep alternating 5 back blows and 5 abdominal thrusts
+                      until the object is expelled, the person can breathe, or
+                      they lose consciousness (then begin CPR).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box">
+                <i class="fa-solid fa-baby"></i>
+                <p>
+                  <strong>Infants under 1 year:</strong> Never use abdominal
+                  thrusts. Use 5 back blows followed by 5 chest thrusts (2
+                  fingers, centre of chest). Hold face-down on your forearm.
+                  Always see a doctor after any choking incident in a baby.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── BLEEDING ─── -->
+            <div class="t-panel" id="panel-bleeding">
+              <div class="t-head urgent">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-droplet"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>Severe Bleeding — Wound Control</h2>
+                  <p>
+                    For cuts, puncture wounds, and lacerations with significant
+                    blood loss
+                  </p>
+                  <span class="t-urgent-badge"
+                    ><i class="fa-solid fa-circle-exclamation"></i>
+                    Life-threatening emergency</span
+                  >
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i
+                    ><span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/YLbmj7JTiCw?rel=0&modestbranding=1"
+                    title="Bleeding First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-shield-virus"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Protect Yourself First</h4>
+                    <p>
+                      Use gloves if available. If not, use a clean plastic bag,
+                      or ask the casualty to apply pressure themselves. Avoid
+                      direct contact with blood when possible.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 for Major Bleeding</h4>
+                    <p>
+                      Uncontrolled bleeding from a large wound, an amputated
+                      limb, or a stab/gunshot wound requires emergency services
+                      immediately.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-hand"></i></div>
+                  <div class="step-body">
+                    <h4>Apply Direct Pressure</h4>
+                    <p>
+                      Press a clean cloth or dressing firmly onto the wound. Do
+                      not remove it if it becomes soaked — apply more material
+                      on top. Maintain constant, firm pressure.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-arrow-up"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Elevate the Injured Limb</h4>
+                    <p>
+                      If the wound is on an arm or leg and there is no suspected
+                      fracture, raise it above heart level to slow bleeding.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-clock"></i></div>
+                  <div class="step-body">
+                    <h4>Maintain Pressure for 10–15 Minutes</h4>
+                    <p>
+                      Do not lift the cloth to check — this disturbs clotting.
+                      Keep constant pressure for at least 10–15 minutes without
+                      peeking.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-bandage"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Bandage Firmly</h4>
+                    <p>
+                      Once bleeding slows, secure the dressing firmly without
+                      cutting circulation. Check for a pulse below the bandage
+                      after applying.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>
+                  <strong>Tourniquet (for limb bleeds only):</strong> For
+                  life-threatening, uncontrolled limb bleeding, apply a
+                  tourniquet 5–7 cm above the wound. Write the time of
+                  application on the person's skin or on the tourniquet itself
+                  and inform paramedics immediately. Never remove it yourself.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── BURNS ─── -->
+            <div class="t-panel" id="panel-burns">
+              <div class="t-head">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>Burns — Thermal, Chemical &amp; Electrical</h2>
+                  <p>
+                    Correct immediate care reduces burn depth and prevents
+                    permanent scarring
+                  </p>
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i
+                    ><span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/jY5gUFN4c0Q?rel=0&modestbranding=1"
+                    title="Burns First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-person-running"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Stop the Source Immediately</h4>
+                    <p>
+                      Remove the person from heat, extinguish flames (stop,
+                      drop, roll), or remove chemically contaminated clothing —
+                      unless it's stuck to the skin.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-faucet"></i></div>
+                  <div class="step-body">
+                    <h4>Cool With Running Water — 20 Minutes</h4>
+                    <p>
+                      Use lukewarm water (not cold, not iced). Cool the burn for
+                      a full 20 minutes. Start within 3 hours of injury for best
+                      results. Cooling is the single most effective
+                      intervention.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-ring"></i></div>
+                  <div class="step-body">
+                    <h4>Remove Jewellery Gently</h4>
+                    <p>
+                      Remove rings, watches, and bracelets before swelling
+                      begins — but only if not attached to the burn.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-layer-group"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Cover Loosely</h4>
+                    <p>
+                      Cover with cling film laid flat (not wrapped), a clean
+                      non-fluffy cloth, or a sterile burn dressing. Do not wrap
+                      tightly. Never use cotton wool directly on a burn.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-hospital"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Seek Medical Care</h4>
+                    <p>
+                      Go to A&amp;E for: burns larger than your palm, burns on
+                      the face/hands/genitals/joints, all electrical or chemical
+                      burns, and any third-degree burn regardless of size.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box danger">
+                <i class="fa-solid fa-ban"></i>
+                <p>
+                  <strong>Never apply:</strong> butter, toothpaste, oil, ice
+                  directly, or any cream or home remedy. These trap heat and
+                  dramatically increase infection risk. Never burst blisters —
+                  they are the body's natural sterile dressing protecting the
+                  wound beneath.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── FRACTURES ─── -->
+            <div class="t-panel" id="panel-fracture">
+              <div class="t-head">
+                <div class="t-head-icon"><i class="fa-solid fa-bone"></i></div>
+                <div class="t-head-text">
+                  <h2>Fractures — Bone Immobilisation</h2>
+                  <p>
+                    Stabilisation and keeping calm are your two most important
+                    tools
+                  </p>
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i
+                    ><span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/q0VIItHEVY0?rel=0&modestbranding=1"
+                    title="Fractures First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-hand-paper"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Do Not Move the Person</h4>
+                    <p>
+                      Especially if the fracture may be in the spine, neck, or
+                      pelvis. Movement can cause paralysis. Tell them to stay
+                      still.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 for Serious Fractures</h4>
+                    <p>
+                      Open fractures (bone visible), suspected spinal injury,
+                      significant deformity, and loss of sensation below the
+                      injury all require emergency services.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-compress-arrows-alt"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Control Any Bleeding</h4>
+                    <p>
+                      For open fractures, press gently around (not over) the
+                      bone with a clean cloth. Never push a protruding bone back
+                      in.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Immobilise in Position Found</h4>
+                    <p>
+                      Support the limb in whatever position you find it. An
+                      improvised splint can be made from a rolled magazine,
+                      umbrella, or straight stick with padding between it and
+                      the skin.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-stethoscope"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Check Circulation Every 10 Minutes</h4>
+                    <p>
+                      Check for pulse, warmth, colour, and sensation in the limb
+                      beyond the fracture. Pallor, coldness, or numbness means
+                      impaired blood flow — loosen the splint.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <p>
+                  <strong>Improvised slings &amp; splints:</strong> For an arm
+                  fracture, a sling can be made from a scarf or triangular
+                  bandage. For a leg fracture, you can splint it to the
+                  uninjured leg with padding between them and soft ties at the
+                  knee and ankle — never over the fracture site.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── STROKE ─── -->
+            <div class="t-panel" id="panel-stroke">
+              <div class="t-head urgent">
+                <div class="t-head-icon"><i class="fa-solid fa-brain"></i></div>
+                <div class="t-head-text">
+                  <h2>Stroke — The FAST Rule</h2>
+                  <p>
+                    Every minute of delay = 2 million brain cells lost — act
+                    immediately
+                  </p>
+                  <span class="t-urgent-badge"
+                    ><i class="fa-solid fa-circle-exclamation"></i>
+                    Life-threatening emergency</span
+                  >
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i
+                    ><span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/WUQPHW4kmiM?rel=0&modestbranding=1"
+                    title="Stroke First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step warn">
+                  <div
+                    class="step-num"
+                    style="font-size: 1.1rem; font-weight: 900"
+                  >
+                    F
+                  </div>
+                  <div class="step-body">
+                    <h4>Face — Ask them to smile</h4>
+                    <p>
+                      Is one side of their face drooping or numb? An uneven
+                      smile is a strong warning sign. Ask: "Can you show me your
+                      teeth?"
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div
+                    class="step-num"
+                    style="font-size: 1.1rem; font-weight: 900"
+                  >
+                    A
+                  </div>
+                  <div class="step-body">
+                    <h4>Arms — Raise both together</h4>
+                    <p>
+                      Does one arm drift downward or feel weak? Ask them to hold
+                      both arms out in front and close their eyes. Any drift in
+                      one arm is significant.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div
+                    class="step-num"
+                    style="font-size: 1.1rem; font-weight: 900"
+                  >
+                    S
+                  </div>
+                  <div class="step-body">
+                    <h4>Speech — Repeat a simple sentence</h4>
+                    <p>
+                      Is their speech slurred, garbled, or are they unable to
+                      speak at all? Ask: "The sky is blue" — can they repeat it
+                      clearly?
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div
+                    class="step-num"
+                    style="font-size: 1.1rem; font-weight: 900"
+                  >
+                    T
+                  </div>
+                  <div class="step-body">
+                    <h4>Time — Call 911 NOW</h4>
+                    <p>
+                      If any of the above are present — even if they improve —
+                      call 911 immediately. Note the exact time symptoms
+                      started. This is vital information for treatment.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-couch"></i></div>
+                  <div class="step-body">
+                    <h4>While Waiting for the Ambulance</h4>
+                    <p>
+                      Keep them calm and seated or lying down. Give nothing by
+                      mouth. If unconscious and breathing, place in the recovery
+                      position (on their side).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <p>
+                  <strong>The 4.5-hour window:</strong> Clot-busting drugs
+                  (thrombolytics) only work within 4.5 hours of symptom onset.
+                  Thrombectomy may be possible up to 24 hours. Getting to
+                  hospital fast is the single biggest factor in stroke outcome —
+                  every minute matters enormously.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── ANAPHYLAXIS ─── -->
+            <div class="t-panel" id="panel-anaphylaxis">
+              <div class="t-head urgent">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-syringe"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>Anaphylaxis — Severe Allergic Reaction</h2>
+                  <p>
+                    A whole-body allergic emergency that can be fatal within
+                    minutes without treatment
+                  </p>
+                  <span class="t-urgent-badge"
+                    ><i class="fa-solid fa-circle-exclamation"></i>
+                    Life-threatening emergency</span
+                  >
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> English</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/QL_CD0-uEL0?rel=0&modestbranding=1"
+                    title="Anaphylaxis First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Recognise Anaphylaxis</h4>
+                    <p>
+                      Any combination of: sudden hives/rash, throat tightening
+                      or difficulty swallowing, wheezing or difficulty
+                      breathing, swelling of face/lips/tongue, rapid pulse, pale
+                      or blotchy skin, dizziness or collapse — especially after
+                      known allergen exposure.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 Immediately</h4>
+                    <p>
+                      Anaphylaxis is always an emergency. Call even if the
+                      person has an EpiPen — they still need hospital
+                      monitoring. Say "anaphylaxis" clearly to the dispatcher.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-syringe"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Use the EpiPen (Adrenaline Auto-Injector)</h4>
+                    <p>
+                      If the person has one — or you have access to one — inject
+                      into the outer thigh (through clothing if necessary). Hold
+                      in place for 10 seconds, then massage the site. Note the
+                      time.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-person-falling"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Position Correctly</h4>
+                    <p>
+                      If breathing is difficult, let them sit up. If they feel
+                      faint or have collapsed, lay them down and raise their
+                      legs — unless this makes breathing harder. Do not ask them
+                      to stand up suddenly.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-repeat"></i></div>
+                  <div class="step-body">
+                    <h4>Prepare for a Second Dose</h4>
+                    <p>
+                      If there is no improvement after 5 minutes, a second
+                      EpiPen can be used if available. The reaction can return
+                      (biphasic reaction) even after the person improves —
+                      hospital observation is always required.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>If Unconscious and Not Breathing</h4>
+                    <p>
+                      Begin CPR immediately. Anaphylaxis can stop the heart.
+                      Continue until paramedics arrive.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>
+                  <strong>Biphasic reactions:</strong> Up to 20% of anaphylaxis
+                  cases have a second wave of symptoms 1–72 hours after the
+                  first. Even if the person feels completely better, they must
+                  be taken to hospital for observation. Never let them go home
+                  alone after anaphylaxis.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── POISONING ─── -->
+            <div class="t-panel" id="panel-poisoning">
+              <div class="t-head">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-skull-crossbones"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>Poisoning — Ingestion, Inhalation &amp; Contact</h2>
+                  <p>
+                    The correct response differs by exposure route — don't delay
+                    in seeking help
+                  </p>
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i
+                    ><span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> Arabic</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/_DRLUlISqsA?rel=0&modestbranding=1"
+                    title="Poisoning First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 or Poison Control Immediately</h4>
+                    <p>
+                      Have the substance name or container to hand. Don't wait
+                      for symptoms to appear. The earlier you call, the better
+                      the outcome.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-pills"></i></div>
+                  <div class="step-body">
+                    <h4>If Swallowed</h4>
+                    <p>
+                      Do not induce vomiting unless explicitly told to by Poison
+                      Control. Keep the person calm and upright. Preserve the
+                      container — the label helps paramedics.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-wind"></i></div>
+                  <div class="step-body">
+                    <h4>If Inhaled</h4>
+                    <p>
+                      Move them to fresh air immediately. Open windows. Never
+                      enter a gas-filled space without breathing protection —
+                      you will become a casualty too.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-faucet"></i></div>
+                  <div class="step-body">
+                    <h4>If on Skin or in Eyes</h4>
+                    <p>
+                      Skin: remove contaminated clothing and flush with plenty
+                      of water for 20 minutes. Eyes: irrigate with clean water
+                      or saline for at least 15 minutes — hold the eyelids open
+                      and flush from the inner corner outward.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-eye"></i></div>
+                  <div class="step-body">
+                    <h4>Monitor Closely</h4>
+                    <p>
+                      Watch for any change in consciousness, breathing, or skin
+                      colour. If unconscious but breathing, use the recovery
+                      position. If they stop breathing — begin CPR.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box danger">
+                <i class="fa-solid fa-ban"></i>
+                <p>
+                  <strong>Never give anything by mouth</strong> to an
+                  unconscious or seizing person. Do not give milk, activated
+                  charcoal, or any home remedies without direct instruction from
+                  Poison Control. Some substances react violently with certain
+                  antidotes.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── SHOCK ─── -->
+            <div class="t-panel" id="panel-shock">
+              <div class="t-head">
+                <div class="t-head-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="t-head-text">
+                  <h2>Medical Shock — Recognise &amp; Act</h2>
+                  <p>
+                    A life-threatening condition where organs don't receive
+                    enough blood flow
+                  </p>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Recognise the Signs of Shock</h4>
+                    <p>
+                      Pale, cold, clammy skin; rapid and weak pulse; fast,
+                      shallow breathing; dizziness and confusion; nausea or
+                      intense thirst. Skin may turn grey or have a blue tinge
+                      around the lips.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 Immediately</h4>
+                    <p>
+                      Shock is always a medical emergency. Call while beginning
+                      first aid — do not delay emergency services.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-person-falling"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Lay Them Down Gently</h4>
+                    <p>
+                      Help them to the ground carefully. Avoid unnecessary
+                      movement. Keep them as still as possible.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-arrow-up"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Raise Their Legs</h4>
+                    <p>
+                      Unless there is a suspected head, neck, or leg fracture,
+                      raise the legs approximately 30 cm to improve blood flow
+                      to vital organs. Do not raise the legs if breathing
+                      becomes harder.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-temperature-low"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Keep Warm &amp; Treat the Cause</h4>
+                    <p>
+                      Cover with a blanket (avoid overheating). Control any
+                      bleeding. Loosen tight clothing around the neck, chest,
+                      and waist.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-comments"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Reassure &amp; Monitor Continuously</h4>
+                    <p>
+                      Talk to them calmly. Give nothing by mouth. Check
+                      breathing and pulse every few minutes until paramedics
+                      arrive.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box danger">
+                <i class="fa-solid fa-syringe"></i>
+                <p>
+                  <strong>Anaphylactic shock</strong> specifically requires
+                  adrenaline (EpiPen) — see the Anaphylaxis guide.
+                  <strong>Septic shock</strong> requires urgent IV antibiotics
+                  at hospital. Shock from bleeding requires controlling the
+                  bleed first — see the Severe Bleeding guide.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── DIABETIC CRISIS ─── -->
+            <div class="t-panel" id="panel-diabetic">
+              <div class="t-head">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-candy-cane"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>Diabetic Crisis — Low &amp; High Blood Sugar</h2>
+                  <p>
+                    Recognise whether blood sugar is dangerously low (hypo) or
+                    high (hyper) — the responses differ
+                  </p>
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> English</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/sWYxsU53ZCo?rel=0&modestbranding=1"
+                    title="Diabetic Emergency First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Identify the Type of Crisis</h4>
+                    <p>
+                      <strong>Hypoglycaemia (low sugar):</strong> sudden
+                      dizziness, shaking, sweating, pale skin, confusion,
+                      hunger, irritability — acts quickly.
+                      <strong>Hyperglycaemia (high sugar):</strong> gradual
+                      onset, fruity breath, extreme thirst, frequent urination,
+                      fatigue, nausea.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-arrow-trend-down"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Hypoglycaemia — Give Sugar Immediately</h4>
+                    <p>
+                      If the person is conscious: give 15–20g of fast-acting
+                      sugar — a glass of fruit juice, sugary drink, glucose
+                      tablets, or 3–4 teaspoons of sugar. Wait 15 minutes. If no
+                      improvement, give more. Once recovered, give a
+                      longer-acting snack (crackers, sandwich).
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-droplet"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Hyperglycaemia — Water &amp; Medical Help</h4>
+                    <p>
+                      Encourage the person to drink water and contact their
+                      doctor or call 111. If they are unconscious, very unwell,
+                      or vomiting, call 911. Do not give insulin unless you are
+                      a trained carer for this person.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 If Unconscious</h4>
+                    <p>
+                      Never give anything by mouth to an unconscious person. If
+                      they lose consciousness, call 911 immediately, place them
+                      in the recovery position, and begin CPR if they stop
+                      breathing.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-clock"></i></div>
+                  <div class="step-body">
+                    <h4>Hypo Rule of 15</h4>
+                    <p>
+                      Give 15g sugar → wait 15 minutes → check again → if still
+                      low, repeat once more → then a substantial snack. If no
+                      improvement after 2 rounds, seek emergency help.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <p>
+                  <strong>Key distinction:</strong> If you are unsure whether
+                  blood sugar is low or high, and the person is conscious,
+                  giving sugar is safer — a little extra sugar in someone with
+                  high blood sugar does much less harm than low sugar going
+                  untreated. When in doubt, give sugar.
+                </p>
+              </div>
+            </div>
+
+            <!-- ─── SEIZURE ─── -->
+            <div class="t-panel" id="panel-seizure">
+              <div class="t-head">
+                <div class="t-head-icon">
+                  <i class="fa-solid fa-person-falling-burst"></i>
+                </div>
+                <div class="t-head-text">
+                  <h2>Seizures — What to Do During &amp; After</h2>
+                  <p>
+                    Protect, time, and observe — most seizures end on their own
+                    within 1–3 minutes
+                  </p>
+                </div>
+              </div>
+
+              <div class="video-wrap">
+                <div class="video-label">
+                  <div class="video-label-left">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>Watch Practical Demonstration</span>
+                  </div>
+                  <span class="video-lang-badge"
+                    ><i class="fa-solid fa-language"></i> English</span
+                  >
+                </div>
+                <div class="video-frame">
+                  <iframe
+                    src="https://www.youtube.com/embed/1SMFUwyEafw?rel=0&modestbranding=1"
+                    title="Seizure First Aid"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="steps-list">
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-clock"></i></div>
+                  <div class="step-body">
+                    <h4>Time the Seizure</h4>
+                    <p>
+                      Note when it starts. Most seizures end within 1–3 minutes.
+                      A seizure lasting over 5 minutes is a medical emergency —
+                      call 911.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>Protect From Injury</h4>
+                    <p>
+                      Clear hard or sharp objects away from the person. Cushion
+                      the head with something soft. Gently guide them away from
+                      danger but do not restrain their movements.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num"><i class="fa-solid fa-ban"></i></div>
+                  <div class="step-body">
+                    <h4>What NOT to Do</h4>
+                    <p>
+                      Never put anything in their mouth — the tongue cannot be
+                      swallowed. Never restrain them. Never give water until
+                      fully conscious. Never leave them alone during the
+                      seizure.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">
+                    <i class="fa-solid fa-person-falling"></i>
+                  </div>
+                  <div class="step-body">
+                    <h4>After the Seizure — Recovery Position</h4>
+                    <p>
+                      When convulsions stop, gently roll them onto their side
+                      (recovery position) to keep the airway clear. They may be
+                      confused or sleepy — this is normal (postictal state) and
+                      can last minutes to hours.
+                    </p>
+                  </div>
+                </div>
+                <div class="step warn">
+                  <div class="step-num"><i class="fa-solid fa-phone"></i></div>
+                  <div class="step-body">
+                    <h4>Call 911 If Any of These Apply</h4>
+                    <p>
+                      The seizure lasts over 5 minutes; another seizure starts
+                      shortly after; they don't regain consciousness; they are
+                      injured; they are pregnant; they are diabetic; or it is
+                      their first known seizure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tip-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <p>
+                  <strong>After the seizure:</strong> Speak calmly and
+                  reassuringly. They may be disoriented and frightened. Explain
+                  what happened in simple terms. Stay with them until they are
+                  fully alert and oriented. Inform them they should see their
+                  doctor regardless, especially for a first seizure.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /panels -->
+        </div>
+        <!-- /topics-wrap -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+     DO & DON'T
+══════════════════════════════════════════════ -->
+    <section class="dd-section">
+      <div class="wrap">
+        <div class="dd-wrap">
+          <span class="s-label">Golden Rules</span>
+          <h2 class="s-title">Do &amp; <span>Don't</span> in First Aid</h2>
+          <p class="s-sub">
+            Common mistakes make injuries worse — know the rules before you need
+            them
+          </p>
+
+          <div class="dd-grid">
+            <div class="dd-col do">
+              <div class="dd-col-head">
+                <i class="fa-solid fa-circle-check"></i> Always Do
+              </div>
+              <ul class="dd-list">
+                <li>
+                  <i class="fa-solid fa-check"></i> Call emergency services
+                  first in serious situations
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Stay calm — your composure
+                  reassures the casualty
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Use gloves or a barrier
+                  between you and blood
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Keep the person still unless
+                  in immediate danger
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Note the time of injury and
+                  any medications taken
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Reassure them continuously —
+                  psychological support matters
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Follow dispatcher
+                  instructions precisely and calmly
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Place unconscious but
+                  breathing persons in recovery position
+                </li>
+              </ul>
+            </div>
+            <div class="dd-col dont">
+              <div class="dd-col-head">
+                <i class="fa-solid fa-circle-xmark"></i> Never Do
+              </div>
+              <ul class="dd-list">
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't remove an object
+                  embedded in a wound
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't apply ice directly to
+                  skin or burns
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't move someone with a
+                  suspected spinal injury
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't give food or drink to
+                  an unconscious person
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't induce vomiting after
+                  poisoning without medical advice
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't remove a crash helmet
+                  without clear need
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't leave them alone —
+                  stay until help arrives
+                </li>
+                <li>
+                  <i class="fa-solid fa-xmark"></i> Don't apply butter,
+                  toothpaste, or oil to burns
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+     KIT CHECKLIST
+══════════════════════════════════════════════ -->
+    <section class="kit-section">
+      <div class="wrap">
+        <span class="s-label">Be Prepared</span>
+        <h2 class="s-title">First Aid Kit <span>Checklist</span></h2>
+        <p class="s-sub">
+          Tap each item to check it off — is your kit complete?
+        </p>
+
+        <div class="kit-grid" id="kitGrid">
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-bandage kit-icon"></i> Adhesive plasters
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-scroll kit-icon"></i> Sterile gauze pads
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-tape kit-icon"></i> Medical tape
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-scissors kit-icon"></i> Medical scissors
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-hand-dots kit-icon"></i> Latex gloves (x2
+            pairs)
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-temperature-half kit-icon"></i> Thermometer
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-flashlight kit-icon"></i> Small torch
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-pills kit-icon"></i> Antihistamine tablets
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-spray-can kit-icon"></i> Antiseptic solution
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-snowflake kit-icon"></i> Instant cold pack
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-eye-dropper kit-icon"></i> Eye wash solution
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-book-medical kit-icon"></i> First aid booklet
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-sling kit-icon"></i> Triangular bandage
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-screwdriver kit-icon"></i> Tweezers
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-face-mask kit-icon"></i> CPR face shield
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-phone kit-icon"></i> Emergency numbers list
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-pills kit-icon"></i> Pain relief tablets
+          </div>
+          <div class="kit-item" onclick="toggleKit(this)">
+            <div class="kit-cb">
+              <i class="fa-solid fa-check" style="display: none"></i>
+            </div>
+            <i class="fa-solid fa-weight-scale kit-icon"></i> SAM splint
+          </div>
+        </div>
+
+        <div class="kit-progress">
+          <div class="kit-bar" id="kitBar"></div>
+        </div>
+        <div class="kit-progress-label">
+          <span id="kitCount">0 of 18 items checked</span>
+          <span id="kitPct">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+     EMERGENCY NUMBERS
+══════════════════════════════════════════════ -->
+    <section class="numbers-section">
+      <div class="wrap">
+        <span class="s-label">Emergency Contacts</span>
+        <h2 class="s-title">Numbers That <span>Save Lives</span></h2>
+        <p class="s-sub">
+          Save them now, before you need them — every second counts
+        </p>
+
+        <div class="numbers-grid">
+          <div class="num-card">
+            <i class="fa-solid fa-truck-medical"></i>
+            <div class="n-label">Ambulance</div>
+            <div class="n-num">123</div>
+            <div class="n-name">Medical Emergency</div>
+          </div>
+          <div class="num-card">
+            <i class="fa-solid fa-fire-extinguisher"></i>
+            <div class="n-label">Fire Service</div>
+            <div class="n-num">180</div>
+            <div class="n-name">Fire &amp; Rescue</div>
+          </div>
+          <div class="num-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div class="n-label">Police</div>
+            <div class="n-num">122</div>
+            <div class="n-name">Security Emergency</div>
+          </div>
+          <div class="num-card">
+            <i class="fa-solid fa-flask-vial"></i>
+            <div class="n-label">Poison Control</div>
+            <div class="n-num">19190</div>
+            <div class="n-name">Toxicology Emergency</div>
+          </div>
+          <div class="num-card">
+            <i class="fa-solid fa-hospital"></i>
+            <div class="n-label">Health Hotline</div>
+            <div class="n-num">08008880700</div>
+            <div class="n-name">Ministry of Health</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="meds-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>care at home</h3>
+          <p class="footer-support">customer support</p>
+          <p class="footer-support-text">
+            support is open 24/7 in the care at home
+          </p>
+          <p class="footer-address-title">address</p>
+          <p class="footer-address">egypt, tanta</p>
+          <div class="footer-social">
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-x-twitter"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>services</h4>
+          <ul>
+            <li><a href="../Care-Bot/bot.html">bot care at home</a></li>
+            <li>
+              <a href="../healthdashboard/health-dashboard.html"
+                >health dashboard</a
+              >
+            </li>
+            <li>
+              <a href="../patient services/patient.html">patient services</a>
+            </li>
+            <li>
+              <a href="../index.html#Telehealth Services"
+                >telehealth services</a
+              >
+            </li>
+            <li><a href="../Medication/Medication.html">medication</a></li>
+            <li>
+              <a href="../Medical diagnosis/Medical diagnosis.html"
+                >diagnosis</a
+              >
+            </li>
+            <li><a href="../Emergency/emergency.html">emergency</a></li>
+            <li><a href="../nursing/nursing.html">nursing</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>product</h4>
+          <ul>
+            <li><a href="../How It Work/how it work.html">how it works</a></li>
+            <li><a href="../Subscriptions/">pricing</a></li>
+            <li><a href="#">promo codes</a></li>
+            <li><a href="#">employers</a></li>
+            <li><a href="#">brokers</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>company</h4>
+          <ul>
+            <li><a href="../about us/about.html">about us</a></li>
+            <li><a href="../help us/help.html">help center</a></li>
+            <li>
+              <a href="../our providers/our providers.html">our providers</a>
+            </li>
+            <li><a href="../pharmacy/contactus/contact.html">contact us</a></li>
+            <li><a href="#">newsroom</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>legal</h4>
+          <ul>
+            <li><a href="#">terms of use</a></li>
+            <li><a href="#">privacy policy</a></li>
+            <li><a href="#">refund / cancellation policy</a></li>
+            <li><a href="#">notice of privacy practices</a></li>
+            <li><a href="#">consent to virtual visits</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-partners">
+        <span class="partner-logo">aetna</span>
+        <span class="partner-logo">anthem</span>
+        <span class="partner-logo">humana</span>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 care at home, inc. all rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      /* ── Topic Switching ── */
+      function switchTopic(id) {
+        document
+          .querySelectorAll(".t-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".tn-btn")
+          .forEach((b) => b.classList.remove("active"));
+        const panel = document.getElementById("panel-" + id);
+        const btn = document.getElementById("nav-" + id);
+        if (panel) panel.classList.add("active");
+        if (btn) btn.classList.add("active");
+        document
+          .getElementById("topics-section")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* ── Video Hub Modal ── */
+      function openVideo(videoId, title, start) {
+        const modal = document.getElementById("vhModal");
+        const iframe = document.getElementById("vhModalIframe");
+        const titleEl = document.getElementById("vhModalTitle");
+        let src =
+          "https://www.youtube.com/embed/" +
+          videoId +
+          "?rel=0&modestbranding=1&autoplay=1";
+        if (start) src += "&start=" + start;
+        iframe.src = src;
+        titleEl.textContent = title || "Video";
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeVideo() {
+        const modal = document.getElementById("vhModal");
+        const iframe = document.getElementById("vhModalIframe");
+        modal.classList.remove("open");
+        iframe.src = "";
+        document.body.style.overflow = "";
+      }
+      document.querySelectorAll(".vh-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          openVideo(card.dataset.video, card.dataset.title, card.dataset.start);
+        });
+      });
+      document.getElementById("vhModal").addEventListener("click", (e) => {
+        if (e.target.id === "vhModal") closeVideo();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeVideo();
+      });
+
+      /* ── Kit Checklist ── */
+      const TOTAL_ITEMS = 18;
+      function toggleKit(el) {
+        el.classList.toggle("checked");
+        const icon = el.querySelector(".kit-cb i");
+        if (icon)
+          icon.style.display = el.classList.contains("checked")
+            ? "block"
+            : "none";
+        updateKitProgress();
+      }
+      function updateKitProgress() {
+        const checked = document.querySelectorAll(".kit-item.checked").length;
+        const pct = Math.round((checked / TOTAL_ITEMS) * 100);
+        document.getElementById("kitBar").style.width = pct + "%";
+        document.getElementById("kitCount").textContent =
+          checked + " of " + TOTAL_ITEMS + " items checked";
+        document.getElementById("kitPct").textContent = pct + "%";
+      }
+
+      /* ── CPR Rate Trainer ── */
+      let cprInterval = null;
+      let cprBeat = 0;
+      const TOTAL_BEATS = 32; // 30 compressions + 2 breaths
+      const INTERVAL_MS = 60000 / 110; // ~110 BPM
+
+      function buildCprBeats() {
+        const container = document.getElementById("cprBeats");
+        if (!container) return;
+        container.innerHTML = "";
+        for (let i = 0; i < TOTAL_BEATS; i++) {
+          const d = document.createElement("div");
+          d.className = "cpr-beat" + (i >= 30 ? " breath-slot" : "");
+          d.id = "beat-" + i;
+          container.appendChild(d);
+        }
+      }
+
+      function toggleCPR() {
+        const btn = document.getElementById("cprToggle");
+        if (cprInterval) {
+          clearInterval(cprInterval);
+          cprInterval = null;
+          btn.innerHTML = '<i class="fa-solid fa-play"></i> Start';
+          document.getElementById("cprLabel").textContent =
+            "Press Start to practise the correct rhythm";
+          document
+            .querySelectorAll(".cpr-beat")
+            .forEach((b) => b.classList.remove("active", "breath"));
+          cprBeat = 0;
+        } else {
+          btn.innerHTML = '<i class="fa-solid fa-stop"></i> Stop';
+          document.getElementById("cprLabel").textContent =
+            "Push! — matching 110 compressions per minute";
+          cprInterval = setInterval(advanceBeat, INTERVAL_MS);
+          advanceBeat();
+        }
+      }
+
+      function advanceBeat() {
+        document
+          .querySelectorAll(".cpr-beat")
+          .forEach((b) => b.classList.remove("active", "breath"));
+        const el = document.getElementById("beat-" + cprBeat);
+        if (el) el.classList.add(cprBeat >= 30 ? "breath" : "active");
+        cprBeat = (cprBeat + 1) % TOTAL_BEATS;
+      }
+
+      buildCprBeats();
+     /* ── Google Translate ────────────────────────────────────── */
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: "en", includedLanguages: "en,ar", autoDisplay: false },
+    "google_translate_element",
+  );
+}
+
+(function () {
+  var sc = document.createElement("script");
+  sc.src =
+    "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+  document.head.appendChild(sc);
+})();
+
+var currentLang = "en";
+var toggleBtn = document.getElementById("lang-toggle");
+
+function setCookieAndReload(lang) {
+  // Google Translate بيقرأ اللغة من الـ cookie اسمها googtrans
+  var cookieVal = lang === "ar" ? "/en/ar" : "/en/en";
+  // نكتب الـ cookie على الـ domain الحالي
+  document.cookie = "googtrans=" + cookieVal + "; path=/";
+  document.cookie =
+    "googtrans=" + cookieVal + "; path=/; domain=" + location.hostname;
+  location.reload();
+}
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", function () {
+    var newLang = currentLang === "en" ? "ar" : "en";
+    setCookieAndReload(newLang);
+  });
+}
+
+// عند تحميل الصفحة: اقرأ الـ cookie وحدّث نص الزرار
+(function () {
+  var match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+  if (match && match[1] === "ar") {
+    currentLang = "ar";
+    if (toggleBtn) toggleBtn.textContent = "en";
+  }
+})();
+
+    </script>
+  </body>
+</html>
