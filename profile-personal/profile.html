@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="profile.css"/>
+  <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
+  <title>Profile-personal | Care At Home</title>
+</head>
+<body>
+
+  <!-- MODAL -->
+  <div id="infoModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModalBtn()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="logo">
+    <div class="nav-bar">
+      <nav>
+        <div class="logo">
+          <a href="#logo"><p><span>care at home</span></p></a>
+          <div class="lang-switch">
+            <button id="lang-toggle">ar</button>
+          </div>
+        </div>
+        <ul class="sidebar">
+          <li onclick="hidesidebar()"><a href="#"><span class="material-symbols-outlined">close</span></a></li>
+          <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+          <li><a href="../How It Work/how it work.html">how care at home works</a></li>
+          <li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+          <li><a href="../prescriptions/prescriptions.html">Telehealth Services</a></li>
+          <li><a class="a4" href="../our providers/our providers.html">our providers</a></li>
+        </ul>
+        <ul>
+         <li><a href="../Doctors/alldoctors.html">online doctor</a></li>
+          <li><a href="../How It Work/how it work.html">how care at home works</a></li>
+          <li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+          <li><a href="../prescriptions/prescriptions.html">Telehealth Services</a></li>
+          <li><a class="a4" href="../our providers/our providers.html">our providers</a></li>
+          <li class="span" onclick="showsidebar()"><a href="#"><span class="material-symbols-outlined">menu</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN PROFILE SECTION -->
+  <section>
+    <div class="profile">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="side">
+        <div class="imge"><img src="../Dashboard/images/dad.jpg" alt=""></div>
+        <div class="icons">
+          <a class="icon" href="../index.html"><span class="material-symbols-outlined">home</span></a>
+          <a class="item" href="../healthdashboard/health-dashboard.html"><span class="material-symbols-outlined">person</span></a>
+          <a class="item" href="#"><span class="material-symbols-outlined">mail</span></a>
+          <a class="item" href="../profile edit/profile copy.html"><span class="material-symbols-outlined">settings</span></a>
+          <a class="icon1" href="../Get-Started/get-started.html"><span class="material-symbols-outlined">logout</span></a>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <main class="main">
+
+        <!-- greeting -->
+        <div class="first">
+          <div class="title">
+            <h2>hello, hassan</h2>
+            <p>it's good to see you, hassan 👋</p>
+          </div>
+          <div class="image"><img src="../Dashboard/images/dad.jpg" alt=""></div>
+        </div>
+
+        <!-- progress carousel -->
+        <div class="second">
+          <div class="third">
+            <div class="dev"><img src="./image/Flag_of_Egypt.svg.png" alt="" id="transFlag"></div>
+            <div class="tit">
+              <h3>egypt</h3>
+              <p>by hassan elsaid</p>
+            </div>
+            <div class="doctors">
+              <div class="progress">
+                <svg viewBox="0 0 80 80">
+                  <defs>
+                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#6c47ff"/>
+                      <stop offset="100%" style="stop-color:#3d1fa8"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="40" cy="40" r="30" class="ring-bg"/>
+                  <circle cx="40" cy="40" r="30" class="ring-fill" id="ringCircle"/>
+                </svg>
+                <div class="number"><p>70%</p></div>
+              </div>
+            </div>
+            <div class="butn"><a href="#">continue</a></div>
+          </div>
+          <div class="circle">
+            <a class="arrow" href="#"><span class="material-symbols-outlined">arrow_left_alt</span></a>
+            <a href="#"><span class="material-symbols-outlined">arrow_right_alt</span></a>
+          </div>
+        </div>
+
+        <!-- about / tabs -->
+        <div class="about" id="about-me">
+          <h1>about me <span style="font-size:.75rem;font-weight:500;color:var(--text-soft);margin-left:8px;">· your medical journey</span></h1>
+          <div class="street">
+            <a class="link active-tab" href="#" data-tab="all">all activities</a>
+            <a href="#" data-tab="operations">operations</a>
+            <a href="#" data-tab="sessions">sessions</a>
+            <a href="#" data-tab="donations">donations</a>
+          </div>
+
+          <!-- TAB: ALL -->
+          <div class="meme" id="tab-all">
+            <div class="all clickable-card" data-id="op1"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>open heart surgery</h3><p>kasr al-aini hospital · cairo</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>10:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.8</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="op2"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>appendectomy</h3><p>mansoura university hospital</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>2:00 pm</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.5</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="ses1"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>physical therapy session</h3><p>tanta university hospital · gharbia</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>11:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.3</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="ses2"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>chemotherapy session</h3><p>national cancer institute</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>9:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.7</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="don1"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>children hospital fund</h3><p>abu al-reesh children hospital</p></div><div class="don-amount donated"><span class="material-symbols-outlined">volunteer_activism</span>500 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>12 jan 2025</span><span class="don-badge done">completed</span></div></div></div>
+          </div>
+
+          <!-- TAB: OPERATIONS -->
+          <div class="meme" id="tab-operations" style="display:none;">
+            <div class="all clickable-card" data-id="op1"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>open heart surgery</h3><p>kasr al-aini hospital · cairo</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>10:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.8</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="op2"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>appendectomy</h3><p>mansoura university hospital</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>2:00 pm</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.5</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="op3"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>cervical disc surgery</h3><p>sheikh zayed specialized hospital</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>8:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.6</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="op4"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>cataract surgery</h3><p>national eye institute</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>12:00 pm</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.9</a></div><div class="butn"><a href="#">details</a></div></div></div>
+          </div>
+
+          <!-- TAB: SESSIONS -->
+          <div class="meme" id="tab-sessions" style="display:none;">
+            <div class="all clickable-card" data-id="ses1"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>physical therapy session</h3><p>tanta university hospital · gharbia</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>11:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.3</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="ses2"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>chemotherapy session</h3><p>national cancer institute</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>9:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.7</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="ses3"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>dialysis session</h3><p>kidney & urology hospital · cairo</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>7:00 am</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.4</a></div><div class="butn"><a href="#">details</a></div></div></div>
+            <div class="all clickable-card" data-id="ses4"><div class="alls"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>psychiatry session</h3><p>abbassia mental health hospital · cairo</p></div><div class="clock"><a class="time" href="#"><span class="material-symbols-outlined">history_toggle_off</span>3:00 pm</a><a href="#"><span class="material-symbols-outlined">star_rate</span>4.6</a></div><div class="butn"><a href="#">details</a></div></div></div>
+          </div>
+
+          <!-- TAB: DONATIONS -->
+          <div class="meme" id="tab-donations" style="display:none;">
+            <div class="don-summary">
+              <div class="don-summary-item"><span class="material-symbols-outlined">volunteer_activism</span><div><b>6</b><p>total donations</p></div></div>
+              <div class="don-summary-item"><span class="material-symbols-outlined">payments</span><div><b>2,450 egp</b><p>total donated</p></div></div>
+              <div class="don-summary-item"><span class="material-symbols-outlined">account_balance</span><div><b>550 egp</b><p>remaining goal</p></div></div>
+            </div>
+            <div class="all clickable-card" data-id="don1"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>children hospital fund</h3><p>abu al-reesh children hospital</p></div><div class="don-amount donated"><span class="material-symbols-outlined">volunteer_activism</span>500 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>12 jan 2025</span><span class="don-badge done">completed</span></div></div></div>
+            <div class="all clickable-card" data-id="don2"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>medical equipment fund</h3><p>57357 children cancer hospital</p></div><div class="don-amount donated"><span class="material-symbols-outlined">volunteer_activism</span>750 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>3 feb 2025</span><span class="don-badge done">completed</span></div></div></div>
+            <div class="all clickable-card" data-id="don3"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>cancer research support</h3><p>national cancer institute</p></div><div class="don-amount donated"><span class="material-symbols-outlined">volunteer_activism</span>400 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>20 mar 2025</span><span class="don-badge done">completed</span></div></div></div>
+            <div class="all clickable-card" data-id="don4"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>elderly care fund</h3><p>al-haram university hospital</p></div><div class="don-amount donated"><span class="material-symbols-outlined">volunteer_activism</span>300 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>5 apr 2025</span><span class="don-badge done">completed</span></div></div></div>
+            <div class="all clickable-card" data-id="don5"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>eye surgery fund</h3><p>national eye institute</p></div><div class="don-amount donated"><span class="material-symbols-outlined">volunteer_activism</span>250 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>18 may 2025</span><span class="don-badge pending">pending</span></div></div></div>
+            <div class="all clickable-card" data-id="don6"><div class="alls don-card"><div class="sora"><img src="./image/Flag_of_Egypt.svg.png" alt=""></div><div class="kalam"><h3>orphan support campaign</h3><p>benha university hospital</p></div><div class="don-amount inprogress"><span class="material-symbols-outlined">volunteer_activism</span>250 / 800 egp</div><div class="don-meta"><span class="don-date"><span class="material-symbols-outlined">calendar_today</span>1 jun 2025</span><span class="don-badge inprogress">in progress</span></div><div class="don-bar-wrap"><div class="don-bar"><div class="don-bar-fill" style="width:31%"></div></div><span class="don-bar-label">550 egp remaining</span></div></div></div>
+          </div>
+
+        </div><!-- end about -->
+      </main>
+
+      <!-- RIGHT PANEL -->
+      <div class="right">
+        <div class="rightnow">
+
+          <!-- search + notification -->
+          <div class="search">
+            <div class="inp">
+              <input type="search" placeholder="search...">
+              <span class="material-symbols-outlined">search</span>
+            </div>
+            <div style="position:relative;">
+              <div class="notif-btn" id="notifBtn" onclick="toggleNotif(event)">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="notif-badge" id="notifBadge">3</span>
+              </div>
+              <!-- notifications dropdown -->
+              <div class="notif-panel" id="notifPanel">
+                <div class="notif-panel-head">
+                  <h3>notifications</h3>
+                  <button class="notif-mark-all" onclick="markAllRead()">mark all read</button>
+                </div>
+                <div id="notifList"></div>
+                <div class="notif-panel-foot">
+                  <a href="#">view all notifications</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- stat cards -->
+          <div class="cardright">
+            <div class="cardsright"><b>6</b><p>your donations</p></div>
+            <div class="cardsright"><b>4</b><p>your operations</p></div>
+          </div>
+
+          <!-- personal info -->
+          <div class="info">
+            <h1>your information</h1>
+            <div class="inofr">
+              <h4><span>name</span>hassan elsaid</h4>
+              <h4><span>status</span>patient — under care</h4>
+              <h4><span>age</span>42 years old</h4>
+              <h4><span>blood</span>O+</h4>
+              <a href="#"><i class="fa-solid fa-phone"></i>+201210378575</a>
+              <a href="#"><i class="fa-solid fa-location-dot"></i>tanta elbhr street</a>
+              <a href="#"><i class="fa-solid fa-at"></i>account@gmail.com</a>
+            </div>
+          </div>
+
+          <!-- quick actions -->
+          <div>
+            <div class="sec-title" style="margin-bottom:12px;">
+              <h2 style="font-size:.9rem;">quick actions</h2>
+            </div>
+            <div class="quick-actions">
+              <button class="qa-btn"><span class="material-symbols-outlined">calendar_add_on</span><span class="lbl">book appointment</span></button>
+              <button class="qa-btn"><span class="material-symbols-outlined">medication</span><span class="lbl">refill rx</span></button>
+              <button class="qa-btn"><span class="material-symbols-outlined">upload_file</span><span class="lbl">upload doc</span></button>
+              <button class="qa-btn"><span class="material-symbols-outlined">chat_bubble</span><span class="lbl">message doctor</span></button>
+            </div>
+          </div>
+
+          <!-- weekly streak -->
+          <div>
+            <div class="sec-title" style="margin-bottom:10px;">
+              <h2 style="font-size:.9rem;">weekly check-in</h2>
+              <span style="font-size:.72rem;color:var(--green);font-weight:700;">5 day streak 🔥</span>
+            </div>
+            <div class="streak-row">
+              <div class="streak-day"><div class="streak-dot done"><span class="material-symbols-outlined">check</span></div><span class="dlbl">mon</span></div>
+              <div class="streak-day"><div class="streak-dot done"><span class="material-symbols-outlined">check</span></div><span class="dlbl">tue</span></div>
+              <div class="streak-day"><div class="streak-dot done"><span class="material-symbols-outlined">check</span></div><span class="dlbl">wed</span></div>
+              <div class="streak-day"><div class="streak-dot done"><span class="material-symbols-outlined">check</span></div><span class="dlbl">thu</span></div>
+              <div class="streak-day"><div class="streak-dot done"><span class="material-symbols-outlined">check</span></div><span class="dlbl">fri</span></div>
+              <div class="streak-day"><div class="streak-dot"><span class="material-symbols-outlined">radio_button_unchecked</span></div><span class="dlbl">sat</span></div>
+              <div class="streak-day"><div class="streak-dot"><span class="material-symbols-outlined">radio_button_unchecked</span></div><span class="dlbl">sun</span></div>
+            </div>
+          </div>
+
+        </div><!-- end rightnow -->
+
+        <!-- premium box -->
+        <div class="box">
+          <div class="boton">
+            <h2>upgrade your health plan ✨</h2>
+            <p>Get unlimited doctor consultations, priority appointments, and full medical history tracking with Premium.</p>
+            <div class="premuime"><a href="#">get premium</a></div>
+          </div>
+          <div class="book"><img src="../Doctors/iamge/book.jpg" alt=""></div>
+        </div>
+
+      </div><!-- end right -->
+
+    </div><!-- end profile grid -->
+  </section>
+
+  <!-- PROFILE DETAILS SECTION -->
+  <section class="profile-details-section">
+    <div class="profile-details-wrap">
+
+      <!-- row 1: health metrics + appointments -->
+      <div class="pd-row">
+
+        <div class="health-metrics pd-card">
+          <div class="sec-title"><h2>health metrics</h2><a href="#">view all</a></div>
+          <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-icon red"><span class="material-symbols-outlined">favorite</span></div><div class="val">118<span>/ 76</span></div><div class="lbl">blood pressure</div><span class="metric-status ok"><span class="material-symbols-outlined" style="font-size:.75rem">check_circle</span>normal</span></div>
+            <div class="metric-card"><div class="metric-icon green"><span class="material-symbols-outlined">monitor_heart</span></div><div class="val">72<span>bpm</span></div><div class="lbl">heart rate</div><span class="metric-status ok"><span class="material-symbols-outlined" style="font-size:.75rem">check_circle</span>normal</span></div>
+            <div class="metric-card"><div class="metric-icon blue"><span class="material-symbols-outlined">water_drop</span></div><div class="val">6.8<span>%</span></div><div class="lbl">blood sugar (hba1c)</div><span class="metric-status warn"><span class="material-symbols-outlined" style="font-size:.75rem">warning</span>watch</span></div>
+            <div class="metric-card"><div class="metric-icon purple"><span class="material-symbols-outlined">scale</span></div><div class="val">78<span>kg</span></div><div class="lbl">weight / bmi 24.1</div><span class="metric-status normal"><span class="material-symbols-outlined" style="font-size:.75rem">info</span>healthy</span></div>
+          </div>
+        </div>
+
+        <div class="appointments pd-card">
+          <div class="sec-title"><h2>upcoming appointments</h2><a href="#">+ book new</a></div>
+          <div class="appt-list">
+            <div class="appt-item"><div class="appt-date"><span class="day">24</span><span class="mon">jun</span></div><div class="appt-info"><h4>cardiology follow-up</h4><p>dr. ahmed mostafa — kasr al-aini hospital</p></div><div class="appt-time"><div class="t"><span class="material-symbols-outlined">schedule</span>10:00 am</div><span class="appt-type online">online</span></div></div>
+            <div class="appt-item"><div class="appt-date"><span class="day">02</span><span class="mon">jul</span></div><div class="appt-info"><h4>physical therapy</h4><p>dr. rania kamal — tanta university hospital</p></div><div class="appt-time"><div class="t"><span class="material-symbols-outlined">schedule</span>11:00 am</div><span class="appt-type onsite">on-site</span></div></div>
+            <div class="appt-item"><div class="appt-date"><span class="day">10</span><span class="mon">jul</span></div><div class="appt-info"><h4>cataract surgery</h4><p>dr. sami ibrahim — national eye institute</p></div><div class="appt-time"><div class="t"><span class="material-symbols-outlined">schedule</span>12:00 pm</div><span class="appt-type urgent">surgery</span></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- row 2: prescriptions full width -->
+      <div class="prescriptions pd-card pd-full">
+        <div class="sec-title"><h2>active prescriptions</h2><a href="#">view all</a></div>
+        <div class="rx-grid">
+          <div class="rx-card"><div class="rx-top"><div class="rx-icon"><span class="material-symbols-outlined">medication</span></div><div class="rx-name"><h4>aspirin 100mg</h4><p>dr. ahmed mostafa</p></div></div><span class="rx-dose">once daily — morning</span><div class="rx-schedule"><span class="material-symbols-outlined">calendar_today</span>until 31 dec 2025</div><div class="rx-refill"><span>refill in 12 days</span><div class="rx-bar"><div class="rx-bar-fill" style="width:60%"></div></div><span>60%</span></div></div>
+          <div class="rx-card"><div class="rx-top"><div class="rx-icon"><span class="material-symbols-outlined">medication</span></div><div class="rx-name"><h4>metformin 500mg</h4><p>dr. hisham fouad</p></div></div><span class="rx-dose">twice daily — meals</span><div class="rx-schedule"><span class="material-symbols-outlined">calendar_today</span>ongoing — 3 months</div><div class="rx-refill"><span>refill in 5 days</span><div class="rx-bar"><div class="rx-bar-fill" style="width:25%"></div></div><span>25%</span></div></div>
+          <div class="rx-card"><div class="rx-top"><div class="rx-icon"><span class="material-symbols-outlined">medication</span></div><div class="rx-name"><h4>atorvastatin 20mg</h4><p>dr. ahmed mostafa</p></div></div><span class="rx-dose">once daily — night</span><div class="rx-schedule"><span class="material-symbols-outlined">calendar_today</span>until 15 sep 2025</div><div class="rx-refill"><span>refill in 20 days</span><div class="rx-bar"><div class="rx-bar-fill" style="width:80%"></div></div><span>80%</span></div></div>
+          <div class="rx-card"><div class="rx-top"><div class="rx-icon"><span class="material-symbols-outlined">medication</span></div><div class="rx-name"><h4>omega-3 1000mg</h4><p>dr. tarek abdulaziz</p></div></div><span class="rx-dose">once daily — breakfast</span><div class="rx-schedule"><span class="material-symbols-outlined">calendar_today</span>ongoing supplement</div><div class="rx-refill"><span>refill in 8 days</span><div class="rx-bar"><div class="rx-bar-fill" style="width:45%"></div></div><span>45%</span></div></div>
+        </div>
+      </div>
+
+      <!-- row 3: medical profile + insurance & documents -->
+      <div class="pd-row">
+
+        <div class="med-profile pd-card">
+          <div class="sec-title"><h2>medical profile</h2><a href="#">edit</a></div>
+          <div class="mp-two-col">
+            <div class="mp-block">
+              <h3><span class="material-symbols-outlined">warning</span>allergies</h3>
+              <div class="tag-list">
+                <span class="tag allergy"><span class="material-symbols-outlined">dangerous</span>penicillin</span>
+                <span class="tag allergy"><span class="material-symbols-outlined">dangerous</span>aspirin (high dose)</span>
+                <span class="tag allergy"><span class="material-symbols-outlined">dangerous</span>shellfish</span>
+                <span class="tag allergy"><span class="material-symbols-outlined">dangerous</span>latex</span>
+              </div>
+            </div>
+            <div class="mp-block">
+              <h3><span class="material-symbols-outlined">medical_information</span>chronic conditions</h3>
+              <div class="tag-list">
+                <span class="tag condition"><span class="material-symbols-outlined">monitor_heart</span>type 2 diabetes</span>
+                <span class="tag condition"><span class="material-symbols-outlined">monitor_heart</span>hypertension</span>
+                <span class="tag condition"><span class="material-symbols-outlined">monitor_heart</span>high cholesterol</span>
+              </div>
+            </div>
+            <div class="mp-block">
+              <h3><span class="material-symbols-outlined">surgical</span>past surgeries</h3>
+              <div class="tag-list">
+                <span class="tag surgery"><span class="material-symbols-outlined">local_hospital</span>open heart — 2025</span>
+                <span class="tag surgery"><span class="material-symbols-outlined">local_hospital</span>appendectomy — 2025</span>
+                <span class="tag surgery"><span class="material-symbols-outlined">local_hospital</span>cervical disc — 2025</span>
+              </div>
+            </div>
+            <div class="mp-block">
+              <h3><span class="material-symbols-outlined">vaccines</span>vaccinations</h3>
+              <div class="tag-list">
+                <span class="tag vaccine"><span class="material-symbols-outlined">check_circle</span>covid-19 (3 doses)</span>
+                <span class="tag vaccine"><span class="material-symbols-outlined">check_circle</span>influenza 2025</span>
+                <span class="tag vaccine"><span class="material-symbols-outlined">check_circle</span>hepatitis b</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+
+          <div class="insurance pd-card">
+            <div class="sec-title"><h2>insurance card</h2><a href="#">manage</a></div>
+            <div class="ins-card">
+              <div class="ins-header"><span class="brand">care at home insurance</span><span class="plan">premium plan</span></div>
+              <div class="ins-number">4829 •••• •••• 7731</div>
+              <div class="ins-row">
+                <div><div class="lbl">card holder</div><div class="val">hassan elsaid</div></div>
+                <div><div class="lbl">valid until</div><div class="val">dec 2027</div></div>
+                <div><div class="lbl">policy no.</div><div class="val">cah-2025-0047</div></div>
+              </div>
+              <div class="ins-chips">
+                <span class="ins-chip active">✓ active</span>
+                <span class="ins-chip">inpatient</span>
+                <span class="ins-chip">outpatient</span>
+                <span class="ins-chip">dental</span>
+                <span class="ins-chip">vision</span>
+                <span class="ins-chip">pharmacy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="documents pd-card">
+            <div class="sec-title"><h2>medical documents</h2><a href="#">+ upload</a></div>
+            <div class="doc-list">
+              <div class="doc-item"><div class="doc-icon pdf"><span class="material-symbols-outlined">picture_as_pdf</span></div><div class="doc-info"><h4>open heart surgery report</h4><p>kasr al-aini · 15 jan 2025 · 2.4 mb</p></div><a href="#" class="doc-dl"><span class="material-symbols-outlined">download</span></a></div>
+              <div class="doc-item"><div class="doc-icon lab"><span class="material-symbols-outlined">science</span></div><div class="doc-info"><h4>blood test results — june 2025</h4><p>central lab cairo · 10 jun 2025 · 580 kb</p></div><a href="#" class="doc-dl"><span class="material-symbols-outlined">download</span></a></div>
+              <div class="doc-item"><div class="doc-icon xray"><span class="material-symbols-outlined">radiology</span></div><div class="doc-info"><h4>chest x-ray — post surgery</h4><p>kasr al-aini · 18 jan 2025 · 8.1 mb</p></div><a href="#" class="doc-dl"><span class="material-symbols-outlined">download</span></a></div>
+              <div class="doc-item"><div class="doc-icon img"><span class="material-symbols-outlined">image</span></div><div class="doc-info"><h4>mri scan — cervical spine</h4><p>sheikh zayed · 5 apr 2025 · 14.2 mb</p></div><a href="#" class="doc-dl"><span class="material-symbols-outlined">download</span></a></div>
+              <div class="doc-item"><div class="doc-icon pdf"><span class="material-symbols-outlined">picture_as_pdf</span></div><div class="doc-info"><h4>ophthalmology assessment</h4><p>national eye institute · 2 jun 2025 · 1.1 mb</p></div><a href="#" class="doc-dl"><span class="material-symbols-outlined">download</span></a></div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- end row 3 -->
+
+    </div>
+  </section>
+
+  <!-- ASIDE -->
+  <aside>
+    <div class="side">
+      <h3>Our board-certified physicians are available 24/7/365 to offer fast and high-quality healthcare.</h3>
+    </div>
+  </aside>
+
+  <!-- LASTER -->
+  <div class="laster">
+    <div class="laster0">
+      <div class="laster1">
+        <div class="laster2">
+          <h2>highly-qualified</h2>
+          <p>All of our providers are graduates of top medical schools in Egypt and are board-certified. They undergo a rigorous accreditation program using NCQA guidelines before being accepted into the care at home provider network.</p>
+        </div>
+        <div class="last2">
+          <h2>motivated</h2>
+          <p>World-class care team who are trained and credentialed to ensure strong work ethics and professionalism. They are highly-motivated to provide the best healthcare service.</p>
+        </div>
+      </div>
+      <div class="last3">
+        <div class="photo"><img src="../our providers/image/pngtree-doctors.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="meds-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>care at home</h3>
+        <p class="footer-support">customer support</p>
+        <p class="footer-support-text">support is open 24/7 in the care at home</p>
+        <p class="footer-address-title">address</p>
+        <p class="footer-address">egypt, tanta</p>
+        <div class="footer-social">
+          <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column"><h4>services</h4><ul><li><a href="../Care-Bot/bot.html">bot care at home</a></li><li><a href="../healthdashboard/health-dashboard.html">health dashboard</a></li><li><a href="../patient services/patient.html">patient services</a></li><li><a href="../index.html#Telehealth Services">telehealth services</a></li><li><a href="../Medication/Medication.html">medication</a></li><li><a href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li><li><a href="../Emergency/emergency.html">emergency</a></li><li><a href="../nursing/nursing.html">nursing</a></li></ul></div>
+      <div class="footer-column"><h4>product</h4><ul><li><a href="../How It Work/how it work.html">how it works</a></li><li><a href="../Subscriptions/">pricing</a></li><li><a href="#">promo codes</a></li><li><a href="#">employers</a></li><li><a href="#">brokers</a></li></ul></div>
+      <div class="footer-column"><h4>company</h4><ul><li><a href="../about us/about.html">about us</a></li><li><a href="../help us/help.html">help center</a></li><li><a href="../our providers/our providers.html">our providers</a></li><li><a href="../pharmacy/contactus/contact.html">contact us</a></li><li><a href="#">newsroom</a></li></ul></div>
+      <div class="footer-column"><h4>legal</h4><ul><li><a href="#">terms of use</a></li><li><a href="#">privacy policy</a></li><li><a href="#">refund / cancellation policy</a></li><li><a href="#">notice of privacy practices</a></li><li><a href="#">consent to virtual visits</a></li></ul></div>
+    </div>
+    <div class="footer-partners">
+      <span class="partner-logo">aetna</span>
+      <span class="partner-logo">anthem</span>
+      <span class="partner-logo">humana</span>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 care at home, inc. all rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="google_translate_element" style="display:none;"></div>
+  <script src="profile.js"></script>
+</body>
+</html>

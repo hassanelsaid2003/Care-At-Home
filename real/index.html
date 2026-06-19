@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
+    <title>Care At Home | Project</title>
+  </head>
+  <body class="is-loading">
+    <div id="google_translate_element" style="display:none"></div>
+
+    <!-- ===== ACCESSIBILITY TOOLBAR ===== -->
+    <div id="a11y-live" aria-live="assertive" aria-atomic="true" role="status"
+         style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"></div>
+
+    <button id="a11y-widget-btn" type="button" lang="ar"
+            aria-label="فتح لوحة إمكانية الوصول للمكفوفين وضعاف البصر"
+            aria-haspopup="dialog" aria-expanded="false" aria-controls="a11y-panel">
+      <i aria-hidden="true" class="fa-solid fa-universal-access"></i>
+      <span class="a11y-fab-tip" lang="ar">إمكانية الوصول</span>
+    </button>
+
+    <div id="a11y-backdrop" class="a11y-backdrop"></div>
+    <div id="a11y-panel" role="dialog" aria-modal="true"
+         aria-labelledby="a11y-panel-title" aria-hidden="true">
+
+      <div class="a11y-hdr">
+        <div class="a11y-hdr-left">
+          <div class="a11y-hdr-icon"><i aria-hidden="true" class="fa-solid fa-universal-access"></i></div>
+          <div>
+            <h2 id="a11y-panel-title" lang="ar">إمكانية الوصول</h2>
+            <p lang="ar">ضبط تجربة القراءة والعرض</p>
+          </div>
+        </div>
+        <button id="a11y-close" type="button" lang="ar" aria-label="إغلاق اللوحة">
+          <i aria-hidden="true" class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="a11y-body">
+
+        <div class="a11y-card">
+          <div class="a11y-card-title" lang="ar">
+            <i aria-hidden="true" class="fa-solid fa-ear-listen"></i> قارئ الشاشة
+          </div>
+          <div class="a11y-tts-row">
+            <button id="a11y-tts-btn" type="button" class="a11y-big-btn"
+                    aria-pressed="false" lang="ar" aria-label="تشغيل قارئ الشاشة">
+              <span class="a11y-big-btn-icon"><i aria-hidden="true" class="fa-solid fa-play a11y-tts-ico"></i></span>
+              <span class="a11y-btn-label" lang="ar">تشغيل القارئ</span>
+            </button>
+            <button id="a11y-stop-btn" type="button" class="a11y-icon-btn"
+                    lang="ar" aria-label="إيقاف القراءة الآن">
+              <i aria-hidden="true" class="fa-solid fa-stop"></i>
+            </button>
+          </div>
+          <div class="a11y-slider-row">
+            <label for="a11y-speed" lang="ar">
+              <i aria-hidden="true" class="fa-solid fa-gauge"></i> السرعة
+            </label>
+            <div class="a11y-slider-wrap">
+              <input type="range" id="a11y-speed" min="0.5" max="2" step="0.1" value="0.85"
+                     aria-label="سرعة القراءة">
+              <span id="a11y-speed-lbl" aria-live="polite">0.9×</span>
+            </div>
+          </div>
+          <div class="a11y-slider-row">
+            <label for="a11y-pitch" lang="ar">
+              <i aria-hidden="true" class="fa-solid fa-wave-square"></i> النبرة
+            </label>
+            <div class="a11y-slider-wrap">
+              <input type="range" id="a11y-pitch" min="0.5" max="2" step="0.1" value="1"
+                     aria-label="نبرة الصوت">
+              <span id="a11y-pitch-lbl" aria-live="polite">1.0×</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="a11y-card">
+          <div class="a11y-card-title" lang="ar">
+            <i aria-hidden="true" class="fa-solid fa-text-height"></i> حجم الخط
+          </div>
+          <div class="a11y-font-row">
+            <button id="a11y-fdec" type="button" class="a11y-step-btn"
+                    lang="ar" aria-label="تصغير حجم الخط">
+              <i aria-hidden="true" class="fa-solid fa-minus"></i>
+            </button>
+            <span id="a11y-font-lbl" class="a11y-font-val" aria-live="polite" lang="ar">100%</span>
+            <button id="a11y-finc" type="button" class="a11y-step-btn"
+                    lang="ar" aria-label="تكبير حجم الخط">
+              <i aria-hidden="true" class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="a11y-card">
+          <div class="a11y-card-title" lang="ar">
+            <i aria-hidden="true" class="fa-solid fa-eye"></i> تعديلات بصرية
+          </div>
+          <div class="a11y-grid">
+            <button class="a11y-tile" id="a11y-contrast" type="button"
+                    aria-pressed="false" lang="ar" aria-label="وضع التباين العالي">
+              <i aria-hidden="true" class="fa-solid fa-circle-half-stroke"></i>
+              <span lang="ar">تباين عالي</span>
+            </button>
+            <button class="a11y-tile" id="a11y-dyslexia" type="button"
+                    aria-pressed="false" lang="ar" aria-label="خط عسر القراءة">
+              <i aria-hidden="true" class="fa-solid fa-font"></i>
+              <span lang="ar">خط عسر القراءة</span>
+            </button>
+            <button class="a11y-tile" id="a11y-cursor" type="button"
+                    aria-pressed="false" lang="ar" aria-label="المؤشر الكبير">
+              <i aria-hidden="true" class="fa-solid fa-arrow-pointer"></i>
+              <span lang="ar">مؤشر كبير</span>
+            </button>
+            <button class="a11y-tile" id="a11y-links" type="button"
+                    aria-pressed="false" lang="ar" aria-label="إبراز الروابط">
+              <i aria-hidden="true" class="fa-solid fa-link"></i>
+              <span lang="ar">إبراز الروابط</span>
+            </button>
+            <button class="a11y-tile" id="a11y-noanim" type="button"
+                    aria-pressed="false" lang="ar" aria-label="إيقاف الحركات">
+              <i aria-hidden="true" class="fa-solid fa-person-running"></i>
+              <span lang="ar">إيقاف الحركة</span>
+            </button>
+            <button class="a11y-tile" id="a11y-focus" type="button"
+                    aria-pressed="false" lang="ar" aria-label="تمييز التركيز">
+              <i aria-hidden="true" class="fa-solid fa-bullseye"></i>
+              <span lang="ar">تمييز التركيز</span>
+            </button>
+          </div>
+        </div>
+
+        <button id="a11y-reset" type="button" class="a11y-reset-btn" lang="ar"
+                aria-label="إعادة ضبط كل إعدادات إمكانية الوصول">
+          <i aria-hidden="true" class="fa-solid fa-rotate-left"></i>
+          <span lang="ar">إعادة الضبط الكامل</span>
+        </button>
+
+      </div>
+    </div>
+    <!-- ===== END ACCESSIBILITY TOOLBAR ===== -->
+
+        <!-- ===== PRELOADER ===== -->
+    <div id="preloader" class="preloader">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-logo">
+          <span class="preloader-pulse-ring"></span>
+          <span class="preloader-pulse-ring delay"></span>
+          <div class="preloader-icon">
+            <i aria-hidden="true" class="fa-solid fa-heart-pulse"></i>
+          </div>
+        </div>
+        <h2 class="preloader-title">care at home</h2>
+        <p class="preloader-tagline" data-en="Premium care, delivered home." data-ar="رعاية متميزة، تصلك لباب البيت.">Premium care, delivered home.</p>
+        <div class="preloader-bar-track">
+          <div class="preloader-bar-fill" id="preloaderBarFill"></div>
+        </div>
+        <p class="preloader-percent" id="preloaderPercent">0%</p>
+      </div>
+    </div>
+    <!-- ===== END PRELOADER ===== -->
+
+    <!-- start header -->
+
+    <header id="logo">
+
+<div class="nav-bar" id="online doctor">
+  <nav>
+    <div class="logo">
+      <a aria-label="Care at Home — الصفحة الرئيسية" href="#logo"><span>care at home</span></a>
+    </div>
+    <!-- Overlay -->
+<div class="sidebar-overlay" onclick="hidesidebar()" aria-hidden="true"></div>
+
+<!-- Sidebar -->
+<ul class="sidebar" id="mobileSidebar" role="navigation" aria-label="القائمة الجانبية" aria-hidden="true">
+  <li onclick="hidesidebar()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();hidesidebar();}" role="button" tabindex="0" lang="ar" aria-label="إغلاق القائمة الجانبية" style="cursor:pointer; padding: 10px 20px;">
+    <span class="material-symbols-outlined" aria-hidden="true">close</span>
+  </li>
+  <li><a aria-label="الانتقال إلى صفحة التبرعات" href="../Donations/Donations.html">donations</a></li>
+  <li><a aria-label="الانتقال إلى صفحة كيف يعمل كير آت هوم" href="../How It Work/how it work.html">how care at home works</a></li>
+  <li><a aria-label="الانتقال إلى صفحة التشخيص الطبي" href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+  <li><a aria-label="Telehealth Services — خدمات الاستشارة الطبية عن بعد" href="../prescriptions/prescriptions.html">telehealth services</a></li>
+  <li><a aria-label="الانتقال إلى صفحة مقدمي الخدمة الطبية" href="../our providers/our providers.html">our providers</a></li>
+
+  <!-- Logged-in user account menu (mobile) -->
+  <li class="dropdown user-menu" id="mobileUserDropdown">
+    <a aria-label="فتح قائمة حسابك الشخصي، اضغط لعرض كل الخدمات والإعدادات" href="javascript:void(0)" class="user-trigger" onclick="toggleMobileUserDropdown(event)">
+      <img alt="الصورة الشخصية للمستخدم حسن السيد" class="user-avatar" src="data:image/jpeg;base64,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">
+      <span class="user-name">hassan elsaid</span>
+      <span class="blue-arrow" aria-hidden="true">▼</span>
+    </a>
+    <ul class="dropdown-menu user-dropdown-menu">
+      <li class="user-info">
+        <img alt="الصورة الشخصية للمستخدم حسن السيد" class="user-avatar-lg" src="data:image/jpeg;base64,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">
+        <div>
+          <h4>hassan elsaid</h4>
+          <p>hassanelsaid@gmail.com</p>
+        </div>
+      </li>
+      <li><a aria-label="الانتقال إلى لوحة التحكم الخاصة بك" href="../Dashboard/dash.html"><i aria-hidden="true" class="fa-solid fa-gauge"></i> dashboard</a></li>
+      <li><a aria-label="الانتقال إلى لوحة متابعة الحالة الصحية" href="../healthdashboard/health-dashboard.html"><i aria-hidden="true" class="fa-solid fa-heart-pulse"></i> health dashboard</a></li>
+      <li><a aria-label="الانتقال إلى المساعد الذكي كير بوت" href="../Care-Bot/bot.html"><i aria-hidden="true" class="fa-solid fa-robot"></i> care bot</a></li>
+      <li><a aria-label="الانتقال إلى خدمات الاستشارة الطبية عن بعد" href="../prescriptions/prescriptions.html"><i aria-hidden="true" class="fa-solid fa-prescription-bottle-medical"></i> telehealth services</a></li>
+      <li><a aria-label="الانتقال إلى صفحة الأدوية والروشتات" href="../Medication/Medication.html"><i aria-hidden="true" class="fa-solid fa-pills"></i> medication</a></li>
+      <li><a aria-label="الانتقال إلى صفحة خدمات المرضى" href="../patient services/patient.html"><i aria-hidden="true" class="fa-solid fa-hospital-user"></i> patient services</a></li>
+      <li><a aria-label="الانتقال إلى صفحة الحالات الطارئة" href="../Emergency/emergency.html"><i aria-hidden="true" class="fa-solid fa-truck-medical"></i> emergency</a></li>
+      <li><a aria-label="الانتقال إلى صفحة التشخيص الطبي" href="../Medical diagnosis/Medical diagnosis.html"><i aria-hidden="true" class="fa-solid fa-stethoscope"></i> diagnosis</a></li>
+      <li><a aria-label="الانتقال إلى صفحة الملف الشخصي" href="../profile-personal/profile.html"><i aria-hidden="true" class="fa-solid fa-id-card"></i> my profile</a></li>
+      <li><a aria-label="الانتقال إلى صفحة تعديل الملف الشخصي" href="../profile edit/profile copy.html"><i aria-hidden="true" class="fa-solid fa-user-pen"></i> edit profile</a></li>
+      <li><a aria-label="الانتقال إلى صفحة المختبر" href="../Laboratory/index.html"><i aria-hidden="true" class="fa-solid fa-calendar-check"></i>Laboratory</a></li>
+      <li><a aria-label="الانتقال إلى صفحة الرسائل" href="../message/index.html"><i aria-hidden="true" class="fa-solid fa-receipt"></i> messenger</a></li>
+      <li><a aria-label="الانتقال إلى صفحة الاسعافت الاوليه" href="../first aid/index.html"><i aria-hidden="true" class="fa-solid fa-receipt"></i> first aid</a></li>
+      <li><a aria-label="الانتقال إلى صفحة خدمات التمريض" href="../nursing/nursing.html"><i aria-hidden="true" class="fa-solid fa-user-nurse"></i> nursing</a></li>
+      <li><a aria-label="الانتقال إلى صفحة من نحن" href="../about us/about.html"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> about us</a></li>
+      <li><a aria-label="الانتقال إلى صفحة المساعدة والدعم" href="../help us/help.html"><i aria-hidden="true" class="fa-solid fa-circle-question"></i> help us</a></li>
+      <li class="dropdown-divider"></li>
+      <li class="lang-row">
+        <span><i aria-hidden="true" class="fa-solid fa-language"></i> language</span>
+        <button lang="ar" aria-label="تغيير لغة الموقع بين العربية والإنجليزية" class="lang-toggle">ar</button>
+      </li>
+      <li><a aria-label="الانتقال إلى إعدادات الحساب" href="#"><i aria-hidden="true" class="fa-solid fa-gear"></i> account settings</a></li>
+      <li><a aria-label="تسجيل الخروج من حسابك" href="#" class="logout-link" onclick="logout(event)"><i aria-hidden="true" class="fa-solid fa-right-from-bracket"></i> log out</a></li>
+    </ul>
+  </li>
+</ul>
+    <!-- Desktop Menu -->
+    <ul class="main-menu hide">
+      <li><a aria-label="الانتقال إلى صفحة التبرعات" href="../Donations/Donations.html">donations</a></li>
+      <li><a aria-label="الانتقال إلى صفحة كيف يعمل كير آت هوم" href="../How It Work/how it work.html">how care at home works</a></li>
+      <li><a aria-label="الانتقال إلى صفحة التشخيص الطبي" href="../Medical diagnosis/Medical diagnosis.html">diagnosis</a></li>
+      <li><a aria-label="Telehealth Services — خدمات الاستشارة الطبية عن بعد" href="../prescriptions/prescriptions.html">telehealth services</a></li>
+      <li><a aria-label="الانتقال إلى صفحة مقدمي الخدمة الطبية" class="a4" href="../our providers/our providers.html">our providers</a></li>
+
+      <!-- Logged-in user account menu (desktop) -->
+      <li class="dropdown user-menu" id="desktopUserDropdown">
+        <a aria-label="فتح قائمة حسابك الشخصي، اضغط لعرض كل الخدمات والإعدادات" href="javascript:void(0)" class="user-trigger" onclick="toggleDesktopUserDropdown(event)">
+          <img alt="الصورة الشخصية للمستخدم حسن السيد" class="user-avatar" src="data:image/jpeg;base64,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">
+          <span class="user-name">hassan elsaid</span>
+          <span class="blue-arrow" aria-hidden="true">▼</span>
+        </a>
+        <ul class="dropdown-menu user-dropdown-menu">
+          <li class="user-info">
+            <img alt="الصورة الشخصية للمستخدم حسن السيد" class="user-avatar-lg" src="data:image/jpeg;base64,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">
+            <div>
+              <h4>hassan elsaid</h4>
+              <p>hassan.elsaid@careathome.com</p>
+            </div>
+          </li>
+          <li><a aria-label="الانتقال إلى لوحة التحكم الخاصة بك" href="../Dashboard/dash.html"><i aria-hidden="true" class="fa-solid fa-gauge"></i> dashboard</a></li>
+          <li><a aria-label="الانتقال إلى لوحة متابعة الحالة الصحية" href="../healthdashboard/health-dashboard.html"><i aria-hidden="true" class="fa-solid fa-heart-pulse"></i> health dashboard</a></li>
+          <li><a aria-label="الانتقال إلى المساعد الذكي كير بوت" href="../Care-Bot/bot.html"><i aria-hidden="true" class="fa-solid fa-robot"></i> care bot</a></li>
+          <li><a aria-label="الانتقال إلى خدمات الاستشارة الطبية عن بعد" href="../prescriptions/prescriptions.html"><i aria-hidden="true" class="fa-solid fa-prescription-bottle-medical"></i> telehealth services</a></li>
+          <li><a aria-label="الانتقال إلى صفحة الأدوية والروشتات" href="../Medication/Medication.html"><i aria-hidden="true" class="fa-solid fa-pills"></i> medication</a></li>
+          <li><a aria-label="الانتقال إلى صفحة خدمات المرضى" href="../patient services/patient.html"><i aria-hidden="true" class="fa-solid fa-hospital-user"></i> patient services</a></li>
+          <li><a aria-label="الانتقال إلى صفحة الحالات الطارئة" href="../Emergency/emergency.html"><i aria-hidden="true" class="fa-solid fa-truck-medical"></i> emergency</a></li>
+          <li><a aria-label="الانتقال إلى صفحة التشخيص الطبي" href="../Medical diagnosis/Medical diagnosis.html"><i aria-hidden="true" class="fa-solid fa-stethoscope"></i> diagnosis</a></li>
+          <li><a aria-label="الانتقال إلى صفحة الملف الشخصي" href="../profile-personal/profile.html"><i aria-hidden="true" class="fa-solid fa-id-card"></i> my profile</a></li>
+          <li><a aria-label="الانتقال إلى صفحة تعديل الملف الشخصي" href="../profile edit/profile copy.html"><i aria-hidden="true" class="fa-solid fa-user-pen"></i> edit profile</a></li>
+          <li><a aria-label="الانتقال إلى صفحة المختبر" href="../Laboratory/index.html"><i aria-hidden="true" class="fa-solid fa-calendar-check"></i>Laboratory</a></li>
+          <li><a aria-label="الانتقال إلى صفحة الرسائل" href="../message/index.html"><i aria-hidden="true" class="fa-solid fa-receipt"></i> messenger</a></li>
+          <li><a aria-label="الانتقال إلى صفحة الاسعافات الاوليه" href="../first aid/index.html"><i aria-hidden="true" class="fa-solid fa-receipt"></i> first aid</a></li>
+          <li><a aria-label="الانتقال إلى صفحة خدمات التمريض" href="../nursing/nursing.html"><i aria-hidden="true" class="fa-solid fa-user-nurse"></i> nursing</a></li>
+          <li><a aria-label="الانتقال إلى صفحة من نحن" href="../about us/about.html"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> about us</a></li>
+          <li><a aria-label="الانتقال إلى صفحة المساعدة والدعم" href="../help us/help.html"><i aria-hidden="true" class="fa-solid fa-circle-question"></i> help us</a></li>
+          <li class="dropdown-divider"></li>
+          <li class="lang-row">
+            <span><i aria-hidden="true" class="fa-solid fa-language"></i> language</span>
+            <button lang="ar" aria-label="تغيير لغة الموقع بين العربية والإنجليزية" class="lang-toggle">ar</button>
+          </li>
+          <li><a aria-label="الانتقال إلى إعدادات الحساب" href="#"><i aria-hidden="true" class="fa-solid fa-gear"></i> account settings</a></li>
+          <li><a aria-label="تسجيل الخروج من حسابك" href="#" class="logout-link" onclick="logout(event)"><i aria-hidden="true" class="fa-solid fa-right-from-bracket"></i> log out</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Menu Button for Mobile -->
+    <div class="menu-btn" id="menuBtn" onclick="toggleSidebar()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSidebar();}" role="button" tabindex="0" lang="ar" aria-label="فتح القائمة الجانبية" aria-expanded="false" aria-controls="mobileSidebar">
+      <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+    </div>
+  </nav>
+</div>
+      <section>
+        <div class="main-section">
+          <div class="about-doctor">
+            <h2>See a Doctor</h2>
+            <h2>Within Minutes</h2>
+            <p class="p">Get complete, high-quality care with meds delivered in as little as 1 hour.</p>
+              <div class="botn1">
+              <a aria-label="الانتقال إلى صفحة حجز موعد مع طبيب" href="../Doctors/alldoctors.html" target="_blank">speak to a doctor</a>
+            </div>
+            <p class="p1">Available in 50 states. Insurance accepted.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="imge">
+            <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" src="../image/photo2.webp">
+            <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" class="photo" src="../image/photo1.webp">
+            <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" src="../image/photo.webp">
+          </div>
+        </div>
+      </section>
+    </header>
+    <!-- end header -->
+     <!-- start dlivery -->
+
+    <section class="dlivery">
+      <div class="box1">
+        <h1 class="h">See If Delivery Is Available Near You</h1>
+        <p class="enn">Enter your ZIP code to check if prescription delivery is available in your area and how soon your meds could arrive.</p>
+        <div class="inn1">
+          <label for="zipInputMobile">zip-code</label>
+        </div>
+        <div class="innn">
+        <input type="text" id="zipInputMobile" required placeholder="31004">
+        </div>
+      <img alt="توضيح لخدمة توصيل الأدوية إلى المنزل" src="../image/delivery_.webp">
+      <div class="aa">
+          <a aria-label="التحقق من توفر التوصيل في منطقتك حسب الرمز البريدي" href="#" id="checkBtnMobile">check dlivery</a>
+          <p>See if we can deliver meds within an hour.</p>
+        </div>
+      <div class="box">
+        <h1>See If Delivery Is Available Near You</h1>
+        <p class="zip">Enter your ZIP code to check if prescription delivery is available in your area and how soon your meds could arrive.</p>
+        <label for="zipInput">enter your zip code</label>
+        <input type="text" id="zipInput" placeholder="31823">
+        <div class="a">
+          <a aria-label="التحقق من توفر التوصيل في منطقتك حسب الرمز البريدي"  href="#" id="checkBtn">Check Delivery</a>
+          <p>See if we can deliver meds within an hour.</p>
+        </div>
+        <div id="zipError" style="color:red; margin-top:5px;"></div>
+      </div>
+    </section>
+    <!-- end dlivery -->
+     <!-- start main -->
+
+    <main id="how care at home works">
+      <div class="title">
+        <h1>how to get started</h1>
+      </div>
+      <div class="pra">
+        <p>
+          Choose your doctor, start a virtual visit, and have your prescriptions
+          sent to your
+        </p>
+        <p class="pra1">preferred pharmacy for pickup — all in just a few easy
+          steps.</p>
+      </div>
+     <div class="container">
+      <!-- start-content -->
+      <div class="content">
+        <!-- start-card -->
+        <div class="card">
+          <!-- start-item -->
+          <div class="item">
+            <i aria-hidden="true" class="fa-regular fa-comment"></i>
+          <h2>chosse a doctor</h2>
+          <p class="ch">Choose a physician by availability, specialty, ratings, and more.</p>
+          </div>
+          <!-- end-item -->
+      <div class="images">
+        <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" src="./image/photo2.webp">
+      </div>
+    </div>
+    <!-- end-card -->
+  </div>
+  <!-- end-content -->
+      <!-- start-content -->
+      <div class="content">
+        <!-- start-card -->
+        <div class="card">
+          <!-- start-item -->
+          <div class="item">
+            <i aria-hidden="true" class="fa-solid fa-mobile"></i>
+          <h2 class="start">Start your video visit</h2>
+          <p class="ch">Connect with a doctor in minutes on a secure video call.</p>
+          </div>
+          <!-- end-item -->
+      <div class="images">
+        <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" src="./image/photo.webp">
+      </div>
+    </div>
+    <!-- end-card -->
+  </div>
+  <!-- end-content -->
+  <!-- start-content -->
+      <div class="content">
+        <!-- start-card -->
+        <div class="card">
+          <!-- start-item -->
+          <div class="item">
+            <i aria-hidden="true" class="fa-solid fa-van-shuttle"></i>
+          <h2>Get your prescription</h2>
+          <p class="ch">Pick up your meds or have them delivered in as little as an hour.</p>
+          </div>
+          <!-- end-item -->
+      <div class="images">
+        <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" src="./image/photo1.webp">
+      </div>
+    </div>
+    <!-- end-card -->
+  </div>
+  <!-- end-content -->
+  </div>
+      </div>
+      <div class="btn">
+        <a aria-label="الانتقال إلى صفحة الأطباء وحجز موعد" href="../Doctors/index.html" target="_blank">Doctors</a>
+      </div>
+      <p class="none">Available in 50 states. Insurance accepted.</p>
+    </main>
+    <!-- end main -->
+     <div class="diagnosis" id="diagnosis">
+       <h1>check your self</h1>
+      <div class="diagn">
+        <div class="kalam">
+          <p>Diagnosis is the process of determining the cause of a disease or condition by evaluating a patient's signs, symptoms, and medical history. It is the foundation of patient care,
+             as an accurate diagnosis leads to effective treatment plans.</p>
+             <div class="icons-tele1">
+              <div class="icon-tele1">
+                <img alt="أيقونة كاميرا تمثل الزيارات الافتراضية السريعة" src="../image/cam.svg">
+              <p>Fast</p>
+              <p>virtual visits</p>
+              </div>
+              <div class="icon-tele1">
+                <img alt="أيقونة محادثة تمثل المساعدين على مدار الساعة" src="../image/message-circle-lines.svg">
+                <p>24/7 care</p>
+                <p>assistants</p>
+              </div>
+              <div class="icon-tele1">
+                <img alt="أيقونة دواء تمثل خدمة الروشتات الطبية" src="../image/ico_pill.svg">
+              <p>Prescriptions</p>
+              <p>virtual visits</p>
+              </div>
+            </div>
+            <div class="li">
+             <a aria-label="الانتقال إلى صفحة التشخيص الطبي للتحقق من حالتك" href="../Medical diagnosis/Medical diagnosis.html" target="_blank">check now</a>
+            </div>
+          </div>
+        <div class="sora">
+          <img alt="صورة توضيحية لخدمة التشخيص الطبي" src="../image/diagnosis.jpg">
+        </div>
+      </div>
+     </div>
+     <!-- pharmacy -->
+      <div class="pharmacies">
+        <div class="pharmacy">
+        <div class="title">
+          <h3> care at home Professional Pharmacy: Your healthcare starts here.</h3>
+          <p>Your care at home Pharmacies offer comprehensive pharmaceutical care combining safety,
+             speed, and professional expertise. We are committed to providing genuine medications,
+              reliable delivery, and personalized pharmaceutical consultations tailored to each patient's needs.</p>
+              <div class="botns">
+                <a aria-label="الانتقال إلى صفحة الصيدلية لطلب الأدوية" href="../pharmacy/pharmacy.html" target="_blank">order now</a>
+              </div>
+              <div class="icones">
+                <a aria-label="التواصل معنا عبر واتساب" href="#"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i></a>
+                <a aria-label="زيارة صفحتنا على فيسبوك" href="#"><i aria-hidden="true" class="fa-brands fa-facebook"></i></a>
+                <a aria-label="زيارة صفحتنا على إنستجرام" href="#"><i aria-hidden="true" class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="image">
+              <img alt="صورة توضيحية لخدمة الصيدلية وطلب الأدوية" src="../image/pharmacy (1).jpg">
+            </div>
+      </div>
+      </div>
+      <!-- pharmacy -->
+      <!-- strat tele services -->
+        <div class="main-services" id="Telehealth Services">
+          <div class="tele">
+            <h2>Telehealth Services</h2>
+            <h6>Available 24/7</h6>
+            <p class="tel">See a doctor within minutes and get an Rx from any local pharmacy.</p>
+              <div class="botn11">
+              <a aria-label="الانتقال إلى صفحة الروشتات الطبية" href="../prescriptions/prescriptions.html" target="_blank">prescriptions</a>
+            </div>
+            <p class="telee">Available in 50 states. Insurance accepted.</p>
+            <div class="icons-tele">
+              <div class="icon-tele">
+                <img alt="أيقونة كاميرا تمثل الزيارات الافتراضية السريعة" src="../image/cam.svg">
+              <p>Fast</p>
+              <p>virtual visits</p>
+              </div>
+              <div class="icon-tele">
+                <img alt="أيقونة محادثة تمثل المساعدين على مدار الساعة" src="../image/message-circle-lines.svg">
+                <p>24/7 care</p>
+                <p>assistants</p>
+              </div>
+              <div class="icon-tele">
+                <img alt="أيقونة دواء تمثل خدمة الروشتات الطبية" src="../image/ico_pill.svg">
+              <p>Prescriptions</p>
+              <p>virtual visits</p>
+              </div>
+            </div>
+          </div>
+          <div class="cards-tele">
+            <div class="imge">
+              <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" class="photo-tele" src="../image/photo1.webp">
+              <img alt="صورة لأحد المرضى يستخدمون خدمة كير آت هوم من المنزل" src="../image/photo.webp">
+            </div>
+          </div>
+        </div>
+      <!-- end tele services -->
+       <!-- start price -->
+        <div class="pric">
+          <div class="price">
+          <div class="pricing">
+            <h1>all-time</h1>
+            <h3>physician visit</h3>
+            <p>One-time visit with a physician for diagnosis,
+               treatment, Rx, labs,
+                referrals, and doctor’s notes.</p>
+                <div class="pricing1">
+                  <div class="copay">
+                    <div class="with1">
+                      <h5>with insurance</h5>
+                    <h2>copay</h2>
+                    </div>
+
+                  </div>
+                  <div class="without">
+                      <div class="with">
+                        <h5>without insurance</h5>
+                      <h2>$ 129</h2>
+                      </div>
+                    </div>
+                </div>
+                <div class="your">
+                  <p>Your copay or $129 without insurance.</p>
+                </div>
+                <div class="boton">
+              <a aria-label="الانتقال إلى صفحة باقات الاشتراك" href="../Subscriptions/Subscriptions.html" target="_blank">get Subscriptions</a>
+            </div>
+            <b>¹Having a visit does not guarantee a medication will be ordered or refilled. It is the doctors’ professional decision. It is prohibited by law to prescribe or refill controlled substances via virtual visits. ²Your provider may recommend follow-up care, including additional services that may not be included in the visit price.</b>
+          </div>
+          <div class="price2">
+            <div class="boxing">
+              <div class="hassan">
+                <h2>What's included</h2>
+              </div>
+              <div class="section1">
+                <img alt="أيقونة كاميرا تمثل الزيارات الافتراضية السريعة" src="../image/cam.svg">
+               <div class="section2">
+                 <h3>24/7 virtual doctor visits</h3>
+                <p>See the first available physician,
+                   or schedule a visit with a physician you like.</p>
+               </div>
+              </div>
+              <div class="section1">
+                <img alt="أيقونة دواء تمثل خدمة الروشتات الطبية" src="../image/ico_pill.svg">
+                <div class="section2">
+                 <h3>Prescriptions as needed</h3>
+                <p>See our physicians whenever you need a new Rx or need to renew existing Rx.¹</p>
+               </div>
+              </div>
+              <div class="section1">
+                <img alt="أيقونة محادثة تمثل المساعدين على مدار الساعة" src="../image/message-circle-lines.svg">
+                <div class="section2">
+                 <h3>On-demand care support</h3>
+                <p>Chat with our care support whenever necessary. They are here for you 24/7.</p>
+               </div>
+              </div>
+              <div class="section1">
+                <img alt="أيقونة درع تمثل الحماية والأمان في الرعاية الصحية" src="../image/shield.5fdae0.svg">
+                <div class="section2">
+                 <h3>100% treatment guarantee</h3>
+                <p>You can request a refund after your visit if we are unable to provide care.</p>
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- end price -->
+    <div class="de">
+      <h1>Comprehensive care, where you are</h1>
+      <p>Access a wide range of essential healthcare services tailored to your needs,
+         all from the comfort of your home</p>
+    </div>
+    <!-- start pepere -->
+
+   <div class="scroll-wrapper" data-scroll-target="pepereScroll">
+     <button lang="ar" aria-label="التمرير لليسار لعرض المزيد من بطاقات الخدمات" class="scroll-arrow scroll-arrow--left"><i aria-hidden="true" class="fa-solid fa-chevron-left"></i></button>
+     <section class="pepere" id="pepereScroll">
+  <div class="cards1">
+     <div class="icon">
+      <h2>Online Prescriptions</h2>
+    <img alt="أيقونة توضح خدمة الروشتات الإلكترونية عبر الإنترنت" src="../image/DrHouse-online-prescriptions.144477.svg">
+    </div>
+    <div class="tags">
+      <span>Refills</span>
+      <span>Antibiotics</span>
+      <span>Antivirals</span>
+      <span>Antihistamines</span>
+      <span>Beta Blockers</span>
+      <span>Antidepressants</span>
+    </div>
+
+    <div class="more">
+      <a aria-label="عرض المزيد عن خدمة الروشتات الإلكترونية، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">Read more</a>
+    </div>
+  </div>
+  <div class="cards1">
+     <div class="icon">
+      <h2>telehealth services</h2>
+    <img alt="أيقونة توضح خدمات الاستشارة الطبية عن بعد" src="../image/DrHouse-telehealth-services.e98809.svg">
+    </div>
+    <div class="tags">
+      <span>online doctor</span>
+      <span>doctor's note</span>
+      <span>lab tests</span>
+      <span>urgent care</span>
+      <span>weight loss</span>
+      <span>smoking cessation</span>
+    </div>
+
+    <div class="more">
+      <a aria-label="عرض المزيد عن الاستشارات الطبية عن بعد، الانتقال إلى صفحة خدمات الاستشارة" href="../prescriptions/prescriptions.html">Read more</a>
+    </div>
+  </div>
+  <div class="cards1">
+     <div class="icon">
+      <h2>virtual urgent care</h2>
+    <img alt="أيقونة توضح خدمة الرعاية العاجلة الافتراضية" src="../image/DrHouse-virtual-urgent-care.becb21.svg">
+    </div>
+    <div class="tags">
+      <span>cold & flu</span>
+      <span>food poisoning</span>
+      <span>strep throat</span>
+      <span>diarrhea</span>
+      <span>covid-19</span>
+      <span>sinus infection</span>
+    </div>
+
+    <div class="more">
+      <a aria-label="عرض المزيد عن الرعاية العاجلة عن بعد، الانتقال إلى صفحة الحالات الطارئة" href="../Emergency/emergency.html">Read more</a>
+    </div>
+  </div>
+  <div class="cards1">
+     <div class="icon">
+      <h2>virtual primary care</h2>
+    <img alt="أيقونة توضح خدمة الرعاية الأولية الافتراضية" src="../image/DrHouse-virtual-primary-care.f78115.svg">
+    </div>
+    <div class="tags">
+      <span>asthma</span>
+      <span>hypertension</span>
+      <span>arthritis</span>
+      <span>diabetes</span>
+      <span>migraine</span>
+      <span>allergies</span>
+      <span>awv</span>
+    </div>
+
+    <div class="more">
+      <a aria-label="عرض المزيد عن الرعاية الأولية عن بعد، الانتقال إلى لوحة الحالة الصحية" href="../healthdashboard/health-dashboard.html">Read more</a>
+    </div>
+  </div>
+  <div class="cards1">
+    <div class="icon">
+      <h2>men's health</h2>
+    <img alt="أيقونة توضح خدمات صحة الرجل" src="../image/DrHouse-mens-health.f88aac.svg">
+    </div>
+    <div class="tags">
+      <span>hair loss</span>
+      <span>hemorrhoids</span>
+      <span>premature ejaculation</span>
+      <span>erectile dysfunction</span>
+    </div>
+
+    <div class="more">
+      <a aria-label="عرض المزيد عن خدمات صحة الرجل، الانتقال إلى صفحة الأطباء" href="../Doctors/alldoctors.html">Read more</a>
+    </div>
+  </div>
+  <div class="cards1">
+    <div class="icon">
+      <h2>women's health</h2>
+    <img alt="أيقونة توضح خدمات صحة المرأة" src="../image/DrHouse-womens-health.e6f72f.svg">
+    </div>
+    <div class="tags">
+      <span>menopause</span>
+      <span>gynecology</span>
+      <span>birth control</span>
+      <span>yeast infections</span>
+      <span>bacterial vaginosis</span>
+
+    </div>
+
+    <div class="more">
+      <a aria-label="عرض المزيد عن خدمات صحة المرأة، الانتقال إلى صفحة الأطباء" href="../Doctors/alldoctors.html">Read more</a>
+    </div>
+  </div>
+</section>
+     <button lang="ar" aria-label="التمرير لليمين لعرض المزيد من بطاقات الخدمات" class="scroll-arrow scroll-arrow--right"><i aria-hidden="true" class="fa-solid fa-chevron-right"></i></button>
+   </div>
+   <div class="scroll-dots" data-dots-for="pepereScroll">
+     <span class="scroll-dot active"></span>
+     <span class="scroll-dot"></span>
+     <span class="scroll-dot"></span>
+     <span class="scroll-dot"></span>
+     <span class="scroll-dot"></span>
+     <span class="scroll-dot"></span>
+   </div>
+    <!-- end pepere -->
+     <!-- start treatment -->
+      <div class="treatment">
+        <div class="got">
+        <h2>Get a treatment plan for 1000s of conditions</h2>
+        <p>Get the treatment you need, whenever you need it from our expert board-certified online physicians. Our doctors are here for you 24/7/365!</p>
+      </div>
+      <div class="scroll-wrapper" data-scroll-target="diseasesScroll">
+        <button lang="ar" aria-label="التمرير لليسار لعرض المزيد من الحالات الصحية" class="scroll-arrow scroll-arrow--left"><i aria-hidden="true" class="fa-solid fa-chevron-left"></i></button>
+        <div class="diseases" id="diseasesScroll">
+        <div class="disease">
+          <h2>cold & flu treatment</h2>
+          <a aria-label="معرفة المزيد عن علاج نزلات البرد والإنفلونزا، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>antibiotics</h2>
+          <a aria-label="معرفة المزيد عن المضادات الحيوية، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>antifungals</h2>
+          <a aria-label="معرفة المزيد عن أدوية الفطريات، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>prescription refills</h2>
+          <a aria-label="معرفة المزيد عن إعادة تعبئة الروشتات الطبية، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>antivirals</h2>
+          <a aria-label="معرفة المزيد عن الأدوية المضادة للفيروسات، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>beta blockers</h2>
+          <a aria-label="معرفة المزيد عن أدوية ضغط الدم حاصرات البيتا، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>anxiety medication</h2>
+          <a aria-label="معرفة المزيد عن أدوية القلق والتوتر، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>corticosteroids</h2>
+          <a aria-label="معرفة المزيد عن أدوية الكورتيزون، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+        <div class="disease">
+          <h2>diuretice</h2>
+          <a aria-label="معرفة المزيد عن مدرات البول، الانتقال إلى صفحة الأدوية" href="../Medication/Medication.html">learn more</a>
+        </div>
+      </div>
+        <button lang="ar" aria-label="التمرير لليمين لعرض المزيد من الحالات الصحية" class="scroll-arrow scroll-arrow--right"><i aria-hidden="true" class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div class="scroll-dots" data-dots-for="diseasesScroll">
+        <span class="scroll-dot active"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+      </div>
+      </div>
+     <!-- end treatment -->
+     <!-- start article -->
+     <article id="our providers">
+       <div class="providers">
+        <div class="articl">
+         <div class="picture">
+          <img alt="صورة لفريق من الأطباء والممرضين المتخصصين في كير آت هوم" src="../image/doctor-group.jpg">
+        </div>
+        <div class="abouts">
+          <h2 class="who">World-class care team</h2>
+          <p class="p1">All of our doctors are board-certified and trained in the top US medical schools.</p>
+          <p class="p2">Our physicians are qualified to diagnose and treat wide variety of non-emergency conditions.</p>
+          <p class="p3">We approach patient care with the best clinical practices to provide personalized treatment.</p>
+          <div class="provide">
+            <a aria-label="الانتقال إلى صفحة مقدمي الخدمة الطبية" href="../our providers/our providers.html" target="_blank">our providers</a>
+          </div>
+        </div>
+      </div>
+       </div>
+    </article>
+    <!-- end article -->
+     <!-- start tabeb -->
+     <div class="see">
+       <h2>
+        See why people turn to care at home...
+      </h2>
+    </div>
+     <section class="tabeb">
+      <div class="scroll-wrapper" data-scroll-target="devScroll">
+        <button lang="ar" aria-label="التمرير لليسار لعرض المزيد من الأطباء" class="scroll-arrow scroll-arrow--left"><i aria-hidden="true" class="fa-solid fa-chevron-left"></i></button>
+      <div class="dev" id="devScroll">
+        <div class="div">
+        <img alt="تقييم خمس نجوم من خمسة" src="../image/five_stars.svg">
+        <h3>best online doctor</h3>
+        <p>
+        Best online doctors service I've ever used! 5 stars! Ease, speed, price, comfort, value. Dr Berzansky is my new go-to!
+      </p>
+      <h5>android user</h5>
+    </div>
+        <div class="div">
+        <img alt="تقييم خمس نجوم من خمسة" src="../image/five_stars.svg">
+        <h3>amazing</h3>
+        <p>
+        i am grateful i found care at home. instead of waiting weeks, i waited 15 min to get on a quick video chat
+      </p>
+      <h5>ios user</h5>
+    </div>
+        <div class="div">
+        <img alt="تقييم خمس نجوم من خمسة" src="../image/five_stars.svg">
+        <h3>will use again</h3>
+        <p>
+          very kind and professional, definitely will use again.
+      </p>
+      <h5>android user</h5>
+    </div>
+        <div class="div">
+        <img alt="تقييم خمس نجوم من خمسة" src="../image/five_stars.svg">
+        <h3>quick, convenient...</h3>
+        <p>
+        quick, convenient, and professional. avoided an emergency room visit. i am very satisfied with my visit.
+      </p>
+      <h5>android user</h5>
+    </div>
+        <div class="div">
+        <img alt="تقييم خمس نجوم من خمسة" src="../image/five_stars.svg">
+        <h3>great.</h3>
+        <p>
+        i was in and out in just a few minutes. it took longer to sign up than it did to be seen! excellent service and very kind...
+      </p>
+      <h5>ios user</h5>
+    </div>
+  </div>
+        <button lang="ar" aria-label="التمرير لليمين لعرض المزيد من الأطباء" class="scroll-arrow scroll-arrow--right"><i aria-hidden="true" class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div class="scroll-dots" data-dots-for="devScroll">
+        <span class="scroll-dot active"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+        <span class="scroll-dot"></span>
+      </div>
+</section>
+<!-- end tabeb -->
+
+<!-- ===== APP DOWNLOAD SECTION ===== -->
+<section class="app-download reveal-scale">
+  <div class="app-download__glow app-download__glow--one"></div>
+  <div class="app-download__glow app-download__glow--two"></div>
+  <div class="app-download__inner">
+    <div class="app-download__text">
+      <span class="app-download__badge"><i aria-hidden="true" class="fa-solid fa-mobile-screen-button"></i> now on every device</span>
+      <h2>care at home, right in your pocket</h2>
+      <p>book visits, track your prescriptions, chat with your care team, and get meds delivered — all from one beautifully simple app. download care at home today on android or ios.</p>
+      <div class="app-download__stores">
+        <a aria-label="تحميل التطبيق من متجر جوجل بلاي" href="https://play.google.com/store" target="_blank" class="store-badge store-badge--android">
+          <i aria-hidden="true" class="fa-brands fa-google-play"></i>
+          <span class="store-badge__text">
+            <small>get it on</small>
+            <strong>google play</strong>
+          </span>
+        </a>
+        <a aria-label="تحميل التطبيق من آب ستور" href="https://www.apple.com/app-store/" target="_blank" class="store-badge store-badge--ios">
+          <i aria-hidden="true" class="fa-brands fa-apple"></i>
+          <span class="store-badge__text">
+            <small>download on the</small>
+            <strong>app store</strong>
+          </span>
+        </a>
+      </div>
+      <div class="app-download__rating">
+        <div class="app-download__stars">
+          <i aria-hidden="true" class="fa-solid fa-star"></i><i aria-hidden="true" class="fa-solid fa-star"></i><i aria-hidden="true" class="fa-solid fa-star"></i><i aria-hidden="true" class="fa-solid fa-star"></i><i aria-hidden="true" class="fa-solid fa-star"></i>
+        </div>
+        <p>rated 4.9 by over 50,000 patients worldwide</p>
+      </div>
+    </div>
+    <div class="app-download__visual">
+      <div class="app-download__phone app-download__phone--back">
+        <div class="app-download__screen app-download__screen--alt">
+          <i aria-hidden="true" class="fa-solid fa-pills"></i>
+          <span>prescription ready</span>
+        </div>
+      </div>
+      <div class="app-download__phone app-download__phone--front">
+        <div class="app-download__screen">
+          <div class="app-download__screen-top">
+            <i aria-hidden="true" class="fa-solid fa-heart-pulse"></i>
+            <span>care at home</span>
+          </div>
+          <div class="app-download__screen-row">
+            <i aria-hidden="true" class="fa-solid fa-video"></i>
+            <div>
+              <strong>video visit</strong>
+              <small>starts in 4 min</small>
+            </div>
+          </div>
+          <div class="app-download__screen-row">
+            <i aria-hidden="true" class="fa-solid fa-truck-medical"></i>
+            <div>
+              <strong>delivery on the way</strong>
+              <small>arriving in 38 min</small>
+            </div>
+          </div>
+          <div class="app-download__screen-row">
+            <i aria-hidden="true" class="fa-solid fa-comment-medical"></i>
+            <div>
+              <strong>care assistant</strong>
+              <small>online 24/7</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="app-download__qr">
+        <i aria-hidden="true" class="fa-solid fa-qrcode"></i>
+        <small>scan to download</small>
+      </span>
+    </div>
+  </div>
+</section>
+<!-- ===== END APP DOWNLOAD SECTION ===== -->
+
+ <!-- start footer -->
+  <!-- ===== FOOTER ===== -->
+<footer class="meds-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Care At Home</h3>
+      <p class="footer-support">Customer Support</p>
+      <p class="footer-support-text">Support Is Open 24/7 In The Care At Home</p>
+      <p class="footer-address-title">Address</p>
+      <p class="footer-address">Egypt, Tanta</p>
+      <div class="footer-social">
+        <a aria-label="زيارة صفحتنا على فيسبوك" href="#" class="social-link"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i></a>
+        <a aria-label="زيارة حسابنا على إكس" href="#" class="social-link"><i aria-hidden="true" class="fa-brands fa-x-twitter"></i></a>
+        <a aria-label="زيارة صفحتنا على إنستجرام" href="#" class="social-link"><i aria-hidden="true" class="fa-brands fa-instagram"></i></a>
+        <a aria-label="زيارة صفحتنا على لينكدإن" href="#" class="social-link"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li><a aria-label="الانتقال إلى المساعد الذكي كير بوت" href="../Care-Bot/bot.html">bot cara at home</a></li>
+        <li><a aria-label="الانتقال إلى لوحة متابعة الحالة الصحية" href="../healthdashboard/health-dashboard.html">healthdashboard</a></li>
+        <li><a aria-label="الانتقال إلى صفحة خدمات المرضى" href="../patient services/patient.html">patien services</a></li>
+        <li><a aria-label="الانتقال إلى خدمات الاستشارة الطبية عن بعد" href="../prescriptions/prescriptions.html">Telehealth Services</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الأدوية والروشتات" href="../Medication/Medication.html">medication</a></li>
+        <li><a aria-label="الانتقال إلى صفحة التشخيص الطبي" href="../Medical diagnosis/Medical diagnosis.html">Diagnosis</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الحالات الطارئة" href="../Emergency/emergency.html">emergency</a></li>
+        <li><a aria-label="الانتقال إلى صفحة خدمات التمريض" href="../nursing/nursing.html">nursing</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Product</h4>
+      <ul>
+        <li><a aria-label="الانتقال إلى صفحة كيف يعمل كير آت هوم" href="../How It Work/how it work.html">How It Works</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الأسعار والباقات" href="../Subscriptions/">Pricing</a></li>
+        <li><a aria-label="الانتقال إلى صفحة أكواد الخصم" href="#">Promo Codes</a></li>
+        <li><a aria-label="الانتقال إلى صفحة خدمات أصحاب الأعمال" href="#">Employers</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الوسطاء والشركاء" href="#">Brokers</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a aria-label="الانتقال إلى صفحة من نحن" href="../about us/about.html">About Us</a></li>
+        <li><a aria-label="الانتقال إلى مركز المساعدة والدعم" href="../help us/help.html">Help Center</a></li>
+        <li><a aria-label="الانتقال إلى صفحة مقدمي الخدمة الطبية" href="../our providers/our providers.html">Our Providers</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الاتصال بنا" href="../pharmacy/contactus/contact.html">Contact Us</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الأخبار والمستجدات" href="#">Newsroom</a></li>
+        <li><a aria-label="الانتقال إلى خريطة الموقع" href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a aria-label="الانتقال إلى صفحة شروط الاستخدام" href="#">Terms Of Use</a></li>
+        <li><a aria-label="الانتقال إلى صفحة سياسة الخصوصية" href="#">Privacy Policy</a></li>
+        <li><a aria-label="الانتقال إلى صفحة سياسة الاسترداد والإلغاء" href="#">Refund/Cancellation Policy</a></li>
+        <li><a aria-label="الانتقال إلى صفحة إشعار ممارسات الخصوصية" href="#">Notice Of Privacy Practices</a></li>
+        <li><a aria-label="الانتقال إلى صفحة الموافقة على الزيارات الافتراضية" href="#">Consent To Virtual Visits</a></li>
+        <li><a aria-label="الانتقال إلى صفحة سياسة إنشاء المحتوى" href="#">Content Creation Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-partners">
+    <span class="partner-logo">aetna</span>
+    <span class="partner-logo">Anthem</span>
+    <span class="partner-logo">Humana</span>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Care At Home, Inc. All Rights Reserved.</p>
+  </div>
+</footer>
+ <!-- end footer -->
+  <div id="subscribeModal" class="subscribe-overlay">
+  <div class="subscribe-modal">
+    <button lang="ar" aria-label="إغلاق نافذة الاشتراك" class="close-btn" onclick="closeSubscribeModal()">&times;</button>
+    <div class="icon">
+      <i aria-hidden="true" class="fa-solid fa-bell"></i>
+    </div>
+    <h3>Subscribe Now!</h3>
+    <p>Join our community to get the latest health tips, exclusive offers, and updates from Care At Home.</p>
+    <a aria-label="تأكيد الاشتراك، الانتقال إلى صفحة باقات كير آت هوم" href="../Subscriptions/Subscriptions.html" class="subscribe-btn">Subscribe</a>
+    <button lang="ar" aria-label="إغلاق العرض والمتابعة بدون اشتراك الآن" class="no-thanks" onclick="closeSubscribeModal()">No thanks, maybe later</button>
+  </div>
+</div>
+
+    <!-- Floating speak-to-a-doctor CTA -->
+    <a id="floatingDoctorBtn" class="float-doctor-btn"
+       href="../Doctors/alldoctors.html" target="_blank"
+       aria-label="الانتقال إلى صفحة حجز موعد مع طبيب">
+      <i aria-hidden="true" class="fa-solid fa-stethoscope"></i>
+      <span>speak to a doctor</span>
+    </a>
+
+    <!-- Scroll to top -->
+    <button id="scrollTopBtn" type="button" class="scroll-top-btn"
+            aria-label="الرجوع إلى أعلى الصفحة" onclick="scrollToTop()">
+      <i aria-hidden="true" class="fa-solid fa-arrow-up"></i>
+    </button>
+
+<script src="script.js"></script>
+  </body>
+</html>
